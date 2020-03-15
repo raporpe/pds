@@ -18,7 +18,7 @@ public class AppTest
 	*/
 
 	@Test
-	public void CP_RF1_01()
+	public void TM_RF1_01()
 	{
 		String filePath = "resources/CP-RF1-01.json";
 		TokenManager tm = new TokenManager();
@@ -47,7 +47,7 @@ public class AppTest
 	}
 	
 	@Test
-	public void CP_RF1_02_I1()
+	public void TM_RF1_02_I1()
 	{
 		String filePath = "src/resources/CP-RF1-01.json";
 		TokenManager tm = new TokenManager();
