@@ -1,5 +1,11 @@
 package Transport4Future.TokenManagement;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
 public class TokenRequest {
 	
@@ -8,7 +14,7 @@ public class TokenRequest {
 	private String driverVersion;
 	private String serialNumber;
 	private String macAddress;
-	
+	private String password;
 	
 	
 	/**
@@ -73,7 +79,19 @@ public class TokenRequest {
 		return macAddress;
 	}
 
+	public String getToken() throws NoSuchAlgorithmException {
+		
+		MessageDigest md;
+		md = MessageDigest.getInstance("MD5");
+		String input =  this.password + "-" + this.toString();
+		
+		md.update(input.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
 
+		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
+		String hex = String.format("%32x", new BigInteger(1, digest));
+		return hex;
+	}
 
 	@Override
 	public String toString() {
