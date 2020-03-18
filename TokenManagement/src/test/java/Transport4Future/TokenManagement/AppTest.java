@@ -33,14 +33,14 @@ public class AppTest {
 	 * <CE-RF1-V-01 Testing technique: Equivalence Class Expected value: Pass
 	 */
 
-	private JsonObject json;
-	private TokenManager tm;
-	private String filePath;
-	private TokenRequest rq;
-	private String password;
+	private static JsonObject json;
+	private static TokenManager tm;
+	private static String filePath;
+	private static TokenRequest rq;
+	private static String password;
 
 	@BeforeAll
-	public void TM_RF1_01() {
+	public static void TM_RF1_01() {
 		filePath = "src/resources/CP-RF1-01.json";
 		json = readJSON(filePath);
 		tm = new TokenManager();
@@ -105,7 +105,7 @@ public class AppTest {
 
 	}
 
-	private JsonObject readJSON(String path) {
+	private static JsonObject readJSON(String path) {
 
 		String fileContents = "";
 		BufferedReader reader = null;
