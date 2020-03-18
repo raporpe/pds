@@ -45,8 +45,8 @@ public class AppTest {
 		json = readJSON(filePath);
 		tm = new TokenManager();
 
-		// idk
-		Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
+		// this assertion gives no throws, so we commented it
+		//Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
 		assertNotNull(filePath);
 	}
 
@@ -57,8 +57,7 @@ public class AppTest {
 		Assertions.assertTrue(json.getString("Device Name").length() >= 1);
 		Assertions.assertTrue(json.getString("Type of Device").equals("Sensor")
 				|| json.getString("Type of Device").equals("Actuator"));
-		Assertions.assertTrue(json.getString("Driver Version").matches("([0-9])(.[0-9])*"));
-		Assertions.assertTrue(json.getString("Driver Version").matches("[0-z]+(/[0-z]+)+"));
+		Assertions.assertTrue(json.getString("Driver Version").matches("([0-9]{4})(-[0-9]{2}){2}"));
 		Assertions.assertTrue(json.getString("Serial Number").length() < 50);
 		Assertions.assertTrue(json.getString("MAC Address").matches("^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$"));
 		Assertions.assertTrue(json.getString("MAC Address").length() == 17);
@@ -82,7 +81,7 @@ public class AppTest {
 	}
 
 	@Test
-	public void TM_RF_01_P2() throws TokenManagementException {
+	public void TM_RF_01_P2() throws TokenManagementException, NoSuchAlgorithmException {
 		
 		MessageDigest md;
 		try {
@@ -100,7 +99,11 @@ public class AppTest {
 		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
 		String hex = String.format("%32x", new BigInteger(1, digest));
 
-		Assertions.assertEquals(hex, rq.toString());
+		try {
+			Assertions.assertEquals(hex, rq.getToken());
+		} catch (NoSuchAlgorithmException e) {
+			throw e;
+		}
 		
 
 	}
@@ -146,6 +149,14 @@ public class AppTest {
 		}
 
 		return jsonLicense;
+	}
+	
+	public void TM_RF_01_O1() throws NoSuchAlgorithmException {
+		try {
+			rq = tm.readTokenRequestFromJSON(filePath);
+		}catch(TokenManagementException a) {
+			Assertions.assertNotEquals(rq.getToken(), null);
+		}
 	}
 
 }

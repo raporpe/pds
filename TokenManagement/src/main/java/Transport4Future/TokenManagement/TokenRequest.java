@@ -82,7 +82,11 @@ public class TokenRequest {
 	public String getToken() throws NoSuchAlgorithmException {
 		
 		MessageDigest md;
-		md = MessageDigest.getInstance("MD5");
+		try {
+			md = MessageDigest.getInstance("MD5");
+		}catch(NoSuchAlgorithmException e) {
+			throw e;
+		}
 		String input =  this.password + "-" + this.toString();
 		
 		md.update(input.getBytes(StandardCharsets.UTF_8));
