@@ -14,7 +14,11 @@ import java.util.Locale;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+
 import javax.json.Json;
 import javax.json.JsonObject;
 
@@ -26,6 +30,8 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Unit test for simple App.
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class AppTest {
 
 	/*
@@ -36,8 +42,9 @@ public class AppTest {
 	private static JsonObject json;
 	private static TokenManager tm;
 	private static String filePath;
-	private static TokenRequest rq;
+	private static TokenRequest request;
 	private static String password;
+	private static String token;
 
 	@BeforeAll
 	public static void TM_RF1_01() {
@@ -51,6 +58,7 @@ public class AppTest {
 	}
 
 	@Test
+	@Order(1)
 	public void TM_RF1_02_I1() {
 
 		Assertions.assertTrue(json.getString("Device Name").length() < 20);
@@ -65,22 +73,25 @@ public class AppTest {
 	}
 
 	@Test
+	@Order(2)
 	public void TM_RF1_01_P1() {
 		try {
-			rq = tm.readTokenRequestFromJSON(filePath);
+			request = tm.readTokenRequestFromJSON(filePath);
 		} catch (TokenManagementException a) {
 			Assertions.fail("The json file was not found");
 		}
 
-		Assertions.assertEquals(rq.getDeviceName(), json.getString("Device Name"));
-		Assertions.assertEquals(rq.getTypeDevice(), json.getString("Type of Device"));
-		Assertions.assertEquals(rq.getDriverVersion(), json.getString("Driver Version"));
-		Assertions.assertEquals(rq.getSerialNumber(), json.getString("Serial Number"));
-		Assertions.assertEquals(rq.getMacAddress(), json.getString("MAC Address"));
+		Assertions.assertEquals(request.getDeviceName(), json.getString("Device Name"));
+		Assertions.assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
+		Assertions.assertEquals(request.getDriverVersion(), json.getString("Driver Version"));
+		Assertions.assertEquals(request.getSerialNumber(), json.getString("Serial Number"));
+		Assertions.assertEquals(request.getMacAddress(), json.getString("MAC Address"));
 
 	}
 
+
 	@Test
+	@Order(3)
 	public void TM_RF_01_P2() throws TokenManagementException, NoSuchAlgorithmException {
 		
 		MessageDigest md;
@@ -91,19 +102,20 @@ public class AppTest {
 		}
 		
 		//  Defined  password is "Stardust" & req is the TokenRequest object
-		String input =  password + "-" + rq.toString();
+		String input =  password + "-" + request.toString();
 		
 		md.update(input.getBytes(StandardCharsets.UTF_8));
 		byte[] digest = md.digest();
 
 		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
 		String hex = String.format("%32x", new BigInteger(1, digest));
+		
+		token = request.getToken();
+		
+		System.out.println(token + " " + hex);
 
-		try {
-			Assertions.assertEquals(hex, rq.getToken());
-		} catch (NoSuchAlgorithmException e) {
-			throw e;
-		}
+		Assertions.assertEquals(hex, token);
+		
 		
 
 	}
@@ -151,12 +163,19 @@ public class AppTest {
 		return jsonLicense;
 	}
 	
-	public void TM_RF_01_O1() throws NoSuchAlgorithmException {
-		try {
-			rq = tm.readTokenRequestFromJSON(filePath);
-		}catch(TokenManagementException a) {
-			Assertions.assertNotEquals(rq.getToken(), null);
-		}
+	@Test
+	@Order(4)
+	public void TM_RF_01_O1() {
+		System.out.println(token);
+
+		Assertions.assertTrue(token.matches("[A-Z0-9a-z]+"));
+
+	}
+	
+	@Test
+	@Order(5)
+	public void TM_RF_01_O2() {
+		
 	}
 
 }
