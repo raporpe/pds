@@ -8,9 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.math.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.util.Locale;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -40,26 +40,26 @@ public class AppTest {
 	 */
 
 	private static JsonObject json;
-	private static TokenManager tm;
-	private static String filePath;
+	private static TokenManager tokenManager;
+	private static String correctFilePath;
 	private static TokenRequest request;
 	private static String password;
 	private static String token;
 
 	@BeforeAll
-	public static void TM_RF1_01() {
-		filePath = "src/resources/CP-RF1-01.json";
-		json = readJSON(filePath);
-		tm = new TokenManager();
+	public static void partOne() {
+		correctFilePath = "src/resources/CP-RF1-01.json";
+		json = readJSON(correctFilePath);
+		tokenManager = new TokenManager();
 
 		// this assertion gives no throws, so we commented it
 		//Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
-		assertNotNull(filePath);
+		assertNotNull(correctFilePath);
 	}
 
 	@Test
 	@Order(1)
-	public void TM_RF1_02_I1() {
+	public void checkJsonStructure() {
 
 		Assertions.assertTrue(json.getString("Device Name").length() < 20);
 		Assertions.assertTrue(json.getString("Device Name").length() >= 1);
@@ -74,9 +74,9 @@ public class AppTest {
 
 	@Test
 	@Order(2)
-	public void TM_RF1_01_P1() {
+	public void checkReceivedData() {
 		try {
-			request = tm.readTokenRequestFromJSON(filePath);
+			request = tokenManager.readTokenRequestFromJSON(correctFilePath);
 		} catch (TokenManagementException a) {
 			Assertions.fail("The json file was not found");
 		}
@@ -88,11 +88,21 @@ public class AppTest {
 		Assertions.assertEquals(request.getMacAddress(), json.getString("MAC Address"));
 
 	}
+	
+	@Test
+	@Order(2)
+	public void checkFailOnBadXXXXX() {
+		String badXXXXXPath = "src/resources/badXXXXX.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badXXXXXPath));
+		
+
+	}
 
 
 	@Test
 	@Order(3)
-	public void TM_RF_01_P2() throws TokenManagementException, NoSuchAlgorithmException {
+	public void checkMD5() throws TokenManagementException, NoSuchAlgorithmException {
 		
 		MessageDigest md;
 		try {
@@ -116,10 +126,50 @@ public class AppTest {
 
 		Assertions.assertEquals(hex, token);
 		
-		
+		Assertions.assertTrue(token.matches("([A-F0-9]{32})|([a-f0-9]{32})"));
 
+		
 	}
 
+
+
+	
+	@Test
+	@Order(5)
+	public void testWrongDataPath() {
+		String wrongFilePath = "src/resources/doesnotexist.json";
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(wrongFilePath));
+	}
+	
+	@Test
+	@Order(6)
+	public void testEmptyJson() {
+		String emptyFilePath = "src/resources/empty.json";
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(emptyFilePath));
+	}
+	
+	@Test
+	@Order(7)
+	public void testCorruptedJson() {
+		String corruptedFilePath = "src/resources/corrupted_json.json";
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(corruptedFilePath));
+	}
+	
+	@Test
+	@Order(7)
+	public void testIncorrectFormat() {
+		String incorrectFormatFilePath = "src/resources/incorrect_format.json";
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(incorrectFormatFilePath));
+	}
+	
+	@Test
+	@Order(7)
+	public void testInternalError() {
+		String internalErrorFilePath = "src/resources/internal_error.json";
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
+	}
+	
+	
 	private static JsonObject readJSON(String path) {
 
 		String fileContents = "";
@@ -147,7 +197,7 @@ public class AppTest {
 		}
 
 		JsonObject jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
-		DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+		//DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
 		try {
 
 			jsonLicense.getString("Device Name");
@@ -161,21 +211,6 @@ public class AppTest {
 		}
 
 		return jsonLicense;
-	}
-	
-	@Test
-	@Order(4)
-	public void TM_RF_01_O1() {
-		System.out.println(token);
-
-		Assertions.assertTrue(token.matches("[A-Z0-9a-z]+"));
-
-	}
-	
-	@Test
-	@Order(5)
-	public void TM_RF_01_O2() {
-		
 	}
 
 }
