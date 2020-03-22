@@ -71,4 +71,10 @@ public class TokenManager {
 	
 		return req;
 	}
+	
+	public String RequestToken() {
+		String InputFile;
+		
+		return "0";
+	}
 }
