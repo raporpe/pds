@@ -57,6 +57,8 @@ public class TokenManager {
 		} catch(Exception e) {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
+		
+		
 
 		return req;
 	}

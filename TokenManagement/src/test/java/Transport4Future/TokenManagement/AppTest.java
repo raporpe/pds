@@ -66,6 +66,7 @@ public class AppTest {
 		Assertions.assertTrue(json.getString("Type of Device").equals("Sensor")
 				|| json.getString("Type of Device").equals("Actuator"));
 		Assertions.assertTrue(json.getString("Driver Version").matches("([0-9]{4})(-[0-9]{2}){2}"));
+		Assertions.assertTrue(json.getString("Support e-mail").matches("^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$"));
 		Assertions.assertTrue(json.getString("Serial Number").length() < 50);
 		Assertions.assertTrue(json.getString("MAC Address").matches("^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$"));
 		Assertions.assertTrue(json.getString("MAC Address").length() == 17);
@@ -84,7 +85,7 @@ public class AppTest {
 		Assertions.assertEquals(request.getDeviceName(), json.getString("Device Name"));
 		Assertions.assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
 		Assertions.assertEquals(request.getDriverVersion(), json.getString("Driver Version"));
-		Assertions.assertEquals(request.getSupportEmail(), json.getString("Support Email"));
+		Assertions.assertEquals(request.getSupportEmail(), json.getString("Support e-mail"));
 		Assertions.assertEquals(request.getSerialNumber(), json.getString("Serial Number"));
 		Assertions.assertEquals(request.getMacAddress(), json.getString("MAC Address"));
 
