@@ -1,6 +1,5 @@
 {
-	"Device Name":"CAN BUS",
-	"Type of Device":"Actuator",
+	"Device Name:"CAN BUS",
 	"Driver Version":"2020-03-01", 
 	"Support e-mail":"autonomous@vehicle.com", 
 	"Serial Number":"3423432423",

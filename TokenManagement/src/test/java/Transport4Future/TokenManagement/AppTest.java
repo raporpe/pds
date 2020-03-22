@@ -47,7 +47,7 @@ public class AppTest {
 	private static String token;
 
 	@BeforeAll
-	public static void partOne() {
+	public static void partOneInitialization() {
 		correctFilePath = "src/resources/CP-RF1-01.json";
 		json = readJSON(correctFilePath);
 		tokenManager = new TokenManager();
@@ -59,18 +59,52 @@ public class AppTest {
 
 	@Test
 	@Order(1)
-	public void checkJsonStructure() {
-
-		Assertions.assertTrue(json.getString("Device Name").length() < 20);
-		Assertions.assertTrue(json.getString("Device Name").length() >= 1);
-		Assertions.assertTrue(json.getString("Type of Device").equals("Sensor")
-				|| json.getString("Type of Device").equals("Actuator"));
-		Assertions.assertTrue(json.getString("Driver Version").matches("([0-9]{4})(-[0-9]{2}){2}"));
-		Assertions.assertTrue(json.getString("Serial Number").length() < 50);
-		Assertions.assertTrue(json.getString("MAC Address").matches("^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$"));
-		Assertions.assertTrue(json.getString("MAC Address").length() == 17);
+	public void checkFailOnBadJsonTag() {
+		
+		//Check error on extra tag
+		String extraTagPath = "src/resources/extraTag.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(extraTagPath));
+		
+		
+		//Check error on missing tags
+		
+		String missingDeviceNamePath = "src/resources/missingDeviceName.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingDeviceNamePath));
+		
+		String missingTypeOfDevicePath = "src/resources/missingTypeOfDevice.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingTypeOfDevicePath));
+		
+		String missingDriverVersionPath = "src/resources/missingDriverVersion.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingDriverVersionPath));
+		
+		String missingSerialNumberPath = "src/resources/missingSerialNumber.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingSerialNumberPath));
+		
+		String missingEmailPath = "src/resources/missingEmail.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingEmailPath));
+		
+		String missingMacAddressPath = "src/resources/missingMacAddress.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(missingMacAddressPath));
 
 	}
+	
+	
+	public void checkFailOnBadJsonSyntax() {
+
+		String badSyntaxPath = "src/resources/badSyntax.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badSyntaxPath));
+
+	}
+	
+	
 
 	@Test
 	@Order(2)
@@ -86,18 +120,42 @@ public class AppTest {
 		Assertions.assertEquals(request.getDriverVersion(), json.getString("Driver Version"));
 		Assertions.assertEquals(request.getSerialNumber(), json.getString("Serial Number"));
 		Assertions.assertEquals(request.getMacAddress(), json.getString("MAC Address"));
+		Assertions.assertEquals(request.getEmail(), json.getString("Support e-mail"));
+
 
 	}
 	
+	//Test bad regex case
+	
 	@Test
 	@Order(2)
-	public void checkFailOnBadXXXXX() {
-		String badXXXXXPath = "src/resources/badXXXXX.json";
-		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badXXXXXPath));
+	public void checkFailOnBadDataRegex() {
 		
-
+		String badDeviceNamePath = "src/resources/badDeviceName.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badDeviceNamePath));
+		
+		String badTypeOfDevicePath = "src/resources/badTypeOfDevice.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badTypeOfDevicePath));
+		
+		String badDriverVersionPath = "src/resources/badDriverVersion.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badDriverVersionPath));
+		
+		String badSerialNumberPath = "src/resources/badSerialNumber.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badSerialNumberPath));
+		
+		String badEmailPath = "src/resources/badEmail.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badEmailPath));
+		
+		String badMacAddressPath = "src/resources/badMacAddress.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.readTokenRequestFromJSON(badMacAddressPath));
 	}
+
 
 
 	@Test
@@ -126,6 +184,7 @@ public class AppTest {
 
 		Assertions.assertEquals(hex, token);
 		
+		//Check the md5 is a valid string
 		Assertions.assertTrue(token.matches("([A-F0-9]{32})|([a-f0-9]{32})"));
 
 		
@@ -136,38 +195,25 @@ public class AppTest {
 	
 	@Test
 	@Order(5)
-	public void testWrongDataPath() {
+	public void testFailOnWrongDataPath() {
 		String wrongFilePath = "src/resources/doesnotexist.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(wrongFilePath));
 	}
 	
 	@Test
 	@Order(6)
-	public void testEmptyJson() {
+	public void testFailOnEmptyJson() {
 		String emptyFilePath = "src/resources/empty.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(emptyFilePath));
 	}
 	
-	@Test
-	@Order(7)
-	public void testCorruptedJson() {
-		String corruptedFilePath = "src/resources/corrupted_json.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(corruptedFilePath));
-	}
 	
-	@Test
-	@Order(7)
-	public void testIncorrectFormat() {
-		String incorrectFormatFilePath = "src/resources/incorrect_format.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(incorrectFormatFilePath));
-	}
-	
-	@Test
-	@Order(7)
-	public void testInternalError() {
-		String internalErrorFilePath = "src/resources/internal_error.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
-	}
+//	@Test
+//	@Order(7)
+//	public void testInternalError() {
+//		String internalErrorFilePath = "src/resources/internal_error.json";
+//		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
+//	}
 	
 	
 	private static JsonObject readJSON(String path) {
