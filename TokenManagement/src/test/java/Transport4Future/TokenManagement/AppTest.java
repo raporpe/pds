@@ -177,7 +177,7 @@ public class AppTest {
 		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
 		String hex = String.format("%32x", new BigInteger(1, digest));
 		
-		token = request.getToken();
+		token = request.TokenRequestGeneration();
 		
 		System.out.println(token + " " + hex);
 

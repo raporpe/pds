@@ -109,13 +109,13 @@ public class TokenRequest {
 		return macAddress;
 	}
 
-	public String getToken() throws NoSuchAlgorithmException {
+	public String TokenRequestGeneration() throws TokenManagementException {
 
 		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
-			throw e;
+			throw new TokenManagementException("The MD5 algorithm was not found");
 		}
 		String input = this.password + "-" + this.toString();
 

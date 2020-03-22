@@ -15,14 +15,14 @@ import javax.json.JsonObject;
 
 public class TokenManager {
 
-	public TokenRequest readTokenRequestFromJSON(String path) throws TokenManagementException {
+	public TokenRequest readTokenRequestFromJSON(String InputFile) throws TokenManagementException {
 		
 		TokenRequest req = null;
 		String fileContents = "";
 		BufferedReader reader;
 		
 		try {
-			reader = new BufferedReader(new FileReader(path));
+			reader = new BufferedReader(new FileReader(InputFile));
 		} catch (FileNotFoundException e) {
 			throw new TokenManagementException("Error: input file not found.");
 		}
