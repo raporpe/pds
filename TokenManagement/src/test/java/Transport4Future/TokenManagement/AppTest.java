@@ -30,7 +30,6 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Unit test for simple App.
  */
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class AppTest {
 
@@ -58,7 +57,6 @@ public class AppTest {
 	}
 
 	@Test
-	@Order(1)
 	public void checkFailOnBadJsonTag() {
 		
 		//Check error on extra tag
@@ -95,7 +93,7 @@ public class AppTest {
 
 	}
 	
-	
+	@Test
 	public void checkFailOnBadJsonSyntax() {
 
 		String badSyntaxPath = "src/resources/badSyntax.json";
@@ -107,13 +105,14 @@ public class AppTest {
 	
 
 	@Test
-	@Order(2)
 	public void checkReceivedData() {
 		try {
 			request = tokenManager.readTokenRequestFromJSON(correctFilePath);
-		} catch (TokenManagementException a) {
-			Assertions.fail("The json file was not found");
+		} catch (TokenManagementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 
 		Assertions.assertEquals(request.getDeviceName(), json.getString("Device Name"));
 		Assertions.assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
@@ -128,7 +127,6 @@ public class AppTest {
 	//Test bad regex case
 	
 	@Test
-	@Order(2)
 	public void checkFailOnBadDataRegex() {
 		
 		String badDeviceNamePath = "src/resources/badDeviceName.json";
@@ -159,8 +157,9 @@ public class AppTest {
 
 
 	@Test
-	@Order(3)
 	public void checkMD5() throws TokenManagementException, NoSuchAlgorithmException {
+		
+		request = tokenManager.readTokenRequestFromJSON(correctFilePath);
 		
 		MessageDigest md;
 		try {
@@ -194,14 +193,12 @@ public class AppTest {
 
 	
 	@Test
-	@Order(5)
 	public void testFailOnWrongDataPath() {
 		String wrongFilePath = "src/resources/doesnotexist.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(wrongFilePath));
 	}
 	
 	@Test
-	@Order(6)
 	public void testFailOnEmptyJson() {
 		String emptyFilePath = "src/resources/empty.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(emptyFilePath));
@@ -209,7 +206,6 @@ public class AppTest {
 	
 	
 //	@Test
-//	@Order(7)
 //	public void testInternalError() {
 //		String internalErrorFilePath = "src/resources/internal_error.json";
 //		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
@@ -249,6 +245,7 @@ public class AppTest {
 			jsonLicense.getString("Device Name");
 			jsonLicense.getString("Type of Device");
 			jsonLicense.getString("Driver Version");
+			jsonLicense.getString("Support e-mail");
 			jsonLicense.getString("Serial Number");
 			jsonLicense.getString("MAC Address");
 
