@@ -43,8 +43,12 @@ public class TokenManager {
 		}
 
 		JsonObject jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
-		try {
-			
+		
+		if(jsonLicense.size()!= 6) {
+			throw new TokenManagementException("Error: not number of properties requested.");
+		}
+		
+		try {	
 			String deviceName = jsonLicense.getString("Device Name");
 			String typeDevice = jsonLicense.getString("Type of Device");
 			String driverVersion = jsonLicense.getString("Driver Version");
@@ -57,9 +61,7 @@ public class TokenManager {
 		} catch(Exception e) {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
-		
-		
-
+	
 		return req;
 	}
 }
