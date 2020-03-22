@@ -12,6 +12,7 @@ public class TokenRequest {
 	private String deviceName;
 	private String typeDevice;
 	private String driverVersion;
+	private String supportEmail;
 	private String serialNumber;
 	private String macAddress;
 	private String password;
@@ -24,12 +25,13 @@ public class TokenRequest {
 	 * @param serialNumber
 	 * @param macAddress
 	 */
-	public TokenRequest(String deviceName, String typeDevice, String driverVersion, String serialNumber,
+	public TokenRequest(String deviceName, String typeDevice, String driverVersion, String supportEmail, String serialNumber,
 			String macAddress) {
 		super();
 		this.deviceName = deviceName;
 		this.typeDevice = typeDevice;
 		this.driverVersion = driverVersion;
+		this.supportEmail = supportEmail;
 		this.serialNumber = serialNumber;
 		this.macAddress = macAddress;
 	}
@@ -61,7 +63,12 @@ public class TokenRequest {
 		return driverVersion;
 	}
 
-
+	/**
+	 * @return the supportEmail
+	 */
+	public String getSupportEmail() {
+		return supportEmail;
+	}
 
 	/**
 	 * @return the serialNumber
@@ -100,8 +107,6 @@ public class TokenRequest {
 	@Override
 	public String toString() {
 		return "TokenRequest [deviceName=" + deviceName + ", typeDevice=" + typeDevice + ", driverVersion="
-				+ driverVersion + ", serialNumber=" + serialNumber + ", macAddress=" + macAddress + "]";
-	}
-	
-	
+				+ driverVersion + ", supportEmail=" + supportEmail + ", serialNumber=" + serialNumber + ", macAddress=" + macAddress + "]";
+	}	
 }

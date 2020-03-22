@@ -84,6 +84,7 @@ public class AppTest {
 		Assertions.assertEquals(request.getDeviceName(), json.getString("Device Name"));
 		Assertions.assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
 		Assertions.assertEquals(request.getDriverVersion(), json.getString("Driver Version"));
+		Assertions.assertEquals(request.getSupportEmail(), json.getString("Support Email"));
 		Assertions.assertEquals(request.getSerialNumber(), json.getString("Serial Number"));
 		Assertions.assertEquals(request.getMacAddress(), json.getString("MAC Address"));
 
@@ -203,6 +204,7 @@ public class AppTest {
 			jsonLicense.getString("Device Name");
 			jsonLicense.getString("Type of Device");
 			jsonLicense.getString("Driver Version");
+			jsonLicense.getString("Support Email");
 			jsonLicense.getString("Serial Number");
 			jsonLicense.getString("MAC Address");
 
