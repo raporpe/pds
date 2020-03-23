@@ -75,5 +75,10 @@ public class TokenManager {
 	public String RequestToken(String InputFile) throws TokenManagementException{
 		return "";
 	}
+	
+	
+	public boolean VerifyToken (String Token) {
+		return false;
+	}
 
 }

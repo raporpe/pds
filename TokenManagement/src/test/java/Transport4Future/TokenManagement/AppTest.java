@@ -48,7 +48,7 @@ public class AppTest {
 
 	@BeforeAll
 	public static void TM_RF_01() {
-		deviceDataFilePath = "src/resources/CP-RF1-01.json";
+		deviceDataFilePath = "src/resources/01/CP-RF1-01.json";
 		json = readJSON(deviceDataFilePath);
 		tokenManager = new TokenManager();
 
@@ -62,34 +62,34 @@ public class AppTest {
 		
 				
 		//Check error on extra tag
-		String extraTagPath = "src/resources/extraTag.json";
+		String extraTagPath = "src/resources/01/extraTag.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(extraTagPath));
 		
 		
 		//Check error on missing tags
 		
-		String missingDeviceNamePath = "src/resources/missingDeviceName.json";
+		String missingDeviceNamePath = "src/resources/01/missingDeviceName.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
 		
-		String missingTypeOfDevicePath = "src/resources/missingTypeOfDevice.json";
+		String missingTypeOfDevicePath = "src/resources/01/missingTypeOfDevice.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingTypeOfDevicePath));
 		
-		String missingDriverVersionPath = "src/resources/missingDriverVersion.json";
+		String missingDriverVersionPath = "src/resources/01/missingDriverVersion.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingDriverVersionPath));
 		
-		String missingSerialNumberPath = "src/resources/missingSerialNumber.json";
+		String missingSerialNumberPath = "src/resources/01/missingSerialNumber.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingSerialNumberPath));
 		
-		String missingEmailPath = "src/resources/missingEmail.json";
+		String missingEmailPath = "src/resources/01/missingEmail.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingEmailPath));
 		
-		String missingMacAddressPath = "src/resources/missingMacAddress.json";
+		String missingMacAddressPath = "src/resources/01/missingMacAddress.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingMacAddressPath));
 
@@ -98,7 +98,7 @@ public class AppTest {
 	@Test
 	public void checkFailOnBadJsonSyntax_01() {
 
-		String badSyntaxPath = "src/resources/badSyntax.json";
+		String badSyntaxPath = "src/resources/01/badSyntax.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badSyntaxPath));
 
@@ -131,27 +131,27 @@ public class AppTest {
 	@Test
 	public void checkFailOnBadDataRegex_01() {
 		
-		String badDeviceNamePath = "src/resources/badDeviceName.json";
+		String badDeviceNamePath = "src/resources/01/badDeviceName.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badDeviceNamePath));
 		
-		String badTypeOfDevicePath = "src/resources/badTypeOfDevice.json";
+		String badTypeOfDevicePath = "src/resources/01/badTypeOfDevice.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badTypeOfDevicePath));
 		
-		String badDriverVersionPath = "src/resources/badDriverVersion.json";
+		String badDriverVersionPath = "src/resources/01/badDriverVersion.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badDriverVersionPath));
 		
-		String badSerialNumberPath = "src/resources/badSerialNumber.json";
+		String badSerialNumberPath = "src/resources/01/badSerialNumber.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badSerialNumberPath));
 		
-		String badEmailPath = "src/resources/badEmail.json";
+		String badEmailPath = "src/resources/01/badEmail.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badEmailPath));
 		
-		String badMacAddressPath = "src/resources/badMacAddress.json";
+		String badMacAddressPath = "src/resources/01/badMacAddress.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badMacAddressPath));
 	}
@@ -196,13 +196,13 @@ public class AppTest {
 	
 	@Test
 	public void testFailOnWrongDataPath_01() {
-		String wrongFilePath = "src/resources/doesnotexist.json";
+		String wrongFilePath = "src/resources/01/doesnotexist.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(wrongFilePath));
 	}
 	
 	@Test
 	public void testFailOnEmptyJson_01() {
-		String emptyFilePath = "src/resources/empty.json";
+		String emptyFilePath = "src/resources/01/empty.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(emptyFilePath));
 	}
 	
@@ -261,8 +261,119 @@ public class AppTest {
 		Assertions.assertEquals(token, tokenManagerRequest);
 		
 		
+	}
+	
+	
+	@Test
+	public void testFailOnBadDataRegx_02(){
+		
+		String badTokenRequestPath = "src/resources/02/badTokenRequest.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(badTokenRequestPath));
+		
+		String badNotificationEmailPath = "src/resources/02/badNotificationEmail.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(badNotificationEmailPath));
+		
+		String badRequestDatePath = "src/resources/02/badRequestDate.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(badRequestDatePath));
 		
 	}
+	
+	
+	@Test
+	public void testFailOnMissingTag_02() {
+		
+		
+		//Check error on extra tag
+		String extraTagPath = "src/resources/02/extraTag.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(extraTagPath));
+		
+		
+		//Check error on missing tags
+		
+		String missingTokenRequestPath = "src/resources/02/missingTokenRequest.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingTokenRequestPath));
+		
+		String missingNotificationEmailPath = "src/resources/02/missingNotificationEmail.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingNotificationEmailPath));
+		
+		String missingRequestDatePath = "src/resources/02/missingRequestDate.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingRequestDatePath));
+	
+		
+	}
+
+	
+	
+	@Test
+	public void testFailOnEmptyJson_02() {
+		
+		String emptyPath = "src/resources/02/empty.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(emptyPath));
+		
+	}
+	
+	@Test
+	public void testFailOnMalformedJson_02() {
+		
+		String malformedJsonPath = "src/resources/02/malformed.json";
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(malformedJsonPath));
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private static JsonObject readJSON(String path) {
 
