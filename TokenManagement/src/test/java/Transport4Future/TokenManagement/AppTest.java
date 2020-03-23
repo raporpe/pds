@@ -29,6 +29,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Locale;
 
@@ -239,24 +240,7 @@ public class AppTest {
 		String noSignetureToken = header + payload;
 		
 		
-		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException("Error: no such hashing algorithm.");
-		}
-		
-		//  Defined  password is "Stardust" & req is the TokenRequest object
-		String input = noSignetureToken;
-		
-		md.update(input.getBytes(StandardCharsets.UTF_8));
-		byte[] digest = md.digest();
-
-		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
-		String signature = String.format("%64x", new BigInteger(1, digest));
-		
-		
-		String token = noSignetureToken + signature;
+		String token = noSignetureToken + hashSHA256(noSignetureToken);
 		
 		String tokenManagerRequest;
 		
@@ -338,6 +322,108 @@ public class AppTest {
 	}
 	
 	
+	// Part three
+	
+	@Test
+	
+	public void testBase64Encoding_03() throws TokenManagementException {
+		
+		String inputFile = "src/resources/03/normal.json";
+		
+		JsonObject test = readJSON(licenseFilePath);
+		
+		String requestToken = test.getString("Token Request");
+		String notificationEmail = test.getString("Notification e-mail");		
+		String resquestDate = test.getString("Request Date");
+		
+
+		String header = "SHA-256";
+		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
+		String noSignetureToken = header + payload;
+		String token = null;
+
+		
+		try {
+			token = noSignetureToken + hashSHA256(noSignetureToken);
+		} catch (TokenManagementException e) {
+			Assertions.fail(e.message);
+		}
+		
+		
+		String encodedToken = Base64.getUrlEncoder().encodeToString(token.getBytes());
+		
+		Assertions.assertEquals(encodedToken, tokenManager.RequestToken(inputFile));	
+		
+	}
+	
+	
+	@Test
+	public void testFailOnExpiredDate_03() {
+		
+		String inputFile = "src/resources/03/expired.json";
+
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(inputFile));
+			
+	}
+	
+	
+	public void testFailOnUnexistentToken_03() {
+		
+		String inputFile = "src/resources/03/unexistent.json";
+
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(inputFile));
+			
+	}
+	
+	public void testRegisteredToken_03() throws TokenManagementException {
+		
+		String inputFile = "src/resources/03/register.json";
+		
+		String base64 = tokenManager.RequestToken(inputFile);
+		
+
+		Assertions.assertTrue(tokenManager.VerifyToken(base64));
+		
+
+	}
+	
+	public void testNotRegisteredToken_03() throws TokenManagementException {
+		
+		String unregisteredTokenPath = "src/resources/03/unregistered.json";
+		
+
+		JsonObject test = readJSON(unregisteredTokenPath);
+		
+		
+		String requestToken = test.getString("Token Request");
+		
+		//Useless?
+		//String notificationEmail = test.getString("Notification e-mail");		
+		String resquestDate = test.getString("Request Date");
+		
+
+		String header = "SHA-256";
+		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
+		String noSignetureToken = header + payload;
+		
+		
+		String unexistingToken = noSignetureToken + hashSHA256(noSignetureToken);
+		
+		Assertions.assertFalse(tokenManager.VerifyToken(unexistingToken));
+
+
+	}
+	
+	public void testInvalidBase64() {
+		String invalidBase64 = "Es el vecino el que elige el alcalde y"
+				+ " es el alcalde el que quiere que sean los vecinos el alcalde\n";
+		
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.VerifyToken(invalidBase64));
+		
+	}
 	
 	
 	
@@ -380,6 +466,31 @@ public class AppTest {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	private static String hashSHA256(String input) throws TokenManagementException {
+		
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			throw new TokenManagementException("Error: no such hashing algorithm.");
+		}
+		
+		
+		md.update(input.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
+
+		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
+		String result = String.format("%64x", new BigInteger(1, digest));
+		
+		return result;
+		
+	}
 	
 	
 	
