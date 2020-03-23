@@ -12,12 +12,14 @@ public class Token {
 	private String alg;
 	private String typ;
 	private String device;
-	private Date requestDate;
+	private String requestDate;
 	private String notificationEmail;
 	private long iat;
 	private long exp;
+	private String signature;
+	private String tokenValue;
 	
-	public Token(String alg, String typ, String Device, Date RequestDate, String NotificationEmail, long iat, long exp) {
+	public Token(String Device, String RequestDate, String NotificationEmail) {
 		this.alg = "HS256";
 		this.typ = "PDS";
 		this.device = Device;
@@ -26,8 +28,13 @@ public class Token {
 		//this.iat = System.currentTimeMillis();
 		this.iat = 123456789;
 		this.exp = this.iat + 987654321;
+		this.signature = null;
+		this.tokenValue = null;
 	}
 	
+	public String getTokenValue() {
+		return tokenValue;
+	}
 	public String CodeHash256(Token myToken) throws TokenManagementException{
 		MessageDigest md;
 		try {
@@ -52,5 +59,32 @@ public class Token {
 			throw new TokenManagementException("Error enconding 64URL.");
 		}
 		return encodedURL;
+	}
+	
+	public boolean VerifyToken(String Token) throws TokenManagementException{
+		TokenStore myStore = new TokenStore();
+		boolean result = false;
+		Token tokenFound = myStore.Find(Token);
+		if (tokenFound !=null) {
+			result = isValid(tokenFound);
+		}
+		return result;
+	}
+	
+	private boolean isValid (Token tokenFound) {
+		if (!tokenFound.isExpired() && tokenFound.isGranted()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isGranted() {
+		return true;
+	}
+	public boolean isExpired() {
+		if(this.exp > System.currentTimeMillis()) {
+			return false;
+		}
+		return true;
 	}
 }

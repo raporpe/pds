@@ -51,12 +51,10 @@ public class TokenStore {
 		Token result = null;
 		this.Load();
 		for(Token token : this.tokenList) {
-			if(token.toString().equals(tokenToFind)) {
+			if(token.getTokenValue().equals(tokenToFind)) {
 				result = token;
 			}
 		}
 		return result;
 	}
-
-
 }
