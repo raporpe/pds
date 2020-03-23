@@ -73,7 +73,7 @@ public class TokenManager {
 	}
 	
 	public String RequestToken(String InputFile) throws TokenManagementException{
-		Token myToken = null;
+		Token myToken = new Token();
 		return "";
 	}
 	

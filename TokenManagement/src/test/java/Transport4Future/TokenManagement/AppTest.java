@@ -26,6 +26,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Unit test for simple App.
@@ -216,18 +221,21 @@ public class AppTest {
 
 	
 	@Test
-	public void testJsonCorrectRead_02() throws TokenManagementException{
+	public void testJsonCorrectReadSHA256_02() throws TokenManagementException{
 	
 		JsonObject test = readJSON(licenseFilePath);
 		
 		
 		String requestToken = test.getString("Token Request");
 		String notificationEmail = test.getString("Notification e-mail");
+		
+		//DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+		
 		String resquestDate = test.getString("Request Date");
 		
-		
+
 		String header = "SHA-256";
-		String payload = requestToken + resquestDate + "";
+		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
 		String noSignetureToken = header + payload;
 		
 		
@@ -402,8 +410,7 @@ public class AppTest {
 		}
 
 		JsonObject jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
-		//DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-
+	
 
 		return jsonLicense;
 	}
