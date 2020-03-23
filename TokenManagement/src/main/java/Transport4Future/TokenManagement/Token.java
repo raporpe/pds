@@ -51,7 +51,7 @@ public class Token {
 		return hex;
 	}
 	
-	private String encodeString(String stringToEncode) throws TokenManagementException{
+	public String encodeString(String stringToEncode) throws TokenManagementException{
 		String encodedURL;
 		try {
 			encodedURL =Base64.getUrlEncoder().encodeToString(stringToEncode.getBytes());
@@ -71,6 +71,7 @@ public class Token {
 	public boolean isGranted() {
 		return true;
 	}
+	
 	public boolean isExpired() {
 		if(this.exp > System.currentTimeMillis()) {
 			return false;

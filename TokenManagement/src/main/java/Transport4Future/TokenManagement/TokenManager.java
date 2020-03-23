@@ -73,8 +73,60 @@ public class TokenManager {
 	}
 	
 	public String RequestToken(String InputFile) throws TokenManagementException{
-		Token myToken = null;
-		return "";
+		Token myToken;		
+		String fileContents = "";
+		BufferedReader reader;
+		String hashed, toReturn;
+		
+		try {
+			reader = new BufferedReader(new FileReader(InputFile));
+		} catch (FileNotFoundException e) {
+			throw new TokenManagementException("Error: input file not found.");
+		}
+		
+		String line;
+		try {
+			while ((line = reader.readLine()) != null) {
+				fileContents += line;
+			}
+		} catch (IOException e) {
+			throw new TokenManagementException("Error: input file could not be accessed.");
+		}
+		
+		try {
+			reader.close();
+		} catch (IOException e) {
+			throw new TokenManagementException("Error: input file could not be closed.");
+		}
+		
+		JsonObject jsonLicense;
+		
+		try {
+			jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
+		} catch(Exception e){
+			
+			throw new TokenManagementException("Error: error reading the json file.");
+		}
+		
+		if(jsonLicense.size()!= 6) {
+			throw new TokenManagementException("Error: not number of properties requested.");
+		}
+		
+		try {	
+			String tokenRequest = jsonLicense.getString("Token Request");
+			String notificationEmail = jsonLicense.getString("Notification e-mail");
+			String requestDate = jsonLicense.getString("Request Date");
+
+			
+			myToken = new Token(tokenRequest, notificationEmail, requestDate);
+			
+		} catch(Exception e) {
+			throw new TokenManagementException("Error: invalid input data in JSON structure.");
+		}
+		hashed = myToken.CodeHash256(myToken);
+		toReturn = myToken.encodeString(hashed);
+		
+		return toReturn;
 	}
 	
 	public boolean VerifyToken(String Token) throws TokenManagementException{
