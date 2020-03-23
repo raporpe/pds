@@ -40,74 +40,76 @@ public class AppTest {
 
 	private static JsonObject json;
 	private static TokenManager tokenManager;
-	private static String correctFilePath;
+	private static String deviceDataFilePath;
+	private static String licenseFilePath;
 	private static TokenRequest request;
 	private static String password;
 	private static String token;
 
 	@BeforeAll
-	public static void partOneInitialization() {
-		correctFilePath = "src/resources/CP-RF1-01.json";
-		json = readJSON(correctFilePath);
+	public static void TM_RF_01() {
+		deviceDataFilePath = "src/resources/CP-RF1-01.json";
+		json = readJSON(deviceDataFilePath);
 		tokenManager = new TokenManager();
 
 		// this assertion gives no throws, so we commented it
 		//Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
-		assertNotNull(correctFilePath);
+		assertNotNull(deviceDataFilePath);
 	}
 
 	@Test
-	public void checkFailOnBadJsonTag() {
+	public void checkFailOnBadJsonTag_01() {
 		
+				
 		//Check error on extra tag
 		String extraTagPath = "src/resources/extraTag.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(extraTagPath));
+				() -> tokenManager.TokenRequestGeneration(extraTagPath));
 		
 		
 		//Check error on missing tags
 		
 		String missingDeviceNamePath = "src/resources/missingDeviceName.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingDeviceNamePath));
+				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
 		
 		String missingTypeOfDevicePath = "src/resources/missingTypeOfDevice.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingTypeOfDevicePath));
+				() -> tokenManager.TokenRequestGeneration(missingTypeOfDevicePath));
 		
 		String missingDriverVersionPath = "src/resources/missingDriverVersion.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingDriverVersionPath));
+				() -> tokenManager.TokenRequestGeneration(missingDriverVersionPath));
 		
 		String missingSerialNumberPath = "src/resources/missingSerialNumber.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingSerialNumberPath));
+				() -> tokenManager.TokenRequestGeneration(missingSerialNumberPath));
 		
 		String missingEmailPath = "src/resources/missingEmail.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingEmailPath));
+				() -> tokenManager.TokenRequestGeneration(missingEmailPath));
 		
 		String missingMacAddressPath = "src/resources/missingMacAddress.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(missingMacAddressPath));
+				() -> tokenManager.TokenRequestGeneration(missingMacAddressPath));
 
 	}
 	
 	@Test
-	public void checkFailOnBadJsonSyntax() {
+	public void checkFailOnBadJsonSyntax_01() {
 
 		String badSyntaxPath = "src/resources/badSyntax.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badSyntaxPath));
+				() -> tokenManager.TokenRequestGeneration(badSyntaxPath));
 
 	}
 	
 	
 
 	@Test
-	public void checkReceivedData() {
+	public void checkReceivedData_01() {
 		try {
-			request = tokenManager.readTokenRequestFromJSON(correctFilePath);
+			request = tokenManager.TokenRequestGeneration(deviceDataFilePath);
 		} catch (TokenManagementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,39 +129,39 @@ public class AppTest {
 	//Test bad regex case
 	
 	@Test
-	public void checkFailOnBadDataRegex() {
+	public void checkFailOnBadDataRegex_01() {
 		
 		String badDeviceNamePath = "src/resources/badDeviceName.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badDeviceNamePath));
+				() -> tokenManager.TokenRequestGeneration(badDeviceNamePath));
 		
 		String badTypeOfDevicePath = "src/resources/badTypeOfDevice.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badTypeOfDevicePath));
+				() -> tokenManager.TokenRequestGeneration(badTypeOfDevicePath));
 		
 		String badDriverVersionPath = "src/resources/badDriverVersion.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badDriverVersionPath));
+				() -> tokenManager.TokenRequestGeneration(badDriverVersionPath));
 		
 		String badSerialNumberPath = "src/resources/badSerialNumber.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badSerialNumberPath));
+				() -> tokenManager.TokenRequestGeneration(badSerialNumberPath));
 		
 		String badEmailPath = "src/resources/badEmail.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badEmailPath));
+				() -> tokenManager.TokenRequestGeneration(badEmailPath));
 		
 		String badMacAddressPath = "src/resources/badMacAddress.json";
 		Assertions.assertThrows(TokenManagementException.class,
-				() -> tokenManager.readTokenRequestFromJSON(badMacAddressPath));
+				() -> tokenManager.TokenRequestGeneration(badMacAddressPath));
 	}
 
 
 
 	@Test
-	public void checkMD5() throws TokenManagementException, NoSuchAlgorithmException {
+	public void checkMD5_01() throws TokenManagementException, NoSuchAlgorithmException {
 		
-		request = tokenManager.readTokenRequestFromJSON(correctFilePath);
+		request = tokenManager.TokenRequestGeneration(deviceDataFilePath);
 		
 		MessageDigest md;
 		try {
@@ -177,7 +179,7 @@ public class AppTest {
 		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
 		String hex = String.format("%32x", new BigInteger(1, digest));
 		
-		token = request.TokenRequestGeneration();
+		token = request.getHash();
 		
 		System.out.println(token + " " + hex);
 
@@ -193,15 +195,15 @@ public class AppTest {
 
 	
 	@Test
-	public void testFailOnWrongDataPath() {
+	public void testFailOnWrongDataPath_01() {
 		String wrongFilePath = "src/resources/doesnotexist.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(wrongFilePath));
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(wrongFilePath));
 	}
 	
 	@Test
-	public void testFailOnEmptyJson() {
+	public void testFailOnEmptyJson_01() {
 		String emptyFilePath = "src/resources/empty.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(emptyFilePath));
+		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(emptyFilePath));
 	}
 	
 	
@@ -211,6 +213,56 @@ public class AppTest {
 //		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
 //	}
 	
+
+	
+	@Test
+	public void testJsonCorrectRead_02() throws TokenManagementException{
+	
+		JsonObject test = readJSON(licenseFilePath);
+		
+		
+		String requestToken = test.getString("Token Request");
+		String notificationEmail = test.getString("Notification e-mail");
+		String resquestDate = test.getString("Request Date");
+		
+		
+		String header = "SHA-256";
+		String payload = requestToken + resquestDate + "";
+		String noSignetureToken = header + payload;
+		
+		
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			throw new TokenManagementException("Error: no such hashing algorithm.");
+		}
+		
+		//  Defined  password is "Stardust" & req is the TokenRequest object
+		String input = noSignetureToken;
+		
+		md.update(input.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
+
+		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
+		String signature = String.format("%64x", new BigInteger(1, digest));
+		
+		
+		String token = noSignetureToken + signature;
+		
+		String tokenManagerRequest;
+		
+		try {
+			tokenManagerRequest = tokenManager.RequestToken(licenseFilePath);
+		} catch (TokenManagementException e) {
+			throw e;
+		}
+		
+		Assertions.assertEquals(token, tokenManagerRequest);
+		
+		
+		
+	}
 	
 	private static JsonObject readJSON(String path) {
 
@@ -240,20 +292,11 @@ public class AppTest {
 
 		JsonObject jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
 		//DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-		try {
 
-			jsonLicense.getString("Device Name");
-			jsonLicense.getString("Type of Device");
-			jsonLicense.getString("Driver Version");
-			jsonLicense.getString("Support e-mail");
-			jsonLicense.getString("Serial Number");
-			jsonLicense.getString("MAC Address");
-
-		} catch (Exception e) {
-			Assertions.fail("Error: invalid input data in JSON structure.");
-		}
 
 		return jsonLicense;
 	}
+	
+
 
 }

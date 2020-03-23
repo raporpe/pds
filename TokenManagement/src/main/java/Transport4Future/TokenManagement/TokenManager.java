@@ -15,7 +15,7 @@ import javax.json.JsonObject;
 
 public class TokenManager {
 
-	public TokenRequest readTokenRequestFromJSON(String InputFile) throws TokenManagementException {
+	public TokenRequest TokenRequestGeneration(String InputFile) throws TokenManagementException {
 		
 		TokenRequest req = null;
 		String fileContents = "";
@@ -70,5 +70,9 @@ public class TokenManager {
 		}
 	
 		return req;
+	}
+	
+	String RequestToken(String InputFile) throws TokenManagementException{
+		return "";
 	}
 }

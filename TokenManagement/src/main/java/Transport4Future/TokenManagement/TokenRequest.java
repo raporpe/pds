@@ -109,7 +109,7 @@ public class TokenRequest {
 		return macAddress;
 	}
 
-	public String TokenRequestGeneration() throws TokenManagementException {
+	public String getHash() throws TokenManagementException {
 
 		MessageDigest md;
 		try {
