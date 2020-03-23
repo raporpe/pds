@@ -72,7 +72,8 @@ public class TokenManager {
 		return req;
 	}
 	
-	String RequestToken(String InputFile) throws TokenManagementException{
+	public String RequestToken(String InputFile) throws TokenManagementException{
 		return "";
 	}
+
 }
