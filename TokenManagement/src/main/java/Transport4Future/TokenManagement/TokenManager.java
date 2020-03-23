@@ -73,13 +73,18 @@ public class TokenManager {
 	}
 	
 	public String RequestToken(String InputFile) throws TokenManagementException{
-		Token myToken = new Token();
+		Token myToken = null;
 		return "";
 	}
 	
-	
-	public boolean VerifyToken (String Token) {
-		return false;
+	public boolean VerifyToken(String Token) throws TokenManagementException{
+		TokenStore myStore = new TokenStore();
+		boolean result = false;
+		Token tokenFound = myStore.Find(Token);
+		if (tokenFound !=null) {
+			result = tokenFound.isValid(tokenFound);
+		}
+		return result;
 	}
 
 }

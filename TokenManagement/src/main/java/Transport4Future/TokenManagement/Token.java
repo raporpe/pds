@@ -61,17 +61,7 @@ public class Token {
 		return encodedURL;
 	}
 	
-	public boolean VerifyToken(String Token) throws TokenManagementException{
-		TokenStore myStore = new TokenStore();
-		boolean result = false;
-		Token tokenFound = myStore.Find(Token);
-		if (tokenFound !=null) {
-			result = isValid(tokenFound);
-		}
-		return result;
-	}
-	
-	private boolean isValid (Token tokenFound) {
+	public boolean isValid (Token tokenFound) {
 		if (!tokenFound.isExpired() && tokenFound.isGranted()) {
 			return true;
 		}
@@ -87,4 +77,5 @@ public class Token {
 		}
 		return true;
 	}
+	
 }
