@@ -47,9 +47,9 @@ public class AppTest {
 	private static String password;
 	private static String token;
 
-	/* Test case: <TM_RF_01>
+	/* Test case: <Test path is valid>
 	* Equivalence class or boundary value considered: deviceDataFilePath
-	* Testing technique: Boundary Values Analysis
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws given, this test is always passed.
 	*/
 	@BeforeAll
@@ -64,9 +64,9 @@ public class AppTest {
 	}
 
 	
-	/* Test case: <checkFailOnBadJsonTag_01>
-	* Equivalence class or boundary value considered: extra tags and missing tags
-	* Testing technique: Boundary Values Analysis
+	/* Test case: <Test number of data is correct>
+	* Equivalence class or boundary value considered: correct number of data
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
 	@Test
@@ -105,9 +105,9 @@ public class AppTest {
 
 	}
 	
-	/* Test case: <checkFailOnBadJsonSyntax_01>
-	* Equivalence class or boundary value considered: extra tags and missing tags
-	* Testing technique: Boundary Values Analysis
+	/* Test case: <Test path is well written>
+	* Equivalence class or boundary value considered: well written path
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
 	@Test
@@ -120,9 +120,9 @@ public class AppTest {
 	}
 	
 	
-	/* Test case: <checkReceivedData_01>
-	* Equivalence class or boundary value considered: data is received correctly
-	* Testing technique: Equivalence Classes Analysis
+	/* Test case: <Test data is received correctly>
+	* Equivalence class or boundary value considered: supposed data to receive
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: Everything corresponds correctly
 	*/
 	@Test
@@ -145,11 +145,9 @@ public class AppTest {
 
 	}
 	
-	//Test bad regex case
-	
-	/* Test case: <checkFailOnBadDataRegex_01>
-	* Equivalence class or boundary value considered: Data regex
-	* Testing technique: Boundary Values Analysis
+	/* Test case: <Test regex>
+	* Equivalence class or boundary value considered: Valid data regex
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
 	@Test
@@ -181,10 +179,10 @@ public class AppTest {
 	}
 
 
-	/* Test case: <checkMD5_01>
-	* Equivalence class or boundary value considered: MD5_01
-	* Testing technique: Boundary Values Analysis
-	* Expected value: Matches regex with no throws
+	/* Test case: <Test MD5>
+	* Equivalence class or boundary value considered: Correct defined string 
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
+	* Expected value: String matching regex
 	*/
 	@Test
 	public void checkMD5_01() throws TokenManagementException, NoSuchAlgorithmException {
@@ -219,21 +217,27 @@ public class AppTest {
 		
 	}
 
-
-
-	
+	/* Test case: <test json path exists>
+	* Equivalence class or boundary value considered: Path syntaxis
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
+	* Expected value: No throws
+	*/
 	@Test
 	public void testFailOnWrongDataPath_01() {
 		String wrongFilePath = "src/resources/01/doesnotexist.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(wrongFilePath));
 	}
 	
+	/* Test case: <test json path is not empty>
+	* Equivalence class or boundary value considered: valid json file
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
+	* Expected value: No throws
+	*/
 	@Test
 	public void testFailOnEmptyJson_01() {
 		String emptyFilePath = "src/resources/01/empty.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(emptyFilePath));
 	}
-	
 	
 //	@Test
 //	public void testInternalError() {
@@ -241,7 +245,7 @@ public class AppTest {
 //		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
 //	}
 	
-
+	///// SECTION 1 PART 2 TESTS
 	
 	@Test
 	public void testJsonCorrectReadSHA256_02() throws TokenManagementException{
