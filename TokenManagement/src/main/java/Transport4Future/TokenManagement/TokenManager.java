@@ -15,6 +15,19 @@ import javax.json.JsonObject;
 
 public class TokenManager {
 
+	private TokenStore store;
+	
+	public TokenManager() {
+		this.store = new TokenStore();
+	}
+	
+	
+	/**
+	 * Creates a token request from a json file (type 1)
+	 * @param InputFile
+	 * @return the json parameters in an object
+	 * @throws TokenManagementException
+	 */
 	public TokenRequest TokenRequestGeneration(String InputFile) throws TokenManagementException {
 		
 		TokenRequest req = null;
@@ -72,11 +85,19 @@ public class TokenManager {
 		return req;
 	}
 	
+	/**
+	 * 
+	 * @param InputFile
+	 * @return a base64 token auth (type 2)
+	 * @throws TokenManagementException
+	 */
+	
 	public String RequestToken(String InputFile) throws TokenManagementException{
 		Token myToken;		
 		String fileContents = "";
 		BufferedReader reader;
-		String hashed, toReturn;
+		String hashed;
+		String toReturn = null;
 		
 		try {
 			reader = new BufferedReader(new FileReader(InputFile));
@@ -108,31 +129,39 @@ public class TokenManager {
 			throw new TokenManagementException("Error: error reading the json file.");
 		}
 		
-		if(jsonLicense.size()!= 6) {
+		if(jsonLicense.size()!= 3) {
 			throw new TokenManagementException("Error: not number of properties requested.");
 		}
 		
+		String tokenRequest;
+		String notificationEmail;
+		String requestDate;
+		
 		try {	
-			String tokenRequest = jsonLicense.getString("Token Request");
-			String notificationEmail = jsonLicense.getString("Notification e-mail");
-			String requestDate = jsonLicense.getString("Request Date");
-
-			
-			myToken = new Token(tokenRequest, notificationEmail, requestDate);
+			tokenRequest = jsonLicense.getString("Token Request");
+			notificationEmail = jsonLicense.getString("Notification e-mail");
+			requestDate = jsonLicense.getString("Request Date");
 			
 		} catch(Exception e) {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
-		hashed = myToken.CodeHash256(myToken);
-		toReturn = myToken.encodeString(hashed);
 		
-		return toReturn;
+		myToken = new Token(tokenRequest, notificationEmail, requestDate);
+	
+
+		return myToken.getBase64Token();
 	}
 	
+	
+	/**
+	 * Checks if base64 encoded token is valid
+	 * @param Token base64 token
+	 * @return boolean with validity
+	 * @throws TokenManagementException
+	 */
 	public boolean VerifyToken(String Token) throws TokenManagementException{
-		TokenStore myStore = new TokenStore();
 		boolean result = false;
-		Token tokenFound = myStore.Find(Token);
+		Token tokenFound = this.store.Find(Token);
 		if (tokenFound !=null) {
 			result = tokenFound.isValid(tokenFound);
 		}
