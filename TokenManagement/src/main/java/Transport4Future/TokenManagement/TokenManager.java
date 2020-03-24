@@ -68,19 +68,27 @@ public class TokenManager {
 			throw new TokenManagementException("Error: not number of properties requested.");
 		}
 		
+		String deviceName;
+		String typeDevice;
+		String driverVersion;
+		String email;
+		String serialNumber;
+		String macAddress;
+		
 		try {	
-			String deviceName = jsonLicense.getString("Device Name");
-			String typeDevice = jsonLicense.getString("Type of Device");
-			String driverVersion = jsonLicense.getString("Driver Version");
-			String email = jsonLicense.getString("Support e-mail");
-			String serialNumber = jsonLicense.getString("Serial Number");
-			String macAddress = jsonLicense.getString("MAC Address");
-			
-			req = new TokenRequest(deviceName, typeDevice, driverVersion, email, serialNumber, macAddress);
-			
+			deviceName = jsonLicense.getString("Device Name");
+			typeDevice = jsonLicense.getString("Type of Device");
+			driverVersion = jsonLicense.getString("Driver Version");
+			email = jsonLicense.getString("Support e-mail");
+			serialNumber = jsonLicense.getString("Serial Number");
+			macAddress = jsonLicense.getString("MAC Address");
+						
 		} catch(Exception e) {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
+		
+		req = new TokenRequest(deviceName, typeDevice, driverVersion, email, serialNumber, macAddress);
+
 	
 		return req;
 	}
@@ -146,7 +154,16 @@ public class TokenManager {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
 		
-		myToken = new Token(tokenRequest, notificationEmail, requestDate);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
+		
+		long unixDate;
+		try {
+			unixDate = dateFormat.parse(requestDate).getTime();
+		} catch (ParseException e) {
+			throw new TokenManagementException("The date is not in the correct format");
+		}
+		
+		myToken = new Token(tokenRequest, notificationEmail, unixDate);
 	
 
 		return myToken.getBase64Token();
@@ -161,7 +178,7 @@ public class TokenManager {
 	 */
 	public boolean VerifyToken(String Token) throws TokenManagementException{
 		boolean result = false;
-		Token tokenFound = this.store.Find(Token);
+		Token tokenFound = this.store.find(Token);
 		if (tokenFound !=null) {
 			result = tokenFound.isValid(tokenFound);
 		}

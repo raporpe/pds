@@ -4,8 +4,6 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 
 public class TokenRequest {
 
@@ -28,39 +26,39 @@ public class TokenRequest {
 			String serialNumber, String macAddress) throws TokenManagementException {
 		super();
 
-		if (this.deviceName.length() < 20 && this.deviceName.length() > 1) {
+		if (deviceName.length() < 20 && deviceName.length() > 1) {
 			this.deviceName = deviceName;
 
 		} else {
 			throw new TokenManagementException("Error: deviceName uses an invalid format.");
 		}
 
-		if (this.typeDevice.equals("Sensor") | this.typeDevice.equals("Actuator")) {
+		if (typeDevice.equals("Sensor") | typeDevice.equals("Actuator")) {
 			this.typeDevice = typeDevice;
 		} else {
 			throw new TokenManagementException("Error: typeDevice uses an invalid format.");
 		}
 
-		if (this.driverVersion.matches("([0-9]{4})(-[0-9]{2}){2}")) {
+		if (driverVersion.matches("([0-9]{4})(-[0-9]{2}){2}")) {
 			this.driverVersion = driverVersion;
 		} else {
 			throw new TokenManagementException("Error: driverVersion uses an invalid format.");
 		}
 
-		if (this.email.matches(
-				"^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$")) {
+		if (email.matches(
+				"^[A-Z0-9._%+a-z]+@[A-Z0-9.a-z]+\\.[A-Za-z]{2,6}$")) {
 			this.email = email;
 		} else {
 			throw new TokenManagementException("Error: email is in an invalid format.");
 		}
 
-		if (this.serialNumber.length() < 50) {
+		if (serialNumber.matches("^[A-Za-z0-9-]+$")) {
 			this.serialNumber = serialNumber;
 		} else {
 			throw new TokenManagementException("Error: serialNumber uses an invalid format.");
 		}
 
-		if (this.macAddress.matches("^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$") && this.macAddress.length() == 17) {
+		if (macAddress.matches("^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$") && macAddress.length() == 17) {
 			this.macAddress = macAddress;
 		} else {
 			throw new TokenManagementException("Error: macAddress uses an invalid format.");

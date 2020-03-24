@@ -4,17 +4,14 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.Instant;
 import java.util.Base64;
-import java.util.Date;
 
 public class Token {
 
 	private String tokenRequest;
-	private String requestDate;
 	private String notificationEmail;
 
-	private long issueDate;
+	private long requestDate;
 	private long expirationDate;
 
 	//Set by default to a year
@@ -23,18 +20,18 @@ public class Token {
 	final private String password;
 	final private String type;
 
-	public Token(String tokenRequest, String requestDate, String notificationEmail) {
+	public Token(String tokenRequest, String notificationEmail, long requestDate) {
 
 		this.tokenRequest = tokenRequest;
-		this.requestDate = requestDate;
 
 		this.notificationEmail = notificationEmail;
 
 		// Using unix time
-		this.issueDate = Instant.now().getEpochSecond();
+		this.requestDate = requestDate;
+		
 
 		// Expires one year later
-		this.expirationDate = this.issueDate + this.timeToExpireAfterIssue;
+		this.expirationDate = this.requestDate + this.timeToExpireAfterIssue;
 
 		this.algorithm = "SHA-256";
 		this.type = "PDS";
@@ -42,12 +39,8 @@ public class Token {
 	}
 
 	public boolean isValid(Token tokenFound) {
-		return !tokenFound.isExpired();
+		return this.expirationDate <= System.currentTimeMillis()/1000;
 
-	}
-
-	public boolean isExpired() {
-		return this.expirationDate > Instant.now().getEpochSecond();
 	}
 	
 	public String getTokenRequest() {
@@ -56,16 +49,14 @@ public class Token {
 
 	public String toString() {
 		String header = this.algorithm + this.type;
-		String payload = this.tokenRequest + issueDate + expirationDate;
+		String payload = this.tokenRequest + this.requestDate + this.expirationDate;
 		return header + payload;
 	}
 
 	public String getBase64Token() throws TokenManagementException {
-		String header = this.algorithm + this.type;
-		String payload = this.tokenRequest;
 
-		String result = header + payload + this.generateSignatureSHA256();
-
+		String result = this.toString() + this.generateSignatureSHA256();
+		
 		return this.encodeBase64(result);
 	}
 
@@ -92,7 +83,10 @@ public class Token {
 		byte[] digest = md.digest();
 
 		String hex = String.format("%64x", new BigInteger(1, digest));
+		System.out.println(hex);
+
 		return hex;
+		
 	}
 
 }

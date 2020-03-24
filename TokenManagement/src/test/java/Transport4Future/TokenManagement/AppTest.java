@@ -1,7 +1,5 @@
 package Transport4Future.TokenManagement;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,10 +12,7 @@ import java.math.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -26,12 +21,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Base64;
-import java.util.Date;
-import java.util.Locale;
+
 
 /**
  * Unit test for simple App.
@@ -60,7 +54,7 @@ public class AppTest {
 
 		// this assertion gives no throws, so we commented it
 		//Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
-		assertNotNull(deviceDataFilePath);
+		Assertions.assertNotNull(deviceDataFilePath);
 	}
 
 	
@@ -127,8 +121,10 @@ public class AppTest {
 	*/
 	@Test
 	public void checkReceivedData_01() {
+
+		String checkReceivedData = "src/resources/01/CP-RF1-01.json";
 		try {
-			request = tokenManager.TokenRequestGeneration(deviceDataFilePath);
+			request = tokenManager.TokenRequestGeneration(checkReceivedData);
 		} catch (TokenManagementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -185,9 +181,10 @@ public class AppTest {
 	* Expected value: String matching regex
 	*/
 	@Test
-	public void checkMD5_01() throws TokenManagementException, NoSuchAlgorithmException {
-		
-		request = tokenManager.TokenRequestGeneration(deviceDataFilePath);
+	public void checkMD5_01() throws TokenManagementException {
+
+		String checkMD5 = "src/resources/01/CP-RF1-01.json";
+		request = tokenManager.TokenRequestGeneration(checkMD5);
 		
 		MessageDigest md;
 		try {
@@ -226,6 +223,7 @@ public class AppTest {
 	public void testFailOnWrongDataPath_01() {
 		String wrongFilePath = "src/resources/01/doesnotexist.json";
 		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(wrongFilePath));
+
 	}
 	
 	/* Test case: <test json path is not empty>
@@ -255,23 +253,26 @@ public class AppTest {
 		
 		
 		String requestToken = test.getString("Token Request");
-		String notificationEmail = test.getString("Notification e-mail");
-		
-		//DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-		
-		String resquestDate = test.getString("Request Date");
+		String notificationEmail = test.getString("Notification e-mail");		
+		String requestDate = test.getString("Request Date");
 		
 
-		String header = "SHA-256";
-		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
+		long unixDate;
+		try {
+			unixDate = dateFormat.parse(requestDate).getTime();
+		} catch (ParseException e) {
+			throw new TokenManagementException("The date is not in the correct format");
+		}
+
+		String header = "SHA-256" + "PDS";
+		String payload = requestToken + unixDate + (unixDate+31536000);
 		String noSignetureToken = header + payload;
-		
 		
 		String token = noSignetureToken + hashSHA256("Stardust" + "-" + noSignetureToken);
 		
 		token = Base64.getUrlEncoder().encodeToString(token.getBytes());
 
-		
 		String tokenManagerRequest;
 		
 		try {
@@ -279,8 +280,6 @@ public class AppTest {
 		} catch (TokenManagementException e) {
 			throw e;
 		}
-		System.out.println(token);
-		System.out.println(tokenManagerRequest);
 
 		
 		Assertions.assertEquals(token, tokenManagerRequest);
@@ -363,26 +362,27 @@ public class AppTest {
 		
 		String inputFile = "src/resources/03/normal.json";
 		
-		JsonObject test = readJSON(licenseFilePath);
+		JsonObject test = readJSON(inputFile);
 		
 		String requestToken = test.getString("Token Request");
 		String notificationEmail = test.getString("Notification e-mail");		
-		String resquestDate = test.getString("Request Date");
+		String requestDate = test.getString("Request Date");
 		
 
-		String header = "SHA-256";
-		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
-		String noSignetureToken = header + payload;
-		String token = null;
-
-		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
+		long unixDate;
 		try {
-			token = noSignetureToken + hashSHA256(noSignetureToken);
-		} catch (TokenManagementException e) {
-			Assertions.fail(e.message);
+			unixDate = dateFormat.parse(requestDate).getTime();
+		} catch (ParseException e) {
+			throw new TokenManagementException("The date is not in the correct format");
 		}
+
+		String header = "SHA-256" + "PDS";
+		String payload = requestToken + unixDate + (unixDate+31536000);
+		String noSignetureToken = header + payload;
 		
-		
+		String token = noSignetureToken + hashSHA256("Stardust" + "-" + noSignetureToken);
+
 		String encodedToken = Base64.getUrlEncoder().encodeToString(token.getBytes());
 		
 		Assertions.assertEquals(encodedToken, tokenManager.RequestToken(inputFile));	
