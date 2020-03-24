@@ -51,7 +51,7 @@ public class TokenRequest {
 				"^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$")) {
 			this.email = email;
 		} else {
-			throw new TokenManagementException("Error: email uses an invalid format.");
+			throw new TokenManagementException("Error: email is in an invalid format.");
 		}
 
 		if (this.serialNumber.length() < 50) {
@@ -67,6 +67,34 @@ public class TokenRequest {
 		}
 	}
 
+	public String getHash() throws TokenManagementException {
+
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			throw new TokenManagementException("The MD5 algorithm was not found");
+		}
+		String input = this.password + "-" + this.toString();
+
+		md.update(input.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
+
+		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it
+		// should be "%064x"
+		String hex = String.format("%32x", new BigInteger(1, digest));
+		return hex;
+	}
+
+	@Override
+	public String toString() {
+		return "TokenRequest [deviceName=" + deviceName + ", typeDevice=" + typeDevice + ", driverVersion="
+				+ driverVersion + ", email=" + email + ", serialNumber=" + serialNumber + ", macAddress="
+				+ macAddress + "]";
+	}
+	
+	//Getters and setters
+	
 	/**
 	 * @return the deviceName
 	 */
@@ -107,31 +135,5 @@ public class TokenRequest {
 	 */
 	public String getMacAddress() {
 		return macAddress;
-	}
-
-	public String getHash() throws TokenManagementException {
-
-		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException("The MD5 algorithm was not found");
-		}
-		String input = this.password + "-" + this.toString();
-
-		md.update(input.getBytes(StandardCharsets.UTF_8));
-		byte[] digest = md.digest();
-
-		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it
-		// should be "%064x"
-		String hex = String.format("%32x", new BigInteger(1, digest));
-		return hex;
-	}
-
-	@Override
-	public String toString() {
-		return "TokenRequest [deviceName=" + deviceName + ", typeDevice=" + typeDevice + ", driverVersion="
-				+ driverVersion + ", email=" + email + ", serialNumber=" + serialNumber + ", macAddress="
-				+ macAddress + "]";
 	}
 }
