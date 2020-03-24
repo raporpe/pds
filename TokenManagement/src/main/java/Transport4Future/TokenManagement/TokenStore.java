@@ -47,7 +47,10 @@ public class TokenStore {
 
 		//Create the directory if it does not exist
 		if(!dir.exists()){
-			dir.mkdir();
+			boolean created = dir.mkdir();
+			if(!created){
+				throw new TokenManagementException("Could not create the directory 'store' in " + STORE_PATH);
+			}
 		}
 
 		//Create the file if it does not exist
