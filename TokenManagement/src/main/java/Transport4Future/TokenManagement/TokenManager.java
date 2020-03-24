@@ -108,14 +108,18 @@ public class TokenManager {
 			throw new TokenManagementException("Error: error reading the json file.");
 		}
 		
-		if(jsonLicense.size()!= 6) {
+		if(jsonLicense.size()!= 3) {
 			throw new TokenManagementException("Error: not number of properties requested.");
 		}
 		
+		String tokenRequest;
+		String notificationEmail;
+		String requestDate;
+		
 		try {	
-			String tokenRequest = jsonLicense.getString("Token Request");
-			String notificationEmail = jsonLicense.getString("Notification e-mail");
-			String requestDate = jsonLicense.getString("Request Date");
+			tokenRequest = jsonLicense.getString("Token Request");
+			notificationEmail = jsonLicense.getString("Notification e-mail");
+			requestDate = jsonLicense.getString("Request Date");
 
 			
 			myToken = new Token(tokenRequest, notificationEmail, requestDate);
@@ -123,7 +127,13 @@ public class TokenManager {
 		} catch(Exception e) {
 			throw new TokenManagementException("Error: invalid input data in JSON structure.");
 		}
-		hashed = myToken.CodeHash256(myToken);
+	
+
+		String header = "SHA-256" + "PDS";
+		String payload = tokenRequest + requestDate + "17/06/2030 22:00:00";
+		String noSignetureToken = header + payload;
+		
+		String hash = myToken.CodeHash256(myToken);
 		toReturn = myToken.encodeString(hashed);
 		
 		return toReturn;

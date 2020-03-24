@@ -20,7 +20,7 @@ public class Token {
 	private String tokenValue;
 	
 	public Token(String Device, String RequestDate, String NotificationEmail) {
-		this.alg = "HS256";
+		this.alg = "SHA-256";
 		this.typ = "PDS";
 		this.device = Device;
 		this.requestDate = RequestDate;
@@ -33,7 +33,7 @@ public class Token {
 	}
 	
 	public String getTokenValue() {
-		return tokenValue;
+		return this.tokenValue;
 	}
 	public String CodeHash256(Token myToken) throws TokenManagementException{
 		MessageDigest md;
@@ -54,7 +54,7 @@ public class Token {
 	public String encodeString(String stringToEncode) throws TokenManagementException{
 		String encodedURL;
 		try {
-			encodedURL =Base64.getUrlEncoder().encodeToString(stringToEncode.getBytes());
+			encodedURL = Base64.getUrlEncoder().encodeToString(stringToEncode.getBytes());
 		}catch (Exception ex) {
 			throw new TokenManagementException("Error enconding 64URL.");
 		}
@@ -77,6 +77,10 @@ public class Token {
 			return false;
 		}
 		return true;
+	}
+	
+	public String toString() {
+		return this.alg + this.typ;
 	}
 	
 }

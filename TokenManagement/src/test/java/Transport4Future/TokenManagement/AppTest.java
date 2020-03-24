@@ -224,7 +224,8 @@ public class AppTest {
 	@Test
 	public void testJsonCorrectReadSHA256_02() throws TokenManagementException{
 	
-		JsonObject test = readJSON(licenseFilePath);
+		String normalPath = "src/resources/02/TM-RF-02-I1.json";
+		JsonObject test = readJSON(normalPath);
 		
 		
 		String requestToken = test.getString("Token Request");
@@ -240,15 +241,21 @@ public class AppTest {
 		String noSignetureToken = header + payload;
 		
 		
-		String token = noSignetureToken + hashSHA256(noSignetureToken);
+		String token = noSignetureToken + hashSHA256("Stardust" + "-" + noSignetureToken);
+		
+		token = Base64.getUrlEncoder().encodeToString(token.getBytes());
+
 		
 		String tokenManagerRequest;
 		
 		try {
-			tokenManagerRequest = tokenManager.RequestToken(licenseFilePath);
+			tokenManagerRequest = tokenManager.RequestToken(normalPath);
 		} catch (TokenManagementException e) {
 			throw e;
 		}
+		System.out.println(token);
+		System.out.println(tokenManagerRequest);
+
 		
 		Assertions.assertEquals(token, tokenManagerRequest);
 		
