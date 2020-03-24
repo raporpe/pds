@@ -28,7 +28,6 @@ public class Token {
 
 		// Using unix time
 		this.requestDate = requestDate;
-		
 
 		// Expires one year later
 		this.expirationDate = this.requestDate + this.timeToExpireAfterIssue;
@@ -38,7 +37,7 @@ public class Token {
 		this.password = "Stardust";
 	}
 
-	public boolean isValid(Token tokenFound) {
+	public boolean isValid() {
 		return this.expirationDate <= System.currentTimeMillis()/1000;
 
 	}
@@ -47,25 +46,28 @@ public class Token {
 		return this.tokenRequest;
 	}
 
+
+
+	public String getBase64Token() throws TokenManagementException {
+
+		String result = this.toString() + this.generateSignatureSHA256();
+		return this.encodeBase64(result);
+
+	}
+
+	@Override
 	public String toString() {
 		String header = this.algorithm + this.type;
 		String payload = this.tokenRequest + this.requestDate + this.expirationDate;
 		return header + payload;
 	}
 
-	public String getBase64Token() throws TokenManagementException {
-
-		String result = this.toString() + this.generateSignatureSHA256();
-		
-		return this.encodeBase64(result);
-	}
-
 	private String encodeBase64(String stringToEncode) throws TokenManagementException {
 		String encodedURL;
 		try {
 			encodedURL = Base64.getUrlEncoder().encodeToString(stringToEncode.getBytes());
-		} catch (Exception ex) {
-			throw new TokenManagementException("Error enconding 64URL.");
+		} catch (Exception e) {
+			throw new TokenManagementException(ErrorMessage.base64EncodingError);
 		}
 		return encodedURL;
 	}
@@ -75,7 +77,7 @@ public class Token {
 		try {
 			md = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException("Error: the hashing algorithm SHA-256 is not available");
+			throw new TokenManagementException(ErrorMessage.sha256AlgorithmNotFound);
 		}
 
 		String input = this.password + "-" + this.toString();

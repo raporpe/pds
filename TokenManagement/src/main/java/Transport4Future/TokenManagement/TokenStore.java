@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -24,7 +25,7 @@ public class TokenStore {
 		}
 	}
 	
-	public Token find(String tokenToFind) {
+	public Token find(String tokenToFind) throws TokenManagementException {
 		Token result = null;
 		this.load();
 		for (Token token : this.tokenList) {
@@ -49,7 +50,7 @@ public class TokenStore {
 		if(!dir.exists()){
 			boolean created = dir.mkdir();
 			if(!created){
-				throw new TokenManagementException("Could not create the directory 'store' in " + STORE_PATH);
+				throw new TokenManagementException(ErrorMessage.storeDirCreationError);
 			}
 		}
 
@@ -58,7 +59,7 @@ public class TokenStore {
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
-				throw new TokenManagementException("Could not create the license store file tokenStore.json");
+				throw new TokenManagementException(ErrorMessage.jsonStoreFileCreationError);
 			}
 		}
 		
@@ -67,7 +68,7 @@ public class TokenStore {
 		try {
 			fileWriter = new FileWriter(STORE_PATH);
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: Unable to open internal licenses store file");
+			throw new TokenManagementException(ErrorMessage.readStoreFileError);
 		}
 		
 		//Write the file
@@ -80,33 +81,34 @@ public class TokenStore {
 			try {
 				fileWriter.close();
 			} catch (IOException e2) {
-				throw new TokenManagementException("Could not close the license store file");
+				throw new TokenManagementException(ErrorMessage.closeStoreFileError);
 			}
 			
-			throw new TokenManagementException("Error: Unable to write to license store file");
-			
+			throw new TokenManagementException(ErrorMessage.writeStoreFileError);
 		}
 		
 		try {
 			fileWriter.close();
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: Unable to close file");
+			throw new TokenManagementException(ErrorMessage.closeStoreFileError);
 		}
 		
 	}
 	
-	private void load() {
+	private void load() throws TokenManagementException {
 		try {
-			JsonReader reader = new JsonReader(
-					new FileReader(System.getProperty("user.dir") + "/Store/tokenStore.json"));
+			FileReader fr = new FileReader(STORE_PATH);
+			JsonReader jsonReader = new JsonReader (fr);
 			Gson gson = new Gson();
-			Token[] myArray = gson.fromJson(reader, Token[].class);
-			this.tokenList = new ArrayList<Token>();
-			for (Token token : myArray) {
-				this.tokenList.add(token);
-			}
+
+			Token[] loadedTokens = gson.fromJson(jsonReader, Token[].class);
+			this.tokenList = new ArrayList<>();
+
+			//Load the retrieved contents in
+			this.tokenList.addAll(Arrays.asList(loadedTokens));
 		} catch (Exception e) {
-			this.tokenList = new ArrayList<Token>();
+			this.tokenList = new ArrayList<>();
+			throw new TokenManagementException(ErrorMessage.readStoreFileError);
 		}
 	}
 

@@ -47,7 +47,7 @@ public class AppTest {
 	* Expected value: No throws given, this test is always passed.
 	*/
 	@BeforeAll
-	public static void TM_RF_01() {
+	static void TM_RF_01() {
 		deviceDataFilePath = "src/resources/01/CP-RF1-01.json";
 		json = readJSON(deviceDataFilePath);
 		tokenManager = new TokenManager();
@@ -64,7 +64,7 @@ public class AppTest {
 	* Expected value: No throws
 	*/
 	@Test
-	public void checkFailOnBadJsonTag_01() {
+	void checkFailOnBadJsonTag_01() {
 					
 		//Check error on extra tag
 		String extraTagPath = "src/resources/01/extraTag.json";
@@ -105,7 +105,7 @@ public class AppTest {
 	* Expected value: No throws
 	*/
 	@Test
-	public void checkFailOnBadJsonSyntax_01() {
+	void checkFailOnBadJsonSyntax_01() {
 
 		String badSyntaxPath = "src/resources/01/badSyntax.json";
 		Assertions.assertThrows(TokenManagementException.class,
@@ -120,14 +120,13 @@ public class AppTest {
 	* Expected value: Everything corresponds correctly
 	*/
 	@Test
-	public void checkReceivedData_01() {
+	void checkReceivedData_01() throws TokenManagementException {
 
 		String checkReceivedData = "src/resources/01/CP-RF1-01.json";
 		try {
 			request = tokenManager.TokenRequestGeneration(checkReceivedData);
 		} catch (TokenManagementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		}
 
 
@@ -147,7 +146,7 @@ public class AppTest {
 	* Expected value: No throws
 	*/
 	@Test
-	public void checkFailOnBadDataRegex_01() {
+	void checkFailOnBadDataRegex_01() {
 		
 		String badDeviceNamePath = "src/resources/01/badDeviceName.json";
 		Assertions.assertThrows(TokenManagementException.class,
@@ -181,7 +180,7 @@ public class AppTest {
 	* Expected value: String matching regex
 	*/
 	@Test
-	public void checkMD5_01() throws TokenManagementException {
+	void checkMD5_01() throws TokenManagementException {
 
 		String checkMD5 = "src/resources/01/CP-RF1-01.json";
 		request = tokenManager.TokenRequestGeneration(checkMD5);
@@ -190,7 +189,7 @@ public class AppTest {
 		try {
 			md = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException("Error: no such hashing algorithm.");
+			throw new TokenManagementException(ErrorMessage.md5AlgorithmNotFound);
 		}
 		
 		//  Defined  password is "Stardust" & req is the TokenRequest object
@@ -220,9 +219,10 @@ public class AppTest {
 	* Expected value: No throws
 	*/
 	@Test
-	public void testFailOnWrongDataPath_01() {
+	void testFailOnWrongDataPath_01() {
 		String wrongFilePath = "src/resources/01/doesnotexist.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(wrongFilePath));
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
 
 	}
 	
@@ -232,21 +232,43 @@ public class AppTest {
 	* Expected value: No throws
 	*/
 	@Test
-	public void testFailOnEmptyJson_01() {
+	void testFailOnEmptyJson_01() {
 		String emptyFilePath = "src/resources/01/empty.json";
-		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.TokenRequestGeneration(emptyFilePath));
+		Assertions.assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
 	}
 	
 //	@Test
 //	public void testInternalError() {
 //		String internalErrorFilePath = "src/resources/internal_error.json";
-//		Assertions.assertThrows(TokenManagementException.class, () -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
+//		Assertions.assertThrows(TokenManagementException.class,
+//		() -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
 //	}
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	///// SECTION 1 PART 2 TESTS
 	
 	@Test
-	public void testJsonCorrectReadSHA256_02() throws TokenManagementException{
+	void testJsonCorrectReadSHA256_02() throws TokenManagementException{
 	
 		String normalPath = "src/resources/02/TM-RF-02-I1.json";
 		JsonObject test = readJSON(normalPath);
@@ -262,7 +284,7 @@ public class AppTest {
 		try {
 			unixDate = dateFormat.parse(requestDate).getTime();
 		} catch (ParseException e) {
-			throw new TokenManagementException("The date is not in the correct format");
+			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
 		}
 
 		String header = "SHA-256" + "PDS";
@@ -289,7 +311,7 @@ public class AppTest {
 	
 	
 	@Test
-	public void testFailOnBadDataRegx_02(){
+	 void testFailOnBadDataRegx_02(){
 		
 		String badTokenRequestPath = "src/resources/02/badTokenRequest.json";
 		Assertions.assertThrows(TokenManagementException.class,
@@ -307,7 +329,7 @@ public class AppTest {
 	
 	
 	@Test
-	public void testFailOnMissingTag_02() {
+	 void testFailOnMissingTag_02() {
 		
 		
 		//Check error on extra tag
@@ -336,7 +358,7 @@ public class AppTest {
 	
 	
 	@Test
-	public void testFailOnEmptyJson_02() {
+	 void testFailOnEmptyJson_02() {
 		
 		String emptyPath = "src/resources/02/empty.json";
 		Assertions.assertThrows(TokenManagementException.class,
@@ -345,7 +367,7 @@ public class AppTest {
 	}
 	
 	@Test
-	public void testFailOnMalformedJson_02() {
+	 void testFailOnMalformedJson_02() {
 		
 		String malformedJsonPath = "src/resources/02/malformed.json";
 		Assertions.assertThrows(TokenManagementException.class,
@@ -356,9 +378,8 @@ public class AppTest {
 	
 	// Part three
 	
-	@Test
-	
-	public void testBase64Encoding_03() throws TokenManagementException {
+
+	 void testBase64Encoding_03() throws TokenManagementException {
 		
 		String inputFile = "src/resources/03/normal.json";
 		
@@ -374,7 +395,7 @@ public class AppTest {
 		try {
 			unixDate = dateFormat.parse(requestDate).getTime();
 		} catch (ParseException e) {
-			throw new TokenManagementException("The date is not in the correct format");
+			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
 		}
 
 		String header = "SHA-256" + "PDS";
@@ -390,8 +411,7 @@ public class AppTest {
 	}
 	
 	
-	@Test
-	public void testFailOnExpiredDate_03() {
+	 void testFailOnExpiredDate_03() {
 		
 		String inputFile = "src/resources/03/expired.json";
 

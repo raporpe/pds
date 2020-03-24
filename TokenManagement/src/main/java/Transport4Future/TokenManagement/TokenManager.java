@@ -37,7 +37,7 @@ public class TokenManager {
 		try {
 			reader = new BufferedReader(new FileReader(InputFile));
 		} catch (FileNotFoundException e) {
-			throw new TokenManagementException("Error: input file not found.");
+			throw new TokenManagementException(ErrorMessage.inputFileNotFoundError);
 		}
 		
 		String line;
@@ -46,13 +46,13 @@ public class TokenManager {
 				fileContents += line;
 			}
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: input file could not be accessed.");
+			throw new TokenManagementException(ErrorMessage.readFileError);
 		}
 		
 		try {
 			reader.close();
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: input file could not be closed.");
+			throw new TokenManagementException(ErrorMessage.closeFileError);
 		}
 		
 		JsonObject jsonLicense;
@@ -61,11 +61,11 @@ public class TokenManager {
 			jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
 		} catch(Exception e){
 			
-			throw new TokenManagementException("Error: error reading the json file.");
+			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
 		
 		if(jsonLicense.size()!= 6) {
-			throw new TokenManagementException("Error: not number of properties requested.");
+			throw new TokenManagementException(ErrorMessage.jsonElementsNumberMismatch);
 		}
 		
 		String deviceName;
@@ -84,7 +84,7 @@ public class TokenManager {
 			macAddress = jsonLicense.getString("MAC Address");
 						
 		} catch(Exception e) {
-			throw new TokenManagementException("Error: invalid input data in JSON structure.");
+			throw new TokenManagementException(ErrorMessage.jsonFieldNotFound);
 		}
 		
 		req = new TokenRequest(deviceName, typeDevice, driverVersion, email, serialNumber, macAddress);
@@ -106,11 +106,11 @@ public class TokenManager {
 		BufferedReader reader;
 		String hashed;
 		String toReturn = null;
-		
+
 		try {
 			reader = new BufferedReader(new FileReader(InputFile));
 		} catch (FileNotFoundException e) {
-			throw new TokenManagementException("Error: input file not found.");
+			throw new TokenManagementException(ErrorMessage.inputFileNotFoundError);
 		}
 		
 		String line;
@@ -119,13 +119,13 @@ public class TokenManager {
 				fileContents += line;
 			}
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: input file could not be accessed.");
+			throw new TokenManagementException(ErrorMessage.readFileError);
 		}
 		
 		try {
 			reader.close();
 		} catch (IOException e) {
-			throw new TokenManagementException("Error: input file could not be closed.");
+			throw new TokenManagementException(ErrorMessage.closeFileError);
 		}
 		
 		JsonObject jsonLicense;
@@ -134,11 +134,11 @@ public class TokenManager {
 			jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
 		} catch(Exception e){
 			
-			throw new TokenManagementException("Error: error reading the json file.");
+			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
 		
 		if(jsonLicense.size()!= 3) {
-			throw new TokenManagementException("Error: not number of properties requested.");
+			throw new TokenManagementException(ErrorMessage.jsonElementsNumberMismatch);
 		}
 		
 		String tokenRequest;
@@ -151,7 +151,7 @@ public class TokenManager {
 			requestDate = jsonLicense.getString("Request Date");
 			
 		} catch(Exception e) {
-			throw new TokenManagementException("Error: invalid input data in JSON structure.");
+			throw new TokenManagementException(ErrorMessage.jsonFieldNotFound);
 		}
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
@@ -160,7 +160,7 @@ public class TokenManager {
 		try {
 			unixDate = dateFormat.parse(requestDate).getTime();
 		} catch (ParseException e) {
-			throw new TokenManagementException("The date is not in the correct format");
+			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
 		}
 		
 		myToken = new Token(tokenRequest, notificationEmail, unixDate);
@@ -179,8 +179,8 @@ public class TokenManager {
 	public boolean VerifyToken(String Token) throws TokenManagementException{
 		boolean result = false;
 		Token tokenFound = this.store.find(Token);
-		if (tokenFound !=null) {
-			result = tokenFound.isValid(tokenFound);
+		if (tokenFound != null) {
+			result = tokenFound.isValid();
 		}
 		return result;
 	}
