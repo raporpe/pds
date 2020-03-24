@@ -12,7 +12,7 @@ import com.google.gson.stream.JsonReader;
 
 
 public class TokenStore {
-	final private String STORE_PATH = System.getProperty("user.dir") + "store/tokenStore.json";
+	final private String STORE_PATH = System.getProperty("user.dir") + "/store/tokenStore.json";
 	private List<Token> tokenList;
 
 	
@@ -43,18 +43,26 @@ public class TokenStore {
 		Gson gson = new Gson();
 		File file = new File(STORE_PATH);
 		FileWriter fileWriter;
-		
-		//Create a file if it does not exist
-		if(!file.exists()) {
-			throw new TokenManagementException("The tokenStore.json file does not exist");
+		File dir = new File(System.getProperty("user.dir") + "/store");
+
+		//Create the directory if it does not exist
+		if(!dir.exists()){
+			dir.mkdir();
+		}
+
+		//Create the file if it does not exist
+		if(!file.exists()){
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				throw new TokenManagementException("Could not create the license store file tokenStore.json");
+			}
 		}
 		
 		String jsonString = gson.toJson(this.tokenList);
 
-		System.out.println(jsonString);
-		
 		try {
-			fileWriter = new FileWriter(System.getProperty("user.dir") + "store/tokenStore.json");
+			fileWriter = new FileWriter(STORE_PATH);
 		} catch (IOException e) {
 			throw new TokenManagementException("Error: Unable to open internal licenses store file");
 		}
