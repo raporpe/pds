@@ -39,11 +39,6 @@ import java.util.Locale;
 
 public class AppTest {
 
-	/*
-	 * Test case: CP_RF1_01 Equivalence class or boundary value considered:
-	 * <CE-RF1-V-01 Testing technique: Equivalence Class Expected value: Pass
-	 */
-
 	private static JsonObject json;
 	private static TokenManager tokenManager;
 	private static String deviceDataFilePath;
@@ -52,6 +47,11 @@ public class AppTest {
 	private static String password;
 	private static String token;
 
+	/* Test case: <TM_RF_01>
+	* Equivalence class or boundary value considered: deviceDataFilePath
+	* Testing technique: Boundary Values Analysis
+	* Expected value: No throws given, this test is always passed.
+	*/
 	@BeforeAll
 	public static void TM_RF_01() {
 		deviceDataFilePath = "src/resources/01/CP-RF1-01.json";
@@ -63,15 +63,19 @@ public class AppTest {
 		assertNotNull(deviceDataFilePath);
 	}
 
+	
+	/* Test case: <checkFailOnBadJsonTag_01>
+	* Equivalence class or boundary value considered: extra tags and missing tags
+	* Testing technique: Boundary Values Analysis
+	* Expected value: No throws
+	*/
 	@Test
 	public void checkFailOnBadJsonTag_01() {
-		
-				
+					
 		//Check error on extra tag
 		String extraTagPath = "src/resources/01/extraTag.json";
 		Assertions.assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(extraTagPath));
-		
 		
 		//Check error on missing tags
 		
@@ -101,6 +105,11 @@ public class AppTest {
 
 	}
 	
+	/* Test case: <checkFailOnBadJsonSyntax_01>
+	* Equivalence class or boundary value considered: extra tags and missing tags
+	* Testing technique: Boundary Values Analysis
+	* Expected value: No throws
+	*/
 	@Test
 	public void checkFailOnBadJsonSyntax_01() {
 
@@ -111,7 +120,11 @@ public class AppTest {
 	}
 	
 	
-
+	/* Test case: <checkReceivedData_01>
+	* Equivalence class or boundary value considered: data is received correctly
+	* Testing technique: Equivalence Classes Analysis
+	* Expected value: Everything corresponds correctly
+	*/
 	@Test
 	public void checkReceivedData_01() {
 		try {
@@ -134,6 +147,11 @@ public class AppTest {
 	
 	//Test bad regex case
 	
+	/* Test case: <checkFailOnBadDataRegex_01>
+	* Equivalence class or boundary value considered: Data regex
+	* Testing technique: Boundary Values Analysis
+	* Expected value: No throws
+	*/
 	@Test
 	public void checkFailOnBadDataRegex_01() {
 		
@@ -163,7 +181,11 @@ public class AppTest {
 	}
 
 
-
+	/* Test case: <checkMD5_01>
+	* Equivalence class or boundary value considered: MD5_01
+	* Testing technique: Boundary Values Analysis
+	* Expected value: Matches regex with no throws
+	*/
 	@Test
 	public void checkMD5_01() throws TokenManagementException, NoSuchAlgorithmException {
 		
@@ -238,7 +260,6 @@ public class AppTest {
 		String header = "SHA-256";
 		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
 		String noSignetureToken = header + payload;
-		
 		
 		String token = noSignetureToken + hashSHA256(noSignetureToken);
 		
@@ -406,10 +427,10 @@ public class AppTest {
 
 		String header = "SHA-256";
 		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
-		String noSignetureToken = header + payload;
+		String noSignatureToken = header + payload;
 		
 		
-		String unexistingToken = noSignetureToken + hashSHA256(noSignetureToken);
+		String unexistingToken = noSignatureToken + hashSHA256(noSignatureToken);
 		
 		Assertions.assertFalse(tokenManager.VerifyToken(unexistingToken));
 
