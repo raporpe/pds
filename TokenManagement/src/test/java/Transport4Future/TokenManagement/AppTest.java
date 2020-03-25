@@ -62,7 +62,7 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
-	public void failOnBadDeviceName_BV21(){
+	public void testDeviceName_BV21(){
 		String deviceNamePath = "src/resources/01/deviceName_BV21.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
@@ -100,7 +100,7 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
-	public void failOnBadDeviceName_BV0(){
+	public void testDeviceName_BV0(){
 		String deviceNamePath = "src/resources/01/deviceName_BV0.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
@@ -186,7 +186,7 @@ public class AppTest {
 	 * Expected value:
 	 */
 	void testDriverVersion_EC_Valid() throws TokenManagementException {
-		String driverVersionPath = "src/resources/01/driverVersion_Valid.json";
+		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(driverVersionPath)
 				.getTypeDevice() == "123.123.123.123.456.456.456.0");
 	}
@@ -198,11 +198,69 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the type of device is invalid.
 	 */
 	void testDriverVersion_EC_Invalid() {
-		String driverVersionPath = "src/resources/01/driverVersion_Invalid.json";
+		String driverVersionPath = "src/resources/01/driverVersion_EC_Invalid.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(driverVersionPath));
 		assertEquals(e.getMessage(), ErrorMessage.driverVersionInvalidFormat);
 	}
+
+
+
+
+
+	@Test
+	/** Test case: TM-RF-01-I1 - Support Email
+	 * Equivalence class or boundary value considered: example@example.com
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: No thrown exceptions and correct email value.
+	 */
+	void testEmail_EC_Valid() throws TokenManagementException {
+		String emailPath = "src/resources/01/email_EC_Valid.json";
+		assertTrue(tokenManager.TokenRequestGeneration(emailPath)
+				.getEmail() == "example@example.com");
+	}
+
+	@Test
+	/** Test case: TM-RF-01-I1 - Support Email
+	 * Equivalence class or boundary value considered: example@example..com
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: A exception thrown indication that the email is invalid.
+	 */
+	void testEmail_EC_Invalid() {
+		String emailPath = "src/resources/01/email_EC_Invalid.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(emailPath));
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+	}
+
+
+
+	@Test
+	/** Test case: TM-RF-01-I1 - Serial Number
+	 * Equivalence class or boundary value considered: serq2efwqr234
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: No thrown exceptions and correct serial number value.
+	 */
+	void testSerialNumber_EC_Valid() throws TokenManagementException {
+		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid.json";
+		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+				.getEmail() == "serq2efwqr234");
+	}
+
+	@Test
+	/** Test case: TM-RF-01-I1 - Serial Number
+	 * Equivalence class or boundary value considered: 234rerfqsf qw3rr2
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: A exception thrown indication that the serial number is invalid.
+	 */
+	void testSerialNumber_EC_Invalid() {
+		String serialNumberPath = "src/resources/01/serialNumber_EC_Invalid.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+	}
+
+
 
 
 
