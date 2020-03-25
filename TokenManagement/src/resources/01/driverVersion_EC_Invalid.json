@@ -1,8 +1,8 @@
 {
-	"Device Name":"CAN BUS",
+	"Device Name":"Tesla Model R",
 	"Type of Device":"Actuator",
-	"Driver Version":"2020-03-01", 
+	"Driver Version":"1.2.3.4", 
 	"Support e-mail":"autonomous@vehicle.com", 
-	"Serial Number":"3423 432423",
+	"Serial Number":"3423432423",
 	"MAC Address":"3D:F2:C9:A6:B3:4F"
 }
