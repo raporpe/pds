@@ -431,30 +431,10 @@ public class AppTest {
 	 */
 	void testMissingTag(){
 
-		String missingDeviceNamePath = "src/resources/01/missingDeviceName.json";
-		TokenManagementException e1 =  assertThrows(TokenManagementException.class,
+		String missingDeviceNamePath = "src/resources/01/missingTag.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
-		assertEquals(e1.getMessage(), ErrorMessage.jsonExtraTagError);
-
-		String missingTypeOfDevicePath = "src/resources/01/missingTypeOfDevice.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingTypeOfDevicePath));
-
-		String missingDriverVersionPath = "src/resources/01/missingDriverVersion.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingDriverVersionPath));
-
-		String missingSerialNumberPath = "src/resources/01/missingSerialNumber.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingSerialNumberPath));
-
-		String missingEmailPath = "src/resources/01/missingEmail.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingEmailPath));
-
-		String missingMacAddressPath = "src/resources/01/missingMacAddress.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingMacAddressPath));
+		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
 
 	}
 

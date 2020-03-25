@@ -10,14 +10,12 @@ public class ErrorMessage {
     public static String emailInvalidFormat = "The email is in an invalid format.";
     public static String deviceNameInvalidFormat = "Error: deviceName uses an invalid format.";
 
-    // Missing tag
-
     public static String jsonParsingError = "Error: error reading the json file.";
     public static String jsonExtraTagError = "An extra tag was detected";
     public static String closeFileError = "Error: input file could not be closed.";
     public static String readFileError = "Error: input file could not be read.";
     public static String inputFileNotFoundError = "Error: input file not found.";
-    public static String jsonFieldNotFound = "Could not find the json field ";
+    public static String jsonMissingTagError = "Could not find the json field ";
     public static String invalidDateFormat = "The date is not in the correct format";
 
     //Algorithm errors

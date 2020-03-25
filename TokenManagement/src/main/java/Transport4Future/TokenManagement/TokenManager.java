@@ -93,7 +93,7 @@ public class TokenManager {
 			macAddress = jsonLicense.getString("MAC Address");
 						
 		} catch(Exception e) {
-			throw new TokenManagementException(ErrorMessage.jsonFieldNotFound);
+			throw new TokenManagementException(ErrorMessage.jsonMissingTagError);
 		}
 		
 		req = new TokenRequest(deviceName, typeDevice, driverVersion, email, serialNumber, macAddress);
@@ -160,7 +160,7 @@ public class TokenManager {
 			requestDate = jsonLicense.getString("Request Date");
 			
 		} catch(Exception e) {
-			throw new TokenManagementException(ErrorMessage.jsonFieldNotFound);
+			throw new TokenManagementException(ErrorMessage.jsonMissingTagError);
 		}
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
