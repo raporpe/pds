@@ -512,7 +512,6 @@ public class AppTest {
 
 	///// SECTION 1 PART 2 TESTS
 	
-	@Test
 	void testJsonCorrectReadSHA256_02() throws TokenManagementException{
 	
 		String normalPath = "src/resources/02/TM-RF-02-I1.json";
@@ -555,7 +554,6 @@ public class AppTest {
 	}
 	
 	
-	@Test
 	 void testFailOnBadDataRegx_02(){
 		
 		String badTokenRequestPath = "src/resources/02/badTokenRequest.json";
@@ -573,7 +571,6 @@ public class AppTest {
 	}
 	
 	
-	@Test
 	 void testFailOnMissingTag_02() {
 		
 		
@@ -602,7 +599,6 @@ public class AppTest {
 
 	
 	
-	@Test
 	 void testFailOnEmptyJson_02() {
 		
 		String emptyPath = "src/resources/02/empty.json";
@@ -611,7 +607,6 @@ public class AppTest {
 		
 	}
 	
-	@Test
 	 void testFailOnMalformedJson_02() {
 		
 		String malformedJsonPath = "src/resources/02/malformed.json";
