@@ -12,7 +12,7 @@ public class ErrorMessage {
 
 
     public static String jsonParsingError = "Error: error reading the json file.";
-    public static String jsonElementsNumberMismatch = "Error: not number of properties requested.";
+    public static String jsonExtraTagError = "An extra tag was detected";
     public static String closeFileError = "Error: input file could not be closed.";
     public static String readFileError = "Error: input file could not be read.";
     public static String inputFileNotFoundError = "Error: input file not found.";

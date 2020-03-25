@@ -5,10 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 import javax.json.Json;
 import javax.json.JsonObject;
 
@@ -64,8 +62,8 @@ public class TokenManager {
 			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
 		
-		if(jsonLicense.size()!= 6) {
-			throw new TokenManagementException(ErrorMessage.jsonElementsNumberMismatch);
+		if(jsonLicense.size() > 6) {
+			throw new TokenManagementException(ErrorMessage.jsonExtraTagError);
 		}
 		
 		String deviceName;
@@ -75,7 +73,7 @@ public class TokenManager {
 		String serialNumber;
 		String macAddress;
 		
-		try {	
+		try {
 			deviceName = jsonLicense.getString("Device Name");
 			typeDevice = jsonLicense.getString("Type of Device");
 			driverVersion = jsonLicense.getString("Driver Version");
@@ -137,8 +135,8 @@ public class TokenManager {
 			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
 		
-		if(jsonLicense.size()!= 3) {
-			throw new TokenManagementException(ErrorMessage.jsonElementsNumberMismatch);
+		if(jsonLicense.size() > 3) {
+			throw new TokenManagementException(ErrorMessage.jsonExtraTagError);
 		}
 		
 		String tokenRequest;

@@ -38,7 +38,6 @@ public class TokenStore {
 
 	//Private functions
 	
-	//TODO:REALLY WRITE THINGS
 	private void save() throws TokenManagementException {
 		
 		Gson gson = new Gson();
