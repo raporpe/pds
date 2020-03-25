@@ -53,7 +53,7 @@ public class AppTest {
 
 	/**
 	 *   .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.
-	 * :::::.\::::::::.\::::::::TESTS FOR JSON FIELDS:::::::::.\::::::::.\::::::::.\
+	 * :::::.\::::::::.\::::::::TESTS FOR JSON TAGS:::::::::::.\::::::::.\::::::::.\
 	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
 	 */
 
@@ -61,7 +61,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: LaCeramicaDeTalaveraN
+	 * Equivalence class or boundary value considered: (21)"LaCeramicaDeTalaveraN"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
@@ -74,7 +74,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: EsElVecinoElQueElige
+	 * Equivalence class or boundary value considered: (20)"EsElVecinoElQueElige"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception thrown and value matches
 	 */
@@ -87,7 +87,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: AlAlcaldeYEsElAlcal
+	 * Equivalence class or boundary value considered: (19)"AlAlcaldeYEsElAlcal"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception is thrown and the value mathces
 	 */
@@ -99,7 +99,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: 0
+	 * Equivalence class or boundary value considered: (0)""
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
@@ -112,14 +112,14 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: 1
+	 * Equivalence class or boundary value considered: (1)"a"
 	 * Testing technique: Boundary Values Analysis
-	 * Expected value: No exception thrown
+	 * Expected value: The value is equal to "a". No exception thrown
 	 */
 	public void testDeviceName_BV1() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV1.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath).getDeviceName()
-				.length() == 1);
+		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+				.getDeviceName() == "a");
 
 	}
 
@@ -204,19 +204,19 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Support Email
-	 * Equivalence class or boundary value considered: example@example.com
+	 * Equivalence class or boundary value considered: autonomous@vehicle.com
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct email value.
 	 */
 	void testEmail_EC_Valid() throws TokenManagementException {
 		String emailPath = "src/resources/01/email_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(emailPath)
-				.getEmail() == "example@example.com");
+				.getEmail() == "autonomous@vehicle.com");
 	}
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Support Email
-	 * Equivalence class or boundary value considered: example@example..com
+	 * Equivalence class or boundary value considered: autonomous@vehicle..com
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the email is invalid.
 	 */
@@ -321,19 +321,19 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Mac Address
-	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4A
+	 * Equivalence class or boundary value considered: 3D:F2:C9:A6:B3:4F
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct mac address value.
 	 */
 	void testMacAddress_EC_Valid() throws TokenManagementException {
 		String macAddressPath = "src/resources/01/macAddress_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
-				.getEmail() == "2F:3A:5B:9C:4A");
+				.getEmail() == "3D:F2:C9:A6:B3:4F");
 	}
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Mac Address
-	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4U
+	 * Equivalence class or boundary value considered: 3D:F2:C9:A6:B3:4U
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the mac address is invalid.
 	 */
@@ -477,18 +477,6 @@ public class AppTest {
 
 		
 
-
-		
-
-
-
-	
-//	@Test
-//	public void testInternalError() {
-//		String internalErrorFilePath = "src/resources/internal_error.json";
-//		assertThrows(TokenManagementException.class,
-//		() -> tokenManager.readTokenRequestFromJSON(internalErrorFilePath));
-//	}
 
 
 
@@ -798,7 +786,7 @@ public class AppTest {
 	/**
 	 * Helper function to handle json reading.
 	 * @param path path of the json file to read.
-	 * @return a JsonObject ready to get fields from.
+	 * @return a JsonObject ready to get tags from it.
 	 */
 	private static JsonObject readJSON(String path) {
 

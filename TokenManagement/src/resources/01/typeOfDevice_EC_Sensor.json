@@ -1,6 +1,6 @@
 {
 	"Device Name":"Tesla Model R",
-	"Type of Device":"Actuator",
+	"Type of Device":"Sensor",
 	"Driver Version":"1.2.3.4", 
 	"Support e-mail":"autonomous@vehicle.com", 
 	"Serial Number":"3423432423",
