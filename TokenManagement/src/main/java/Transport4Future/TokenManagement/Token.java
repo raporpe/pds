@@ -20,6 +20,7 @@ public class Token {
 	final private String password;
 	final private String type;
 
+
 	public Token(String tokenRequest, String notificationEmail, long requestDate) {
 
 		this.tokenRequest = tokenRequest;
@@ -41,25 +42,20 @@ public class Token {
 		return this.expirationDate <= System.currentTimeMillis()/1000;
 
 	}
-	
+
+	/**
+	 * Gets the token request associated with the token
+	 * @return the md5 value of the request for the token
+	 */
 	public String getTokenRequest() {
 		return this.tokenRequest;
 	}
-
-
 
 	public String getBase64Token() throws TokenManagementException {
 
 		String result = this.toString() + this.generateSignatureSHA256();
 		return this.encodeBase64(result);
 
-	}
-
-	@Override
-	public String toString() {
-		String header = this.algorithm + this.type;
-		String payload = this.tokenRequest + this.requestDate + this.expirationDate;
-		return header + payload;
 	}
 
 	private String encodeBase64(String stringToEncode) throws TokenManagementException {
@@ -90,5 +86,13 @@ public class Token {
 		return hex;
 		
 	}
+
+	@Override
+	public String toString() {
+		String header = this.algorithm + this.type;
+		String payload = this.tokenRequest + this.requestDate + this.expirationDate;
+		return header + payload;
+	}
+
 
 }

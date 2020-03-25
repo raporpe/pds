@@ -31,9 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 
-	private static JsonObject json;
 	private static TokenManager tokenManager;
-	private static String deviceDataFilePath;
 	private static TokenRequest request;
 	private static String password;
 	private static String token;
@@ -45,16 +43,21 @@ public class AppTest {
 	*/
 	@BeforeAll
 	static void TM_RF_01() {
-		deviceDataFilePath = "src/resources/01/CP-RF1-01.json";
 		password = "Stardust";
-		json = readJSON(deviceDataFilePath);
 		tokenManager = new TokenManager();
 
 		// this assertion gives no throws, so we commented it
 		//Assertions.assertThrows(TokenManagementException.class, () -> tm.readTokenRequestFromJSON(filePath));
-		assertNotNull(deviceDataFilePath);
 	}
 
+
+	/**
+	 *   .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.
+	 * :::::.\::::::::.\::::::::TESTS FOR JSON FIELDS:::::::::.\::::::::.\::::::::.\
+	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
+	 */
+
+	//Device name
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Device Name
@@ -120,10 +123,7 @@ public class AppTest {
 
 	}
 
-
-
-
-
+	//Type of device
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Type of Device
@@ -173,11 +173,7 @@ public class AppTest {
 		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
 	}
 
-
-
-
-
-
+	//Driver version
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Driver Version
@@ -204,9 +200,7 @@ public class AppTest {
 		assertEquals(e.getMessage(), ErrorMessage.driverVersionInvalidFormat);
 	}
 
-
-
-
+	//Support email
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Support Email
@@ -233,7 +227,7 @@ public class AppTest {
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 	}
 
-
+	//Serial number
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Serial Number
@@ -259,6 +253,8 @@ public class AppTest {
 				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
+
+	//Mac address
 
 	@Test
 	/** Test case: TM-RF-01-I1 - Mac Address
@@ -287,11 +283,11 @@ public class AppTest {
 
 
 
-
-
-
-
-
+	/**
+	 *   .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.
+	 * :::::.\::::::::.\::::::::TESTS FOR JSON FORMAT:::::::::.\::::::::.\::::::::.\
+	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
+	 */
 
 
 	/** Test case: TM-RF-01-I1 - Test extra json tag
@@ -300,73 +296,107 @@ public class AppTest {
 	* Expected value: An exception thrown with a the specified message for that error
 	*/
 	@Test
-	void checkFailOnBadJsonTag_01() {
-					
+	void testExtraJsonTag() {
+
 		//Check error on extra tag
 		String extraTagPath = "src/resources/01/extraTag.json";
 		TokenManagementException e1 = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(extraTagPath));
 		assertEquals(e1.getMessage(), ErrorMessage.jsonExtraTagError);
-		
-		//Check error on missing tags
-		
-		String missingDeviceNamePath = "src/resources/01/missingDeviceName.json";
-		TokenManagementException e2 =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
-		assertEquals(e2.getMessage(), ErrorMessage.deviceNameInvalidFormat);
-		
-		String missingTypeOfDevicePath = "src/resources/01/missingTypeOfDevice.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingTypeOfDevicePath));
-		
-		String missingDriverVersionPath = "src/resources/01/missingDriverVersion.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingDriverVersionPath));
-		
-		String missingSerialNumberPath = "src/resources/01/missingSerialNumber.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingSerialNumberPath));
-		
-		String missingEmailPath = "src/resources/01/missingEmail.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingEmailPath));
-		
-		String missingMacAddressPath = "src/resources/01/missingMacAddress.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingMacAddressPath));
 
 	}
-	
-	/* Test case: <Test path is well written>
-	* Equivalence class or boundary value considered: well written path
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: No throws
-	*/
+
+
+	/** Test case: TM-RF-01-I1 - Test extra json tag
+	 * Equivalence class or boundary value considered: correct number of data
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for that error
+	 */
 	@Test
-	void checkFailOnBadJsonSyntax_01() {
+	void testEmptyJson() {
+		String emptyFilePath = "src/resources/01/empty.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
+	}
+
+
+	/** Test case: TM-RF-01-I1 - Test extra json tag
+	 * Equivalence class or boundary value considered: correct number of data
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for that error
+	 */
+	@Test
+	void testMalformedJsonSyntax() {
 
 		String badSyntaxPath = "src/resources/01/badSyntax.json";
 		assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(badSyntaxPath));
 
 	}
-	
-	
-	/* Test case: <Test data is received correctly>
-	* Equivalence class or boundary value considered: supposed data to receive
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: Everything corresponds correctly
-	*/
-	@Test
-	void checkReceivedData_01() throws TokenManagementException {
 
-		String checkReceivedData = "src/resources/01/CP-RF1-01.json";
+	/** Test case: TM-RF-01-I1 - Test extra json tag
+	 * Equivalence class or boundary value considered: correct number of data
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for that error
+	 */
+	@Test
+	void testFailOnWrongDataPath() {
+		String wrongFilePath = "src/resources/01/doesnotexist.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
+
+	}
+
+	/** Test case: TM-RF-01-I1 - Test extra json tag
+	 * Equivalence class or boundary value considered: correct number of data
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for that error
+	 */
+	@Test
+	void testMissingTag(){
+
+		String missingDeviceNamePath = "src/resources/01/missingDeviceName.json";
+		TokenManagementException e1 =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
+		assertEquals(e2.getMessage(), ErrorMessage.deviceNameInvalidFormat);
+
+		String missingTypeOfDevicePath = "src/resources/01/missingTypeOfDevice.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingTypeOfDevicePath));
+
+		String missingDriverVersionPath = "src/resources/01/missingDriverVersion.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingDriverVersionPath));
+
+		String missingSerialNumberPath = "src/resources/01/missingSerialNumber.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingSerialNumberPath));
+
+		String missingEmailPath = "src/resources/01/missingEmail.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingEmailPath));
+
+		String missingMacAddressPath = "src/resources/01/missingMacAddress.json";
+		assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(missingMacAddressPath));
+
+	}
+
+
+
+
+
+	@Test
+	void testCorrectCase() throws TokenManagementException {
+
+		String correctJsonPath = "src/resources/01/CP-RF1-01.json";
+		JsonObject json = readJSON(correctJsonPath);
+
 		try {
-			request = tokenManager.TokenRequestGeneration(checkReceivedData);
+			request = tokenManager.TokenRequestGeneration(correctJsonPath);
 		} catch (TokenManagementException e) {
 			throw e;
 		}
-
 
 		assertEquals(request.getDeviceName(), json.getString("Device Name"));
 		assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
@@ -375,39 +405,66 @@ public class AppTest {
 		assertEquals(request.getMacAddress(), json.getString("MAC Address"));
 		assertEquals(request.getEmail(), json.getString("Support e-mail"));
 
+	}
+
+
+	@Test
+	void testMD5() throws TokenManagementException {
+
+		String checkMD5 = "src/resources/01/CP-RF1-01.json";
+		request = tokenManager.TokenRequestGeneration(checkMD5);
+
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			throw new TokenManagementException(ErrorMessage.md5AlgorithmNotFound);
+		}
+
+		String input =  password + "-" + request.toString();
+
+		md.update(input.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
+
+		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x"
+		String hex = String.format("%32x", new BigInteger(1, digest));
+
+		token = request.getHash();
+
+		System.out.println(token + " " + hex);
+
+		assertEquals(hex, token);
+
+		//Check the md5 is a valid string
+		assertTrue(token.matches("([A-F0-9]{32})|([a-f0-9]{32})"));
+
+	}
+
+		
+		//Check error on missing tags
+		
+
+		
+
 
 	}
 	
-	/* Test case: <Test regex>
-	* Equivalence class or boundary value considered: Valid data regex
+	/* Test case: <Test path is well written>
+	* Equivalence class or boundary value considered: well written path
 	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
-	@Test
-	void checkFailOnBadDataRegex_01() {
-		
 
-		
-		String badTypeOfDevicePath = "src/resources/01/badTypeOfDevice.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badTypeOfDevicePath));
-		
-		String badDriverVersionPath = "src/resources/01/badDriverVersion.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badDriverVersionPath));
-		
-		String badSerialNumberPath = "src/resources/01/badSerialNumber.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badSerialNumberPath));
-		
-		String badEmailPath = "src/resources/01/badEmail.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badEmailPath));
-		
-		String badMacAddressPath = "src/resources/01/badMacAddress.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badMacAddressPath));
-	}
+	
+	
+	/* Test case: <Test data is received correctly>
+	* Equivalence class or boundary value considered: supposed data to receive
+	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
+	* Expected value: Everything corresponds correctly
+	*/
+
+	
+
 
 
 
@@ -417,63 +474,21 @@ public class AppTest {
 	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: String matching regex
 	*/
-	@Test
-	void checkMD5_01() throws TokenManagementException {
 
-		String checkMD5 = "src/resources/01/CP-RF1-01.json";
-		request = tokenManager.TokenRequestGeneration(checkMD5);
-		
-		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException(ErrorMessage.md5AlgorithmNotFound);
-		}
-		
-		String input =  password + "-" + request.toString();
-		
-		md.update(input.getBytes(StandardCharsets.UTF_8));
-		byte[] digest = md.digest();
-
-		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x" 
-		String hex = String.format("%32x", new BigInteger(1, digest));
-		
-		token = request.getHash();
-		
-		System.out.println(token + " " + hex);
-
-		assertEquals(hex, token);
-		
-		//Check the md5 is a valid string
-		assertTrue(token.matches("([A-F0-9]{32})|([a-f0-9]{32})"));
-
-		
-	}
 
 	/* Test case: <test json path exists>
 	* Equivalence class or boundary value considered: Path syntaxis
 	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
-	@Test
-	void testFailOnWrongDataPath_01() {
-		String wrongFilePath = "src/resources/01/doesnotexist.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
 
-	}
 	
 	/* Test case: <test json path is not empty>
 	* Equivalence class or boundary value considered: valid json file
 	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
 	* Expected value: No throws
 	*/
-	@Test
-	void testFailOnEmptyJson_01() {
-		String emptyFilePath = "src/resources/01/empty.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
-	}
+
 	
 //	@Test
 //	public void testInternalError() {
@@ -714,51 +729,55 @@ public class AppTest {
 				() -> tokenManager.VerifyToken(invalidBase64));
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 *   .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.
+	 * :::::.\::::::::.\:::::::::::HELPER FUNCTIONS:::::::::::.\::::::::.\::::::::.\
+	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
+	 */
 	
 	
 	

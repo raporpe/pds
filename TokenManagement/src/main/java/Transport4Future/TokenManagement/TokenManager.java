@@ -21,10 +21,10 @@ public class TokenManager {
 	
 	
 	/**
-	 * Creates a token request from a json file (type 1)
-	 * @param InputFile
-	 * @return the json parameters in an object
-	 * @throws TokenManagementException
+	 * Creates a token request given a Json file with the required fields.
+	 * @param InputFile a json file
+	 * @return a TokenRequest object with all the json fields integrated
+	 * @throws TokenManagementException if any error related to json parsing and access is found
 	 */
 	public TokenRequest TokenRequestGeneration(String InputFile) throws TokenManagementException {
 		
@@ -92,9 +92,9 @@ public class TokenManager {
 	}
 	
 	/**
-	 * 
-	 * @param InputFile
-	 * @return a base64 token auth (type 2)
+	 * Generates a authorisation token if given a Json file with the required fields
+	 * @param InputFile a json file with the three indicated fields
+	 * @return a string encoded in base64 that contains the specified information in the
 	 * @throws TokenManagementException
 	 */
 	
@@ -170,7 +170,7 @@ public class TokenManager {
 	
 	/**
 	 * Checks if base64 encoded token is valid
-	 * @param Token base64 token
+	 * @param Token a token object
 	 * @return boolean with validity
 	 * @throws TokenManagementException
 	 */
