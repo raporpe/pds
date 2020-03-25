@@ -260,7 +260,30 @@ public class AppTest {
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
 
+	@Test
+	/** Test case: TM-RF-01-I1 - Mac Address
+	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4A
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: No thrown exceptions and correct mac address value.
+	 */
+	void testMacAddress_EC_Valid() throws TokenManagementException {
+		String macAddressPath = "src/resources/01/macAddress_EC_Valid.json";
+		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
+				.getEmail() == "2F:3A:5B:9C:4A");
+	}
 
+	@Test
+	/** Test case: TM-RF-01-I1 - Mac Address
+	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4U
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: A exception thrown indication that the mac address is invalid.
+	 */
+	void testMacAddress_EC_Invalid() {
+		String macAddressPath = "src/resources/01/macAddress_EC_Invalid.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(macAddressPath));
+		assertEquals(e.getMessage(), ErrorMessage.macAddressInvalidFormat);
+	}
 
 
 
