@@ -60,8 +60,8 @@ public class AppTest {
 	//Device name
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Device Name
-	 * Equivalence class or boundary value considered: 21
+	/** Test case: TM-RF-01-P1 - Device Name
+	 * Equivalence class or boundary value considered: LaCeramicaDeTalaveraN
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
@@ -73,32 +73,32 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Device Name
-	 * Equivalence class or boundary value considered: 20
+	/** Test case: TM-RF-01-P1 - Device Name
+	 * Equivalence class or boundary value considered: EsElVecinoElQueElige
 	 * Testing technique: Boundary Values Analysis
-	 * Expected value: No exception thrown
+	 * Expected value: No exception thrown and value matches
 	 */
 	public void testDeviceName_BV20() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV20.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath).getDeviceName()
-				.length() == 20);
+		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+				.getDeviceName() == "EsElVecinoElQueElige");
 	}
 
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Device Name
-	 * Equivalence class or boundary value considered: 19
+	/** Test case: TM-RF-01-P1 - Device Name
+	 * Equivalence class or boundary value considered: AlAlcaldeYEsElAlcal
 	 * Testing technique: Boundary Values Analysis
-	 * Expected value: the length after execution is 19
+	 * Expected value: No exception is thrown and the value mathces
 	 */
 	public void testDeviceName_BV19() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV19.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath).getDeviceName()
-				.length() == 19);
+		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+				.getDeviceName() == "AlAlcaldeYEsElAlcal");
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Device Name
+	/** Test case: TM-RF-01-P1 - Device Name
 	 * Equivalence class or boundary value considered: 0
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
@@ -111,7 +111,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Device Name
+	/** Test case: TM-RF-01-P1 - Device Name
 	 * Equivalence class or boundary value considered: 1
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception thrown
@@ -126,7 +126,7 @@ public class AppTest {
 	//Type of device
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Type of Device
+	/** Test case: TM-RF-01-P1 - Type of Device
 	 * Equivalence class or boundary value considered: Sensor
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: The result equals sensor
@@ -137,7 +137,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Type of Device
+	/** Test case: TM-RF-01-P1 - Type of Device
 	 * Equivalence class or boundary value considered: Actuator
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: The result equals sensor
@@ -148,7 +148,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Type of Device
+	/** Test case: TM-RF-01-P1 - Type of Device
 	 * Equivalence class or boundary value considered: empty value
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the type of device is invalid.
@@ -161,7 +161,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Type of Device
+	/** Test case: TM-RF-01-P1 - Type of Device
 	 * Equivalence class or boundary value considered: Actuators
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the type of device is invalid.
@@ -176,7 +176,7 @@ public class AppTest {
 	//Driver version
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Driver Version
+	/** Test case: TM-RF-01-P1 - Driver Version
 	 * Equivalence class or boundary value considered: 123.123.123.123.456.456.456.0
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value:
@@ -188,7 +188,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Driver Version
+	/** Test case: TM-RF-01-P1 - Driver Version
 	 * Equivalence class or boundary value considered: 32123.2342..234
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the type of device is invalid.
@@ -203,7 +203,7 @@ public class AppTest {
 	//Support email
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Support Email
+	/** Test case: TM-RF-01-P1 - Support Email
 	 * Equivalence class or boundary value considered: example@example.com
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct email value.
@@ -215,7 +215,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Support Email
+	/** Test case: TM-RF-01-P1 - Support Email
 	 * Equivalence class or boundary value considered: example@example..com
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the email is invalid.
@@ -230,7 +230,7 @@ public class AppTest {
 	//Serial number
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Serial Number
+	/** Test case: TM-RF-01-P1 - Serial Number
 	 * Equivalence class or boundary value considered: serq2efwqr234
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct serial number value.
@@ -242,7 +242,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Serial Number
+	/** Test case: TM-RF-01-P1 - Serial Number
 	 * Equivalence class or boundary value considered: 234rerfqsf qw3rr2
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
@@ -254,10 +254,73 @@ public class AppTest {
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
 
+	@Test
+	/** Test case: TM-RF-01-P1 - Serial Number
+	 * Equivalence class or boundary value considered: (50)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"
+	 * Testing technique: Boundary Values Analysis
+	 * Expected value: No thrown exceptions and correct serial number value.
+	 */
+	void testSerialNumber_BV_50() throws TokenManagementException {
+		String serialNumberPath = "src/resources/01/serialNumber_BV_50";
+		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+				.getEmail() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523");
+	}
+
+	@Test
+	/** Test case: TM-RF-01-P1 - Serial Number
+	 * Equivalence class or boundary value considered: (51)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523f"
+	 * Testing technique: Boundary Values Analysis
+	 * Expected value: A exception thrown indication that the serial number is invalid.
+	 */
+	void testSerialNumber_BV_51() {
+		String serialNumberPath = "src/resources/01/serialNumber_BV_51.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+	}
+
+	@Test
+	/** Test case: TM-RF-01-P1 - Serial Number
+	 * Equivalence class or boundary value considered: (49)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"
+	 * Testing technique: Boundary Values Analysis
+	 * Expected value: The serial number is valid and equal to the given one. No exception is thrown.
+	 */
+	void testSerialNumber_BV_49() throws TokenManagementException {
+		String serialNumberPath = "src/resources/01/serialNumber_BV_49.json";
+		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+				.getEmail() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352");
+
+	}
+
+	@Test
+	/** Test case: TM-RF-01-P1 - Serial Number
+	 * Equivalence class or boundary value considered: (0)""
+	 * Testing technique: Boundary Values Analysis
+	 * Expected value: A exception thrown indication that the serial number is invalid.
+	 */
+	void testSerialNumber_BV_0() {
+		String serialNumberPath = "src/resources/01/serialNumber_BV_0.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+	}
+
+	@Test
+	/** Test case: TM-RF-01-P1 - Serial Number
+	 * Equivalence class or boundary value considered: (1)"a"
+	 * Testing technique: Boundary Values Analysis
+	 * Expected value: The serial number is valid and is equal to the given one. No exception is thrown.
+	 */
+	void testSerialNumber_BV_1() throws TokenManagementException {
+		String serialNumberPath = "src/resources/01/serialNumber_BV_1.json";
+		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+				.getEmail() == "a");
+	}
+
 	//Mac address
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Mac Address
+	/** Test case: TM-RF-01-P1 - Mac Address
 	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4A
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct mac address value.
@@ -269,7 +332,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-01-I1 - Mac Address
+	/** Test case: TM-RF-01-P1 - Mac Address
 	 * Equivalence class or boundary value considered: 2F:3A:5B:9C:4U
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the mac address is invalid.
@@ -289,76 +352,89 @@ public class AppTest {
 	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
 	 */
 
-
-	/** Test case: TM-RF-01-I1 - Test extra json tag
-	* Equivalence class or boundary value considered: correct number of data
-	* Testing technique: Equivalence Classes Analysis
-	* Expected value: An exception thrown with a the specified message for that error
-	*/
 	@Test
+	/** Test case: TM-RF-01-I1 - Test extra json tag
+	* Equivalence class or boundary value considered: extra tag
+	* Testing technique: Equivalence Classes Analysis
+	* Expected value: An exception thrown with a the specified message for detecting an extra tag
+	*/
 	void testExtraJsonTag() {
 
-		//Check error on extra tag
 		String extraTagPath = "src/resources/01/extraTag.json";
-		TokenManagementException e1 = assertThrows(TokenManagementException.class,
+		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(extraTagPath));
-		assertEquals(e1.getMessage(), ErrorMessage.jsonExtraTagError);
+		assertEquals(e.getMessage(), ErrorMessage.jsonExtraTagError);
 
 	}
 
-
-	/** Test case: TM-RF-01-I1 - Test extra json tag
-	 * Equivalence class or boundary value considered: correct number of data
-	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value: An exception thrown with a the specified message for that error
-	 */
 	@Test
-	void testEmptyJson() {
-		String emptyFilePath = "src/resources/01/empty.json";
-		assertThrows(TokenManagementException.class,
+	/** Test case: TM-RF-01-O2 - Test empty file
+	 * Equivalence class or boundary value considered: empty file
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for detecting an empty file
+	 */
+	void testEmptyFile() {
+		String emptyFilePath = "src/resources/01/emptyFile.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
+		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
 	}
 
-
-	/** Test case: TM-RF-01-I1 - Test extra json tag
-	 * Equivalence class or boundary value considered: correct number of data
-	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value: An exception thrown with a the specified message for that error
-	 */
 	@Test
+	/** Test case: TM-RF-01-O2 - Test empty json
+	 * Equivalence class or boundary value considered: empty json
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for detecting an empty json
+	 * Note: This is different than an empty file: in this case, the file has an empty json structure.
+	 * It should return the same error as the previous test.
+	 */
+	void testEmptyJson() {
+		String emptyJsonPath = "src/resources/01/emptyJson.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(emptyJsonPath));
+		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+	}
+
+	@Test
+	/** Test case: TM-RF-01-O2 - Test malformed json
+	 * Equivalence class or boundary value considered: malformed json
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for detecting a malformed json
+	 */
 	void testMalformedJsonSyntax() {
 
-		String badSyntaxPath = "src/resources/01/badSyntax.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badSyntaxPath));
+		String malformedJsonPath = "src/resources/01/malformedJson.json";
+	 	TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(malformedJsonPath));
+	 	assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
 	}
 
-	/** Test case: TM-RF-01-I1 - Test extra json tag
-	 * Equivalence class or boundary value considered: correct number of data
-	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value: An exception thrown with a the specified message for that error
-	 */
 	@Test
-	void testFailOnWrongDataPath() {
-		String wrongFilePath = "src/resources/01/doesnotexist.json";
-		assertThrows(TokenManagementException.class,
+	/** Test case: TM-RF-01-O2 - Test wrong file path
+	 * Equivalence class or boundary value considered: wrong file path
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for a invalid path
+	 */
+	void testWrongFilePath() {
+		String wrongFilePath = "src/resources/01/doesNotExist.json";
+		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
-
+		assertEquals(e.getMessage(), ErrorMessage.inputFileNotFoundError);
 	}
 
-	/** Test case: TM-RF-01-I1 - Test extra json tag
-	 * Equivalence class or boundary value considered: correct number of data
-	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value: An exception thrown with a the specified message for that error
-	 */
 	@Test
+	/** Test case: TM-RF-01-O2 - Test missing json tag
+	 * Equivalence class or boundary value considered: missing tag case
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for missing tag error
+	 */
 	void testMissingTag(){
 
 		String missingDeviceNamePath = "src/resources/01/missingDeviceName.json";
 		TokenManagementException e1 =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
-		assertEquals(e2.getMessage(), ErrorMessage.deviceNameInvalidFormat);
+		assertEquals(e1.getMessage(), ErrorMessage.jsonExtraTagError);
 
 		String missingTypeOfDevicePath = "src/resources/01/missingTypeOfDevice.json";
 		assertThrows(TokenManagementException.class,
@@ -382,33 +458,12 @@ public class AppTest {
 
 	}
 
-
-
-
-
 	@Test
-	void testCorrectCase() throws TokenManagementException {
-
-		String correctJsonPath = "src/resources/01/CP-RF1-01.json";
-		JsonObject json = readJSON(correctJsonPath);
-
-		try {
-			request = tokenManager.TokenRequestGeneration(correctJsonPath);
-		} catch (TokenManagementException e) {
-			throw e;
-		}
-
-		assertEquals(request.getDeviceName(), json.getString("Device Name"));
-		assertEquals(request.getTypeDevice(), json.getString("Type of Device"));
-		assertEquals(request.getDriverVersion(), json.getString("Driver Version"));
-		assertEquals(request.getSerialNumber(), json.getString("Serial Number"));
-		assertEquals(request.getMacAddress(), json.getString("MAC Address"));
-		assertEquals(request.getEmail(), json.getString("Support e-mail"));
-
-	}
-
-
-	@Test
+	/** Test case: TM-RF-01-P2 - Test md5 hash is correctly calculated
+	 * Equivalence class or boundary value considered: missing tag case
+	 * Testing technique: Equivalence Classes Analysis
+	 * Expected value: An exception thrown with a the specified message for missing tag error
+	 */
 	void testMD5() throws TokenManagementException {
 
 		String checkMD5 = "src/resources/01/CP-RF1-01.json";
@@ -441,53 +496,11 @@ public class AppTest {
 	}
 
 		
-		//Check error on missing tags
+
+
 		
 
-		
 
-
-	}
-	
-	/* Test case: <Test path is well written>
-	* Equivalence class or boundary value considered: well written path
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: No throws
-	*/
-
-	
-	
-	/* Test case: <Test data is received correctly>
-	* Equivalence class or boundary value considered: supposed data to receive
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: Everything corresponds correctly
-	*/
-
-	
-
-
-
-
-
-	/* Test case: <Test MD5>
-	* Equivalence class or boundary value considered: Correct defined string 
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: String matching regex
-	*/
-
-
-	/* Test case: <test json path exists>
-	* Equivalence class or boundary value considered: Path syntaxis
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: No throws
-	*/
-
-	
-	/* Test case: <test json path is not empty>
-	* Equivalence class or boundary value considered: valid json file
-	* Testing technique: Equivalence Classes Analysis | Boundary Values Analysis
-	* Expected value: No throws
-	*/
 
 	
 //	@Test
@@ -778,16 +791,21 @@ public class AppTest {
 	 * :::::.\::::::::.\:::::::::::HELPER FUNCTIONS:::::::::::.\::::::::.\::::::::.\
 	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
 	 */
-	
-	
-	
+
+
+	/**
+	 * This function generates the SHA-256 hash
+	 * @param input the string to hash
+	 * @return the hash of the input string
+	 * @throws TokenManagementException when the hash algorithm is not found
+	 */
 	private static String hashSHA256(String input) throws TokenManagementException {
 		
 		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			throw new TokenManagementException("Error: no such hashing algorithm.");
+			throw new TokenManagementException(ErrorMessage.sha256AlgorithmNotFound);
 		}
 		
 		
@@ -800,9 +818,13 @@ public class AppTest {
 		return result;
 		
 	}
-	
-	
-	
+
+
+	/**
+	 * Helper function to handle json reading.
+	 * @param path path of the json file to read.
+	 * @return a JsonObject ready to get fields from.
+	 */
 	private static JsonObject readJSON(String path) {
 
 		String fileContents = "";
@@ -811,26 +833,26 @@ public class AppTest {
 		try {
 			reader = new BufferedReader(new FileReader(path));
 		} catch (FileNotFoundException e) {
-			fail("The json file was not found");
+			fail(ErrorMessage.inputFileNotFoundError);
 		}
 
 		String line;
+
 		try {
 			while ((line = reader.readLine()) != null) {
 				fileContents += line;
 			}
 		} catch (IOException e) {
-			fail("Error: input file could not be accessed.");
+			fail(ErrorMessage.readFileError);
 		}
 
 		try {
 			reader.close();
 		} catch (IOException e) {
-			fail("Error: input file could not be closed.");
+			fail(ErrorMessage.closeFileError);
 		}
 
 		JsonObject jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
-	
 
 		return jsonLicense;
 	}

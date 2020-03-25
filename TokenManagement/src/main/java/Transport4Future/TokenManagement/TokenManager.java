@@ -39,12 +39,18 @@ public class TokenManager {
 		}
 		
 		String line;
+
 		try {
 			while ((line = reader.readLine()) != null) {
 				fileContents += line;
 			}
 		} catch (IOException e) {
 			throw new TokenManagementException(ErrorMessage.readFileError);
+		}
+
+		//Check if the file is totally empty
+		if (fileContents == "") {
+			throw new TokenManagementException(ErrorMessage.emptyFileError);
 		}
 		
 		try {
@@ -58,10 +64,15 @@ public class TokenManager {
 		try {
 			jsonLicense = Json.createReader(new StringReader(fileContents)).readObject();
 		} catch(Exception e){
-			
 			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
-		
+
+		//Check for empty json
+		if(jsonLicense.size() == 0){
+			throw new TokenManagementException(ErrorMessage.emptyFileError);
+		}
+
+		//Check for json with too many tags
 		if(jsonLicense.size() > 6) {
 			throw new TokenManagementException(ErrorMessage.jsonExtraTagError);
 		}

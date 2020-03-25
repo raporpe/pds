@@ -14,8 +14,6 @@ public class Token {
 	private long requestDate;
 	private long expirationDate;
 
-	//Set by default to a year
-	final private long timeToExpireAfterIssue = 31536000;
 	final private String algorithm;
 	final private String password;
 	final private String type;
@@ -31,7 +29,8 @@ public class Token {
 		this.requestDate = requestDate;
 
 		// Expires one year later
-		this.expirationDate = this.requestDate + this.timeToExpireAfterIssue;
+		long timeToExpireAfterIssue = 31536000;
+		this.expirationDate = this.requestDate + timeToExpireAfterIssue;
 
 		this.algorithm = "SHA-256";
 		this.type = "PDS";
@@ -51,6 +50,11 @@ public class Token {
 		return this.tokenRequest;
 	}
 
+	/**
+	 * Get the encoded authorisation token of the object encoded in base64
+	 * @return the encoded base64 token
+	 * @throws TokenManagementException if the sha256 hashing algorithm is not found
+	 */
 	public String getBase64Token() throws TokenManagementException {
 
 		String result = this.toString() + this.generateSignatureSHA256();
@@ -58,6 +62,12 @@ public class Token {
 
 	}
 
+	/**
+	 * Internal helper function to encode strings with base 64
+	 * @param stringToEncode string to encode
+	 * @return the encoded string
+	 * @throws TokenManagementException if the base 64 encoding fails
+	 */
 	private String encodeBase64(String stringToEncode) throws TokenManagementException {
 		String encodedURL;
 		try {
@@ -68,6 +78,13 @@ public class Token {
 		return encodedURL;
 	}
 
+	/**
+	 * Internal helper function that returns the sha256 hash of the current object
+	 * Notice that a password is used and the hash is calculated based on the string representation of the
+	 * Token object.
+	 * @return the sha-256 hash of the token
+	 * @throws TokenManagementException if the sha256 hashing algorithm is not found
+	 */
 	private String generateSignatureSHA256() throws TokenManagementException {
 		MessageDigest md;
 		try {
@@ -87,6 +104,10 @@ public class Token {
 		
 	}
 
+	/**
+	 * Helper function that returns the first two parts of the token specification
+	 * @return the header + payload without signature
+	 */
 	@Override
 	public String toString() {
 		String header = this.algorithm + this.type;
