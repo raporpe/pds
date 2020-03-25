@@ -61,7 +61,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: (21)"LaCeramicaDeTalaveraN"
+	 * Equivalence class or boundary value considered: (21) -> "LaCeramicaDeTalaveraN"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
@@ -74,7 +74,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: (20)"EsElVecinoElQueElige"
+	 * Equivalence class or boundary value considered: (20) -> "EsElVecinoElQueElige"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception thrown and value matches
 	 */
@@ -87,7 +87,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: (19)"AlAlcaldeYEsElAlcal"
+	 * Equivalence class or boundary value considered: (19) -> "AlAlcaldeYEsElAlcal"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception is thrown and the value mathces
 	 */
@@ -99,7 +99,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: (0)""
+	 * Equivalence class or boundary value considered: (0) -> ""
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
@@ -112,7 +112,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Device Name
-	 * Equivalence class or boundary value considered: (1)"a"
+	 * Equivalence class or boundary value considered: (1) -> "a"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The value is equal to "a". No exception thrown
 	 */
@@ -256,7 +256,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Serial Number
-	 * Equivalence class or boundary value considered: (50)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"
+	 * Equivalence class or boundary value considered: (50) -> "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
@@ -268,7 +268,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Serial Number
-	 * Equivalence class or boundary value considered: (51)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523f"
+	 * Equivalence class or boundary value considered: (51) -> "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523f"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
@@ -281,7 +281,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Serial Number
-	 * Equivalence class or boundary value considered: (49)"wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"
+	 * Equivalence class or boundary value considered: (49) -> "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The serial number is valid and equal to the given one. No exception is thrown.
 	 */
@@ -294,7 +294,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Serial Number
-	 * Equivalence class or boundary value considered: (0)""
+	 * Equivalence class or boundary value considered: (0) -> ""
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
@@ -307,7 +307,7 @@ public class AppTest {
 
 	@Test
 	/** Test case: TM-RF-01-P1 - Serial Number
-	 * Equivalence class or boundary value considered: (1)"a"
+	 * Equivalence class or boundary value considered: (1) -> "a"
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The serial number is valid and is equal to the given one. No exception is thrown.
 	 */
