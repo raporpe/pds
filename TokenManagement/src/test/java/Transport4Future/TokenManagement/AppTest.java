@@ -179,7 +179,7 @@ public class AppTest {
 	/** Test case: TM-RF-01-P1 - Driver Version
 	 * Equivalence class or boundary value considered: 123.123.123.123.456.456.456.0
 	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value:
+	 * Expected value: No thrown exceptions and correct Driver version value.
 	 */
 	void testDriverVersion_EC_Valid() throws TokenManagementException {
 		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid.json";
@@ -191,7 +191,7 @@ public class AppTest {
 	/** Test case: TM-RF-01-P1 - Driver Version
 	 * Equivalence class or boundary value considered: 32123.2342..234
 	 * Testing technique: Equivalence Classes Analysis
-	 * Expected value: A exception thrown indication that the type of device is invalid.
+	 * Expected value: A exception thrown indication that the Driver version is invalid.
 	 */
 	void testDriverVersion_EC_Invalid() {
 		String driverVersionPath = "src/resources/01/driverVersion_EC_Invalid.json";
