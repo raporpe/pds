@@ -466,7 +466,7 @@ public class AppTest {
 		byte[] digest = md.digest();
 
 		// Beware the hex length. If MD5 -> 32:"%032x", but for instance, in SHA-256 it should be "%064x"
-		String hex = String.format("%32x", new BigInteger(1, digest));
+		String hex = String.format("%032x", new BigInteger(1, digest));
 
 		token = request.getHash();
 

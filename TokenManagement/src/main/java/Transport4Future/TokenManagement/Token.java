@@ -97,7 +97,7 @@ public class Token {
 		md.update(input.getBytes(StandardCharsets.UTF_8));
 		byte[] digest = md.digest();
 
-		String hex = String.format("%64x", new BigInteger(1, digest));
+		String hex = String.format("%064x", new BigInteger(1, digest));
 		System.out.println(hex);
 
 		return hex;
