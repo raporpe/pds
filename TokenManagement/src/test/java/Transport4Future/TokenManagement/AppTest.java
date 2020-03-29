@@ -81,7 +81,7 @@ public class AppTest {
 	public void testDeviceName_BV20() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV20.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
-				.getDeviceName() == "EsElVecinoElQueElige");
+				.getDeviceName().equals("EsElVecinoElQueElige"));
 	}
 
 
@@ -94,7 +94,7 @@ public class AppTest {
 	public void testDeviceName_BV19() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV19.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
-				.getDeviceName() == "AlAlcaldeYEsElAlcal");
+				.getDeviceName().equals("AlAlcaldeYEsElAlcal"));
 	}
 
 	@Test
@@ -119,7 +119,7 @@ public class AppTest {
 	public void testDeviceName_BV1() throws TokenManagementException {
 		String deviceNamePath = "src/resources/01/deviceName_BV1.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
-				.getDeviceName() == "a");
+				.getDeviceName().equals("a"));
 
 	}
 
@@ -133,7 +133,8 @@ public class AppTest {
 	 */
 	void testTypeOfDevice_EC_Sensor() throws TokenManagementException {
 		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Sensor.json";
-		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice() == "Sensor");
+		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
+				.equals("Sensor"));
 	}
 
 	@Test
@@ -144,7 +145,8 @@ public class AppTest {
 	 */
 	void testTypeOfDevice_EC_Actuator() throws TokenManagementException {
 		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuator.json";
-		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice() == "Actuator");
+		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
+				.equals("Actuator"));
 	}
 
 	@Test
@@ -184,7 +186,7 @@ public class AppTest {
 	void testDriverVersion_EC_Valid() throws TokenManagementException {
 		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(driverVersionPath)
-				.getDriverVersion() == "123.123.123.123.456.456.456.0");
+				.getDriverVersion().equals("123.123.123.123.456.456.456.0"));
 	}
 
 	@Test
@@ -211,7 +213,7 @@ public class AppTest {
 	void testEmail_EC_Valid() throws TokenManagementException {
 		String emailPath = "src/resources/01/email_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(emailPath)
-				.getEmail() == "autonomous@vehicle.com");
+				.getEmail().equals("autonomous@vehicle.com"));
 	}
 
 	@Test
@@ -238,7 +240,7 @@ public class AppTest {
 	void testSerialNumber_EC_Valid() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getSerialNumber() == "serq2efwqr234");
+				.getSerialNumber().equals("serq2efwqr234"));
 	}
 
 	@Test
@@ -261,9 +263,9 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
 	void testSerialNumber_BV_50() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_50";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_50.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getSerialNumber() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523");
+				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"));
 	}
 
 	@Test
@@ -288,7 +290,7 @@ public class AppTest {
 	void testSerialNumber_BV_49() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_BV_49.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getSerialNumber() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352");
+				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"));
 
 	}
 
@@ -314,8 +316,10 @@ public class AppTest {
 	void testSerialNumber_BV_1() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_BV_1.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getSerialNumber() == "a");
+				.getSerialNumber().equals("a"));
+
 	}
+
 
 	//Mac address
 
@@ -328,7 +332,7 @@ public class AppTest {
 	void testMacAddress_EC_Valid() throws TokenManagementException {
 		String macAddressPath = "src/resources/01/macAddress_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
-				.getMacAddress() == "3D:F2:C9:A6:B3:4F");
+				.getMacAddress().equals("3D:F2:C9:A6:B3:4F"));
 	}
 
 	@Test

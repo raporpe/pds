@@ -52,7 +52,7 @@ public class TokenRequest {
 			throw new TokenManagementException(ErrorMessage.emailInvalidFormat);
 		}
 
-		if (serialNumber.matches("^[A-Za-z0-9-]+$")) {
+		if (serialNumber.matches("^[A-Za-z0-9-]{1,50}$")) {
 			this.serialNumber = serialNumber;
 		} else {
 			throw new TokenManagementException(ErrorMessage.serialNumberInvalidFormat);
