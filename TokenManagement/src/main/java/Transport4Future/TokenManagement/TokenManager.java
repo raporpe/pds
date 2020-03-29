@@ -35,6 +35,7 @@ public class TokenManager {
 		try {
 			reader = new BufferedReader(new FileReader(InputFile));
 		} catch (FileNotFoundException e) {
+			System.out.println(e);
 			throw new TokenManagementException(ErrorMessage.inputFileNotFoundError);
 		}
 		
