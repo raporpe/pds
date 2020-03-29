@@ -184,7 +184,7 @@ public class AppTest {
 	void testDriverVersion_EC_Valid() throws TokenManagementException {
 		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(driverVersionPath)
-				.getTypeDevice() == "123.123.123.123.456.456.456.0");
+				.getDriverVersion() == "123.123.123.123.456.456.456.0");
 	}
 
 	@Test
@@ -238,7 +238,7 @@ public class AppTest {
 	void testSerialNumber_EC_Valid() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getEmail() == "serq2efwqr234");
+				.getSerialNumber() == "serq2efwqr234");
 	}
 
 	@Test
@@ -263,7 +263,7 @@ public class AppTest {
 	void testSerialNumber_BV_50() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_BV_50";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getEmail() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523");
+				.getSerialNumber() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523");
 	}
 
 	@Test
@@ -288,7 +288,7 @@ public class AppTest {
 	void testSerialNumber_BV_49() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_BV_49.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getEmail() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352");
+				.getSerialNumber() == "wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352");
 
 	}
 
@@ -314,7 +314,7 @@ public class AppTest {
 	void testSerialNumber_BV_1() throws TokenManagementException {
 		String serialNumberPath = "src/resources/01/serialNumber_BV_1.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
-				.getEmail() == "a");
+				.getSerialNumber() == "a");
 	}
 
 	//Mac address
@@ -328,7 +328,7 @@ public class AppTest {
 	void testMacAddress_EC_Valid() throws TokenManagementException {
 		String macAddressPath = "src/resources/01/macAddress_EC_Valid.json";
 		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
-				.getEmail() == "3D:F2:C9:A6:B3:4F");
+				.getMacAddress() == "3D:F2:C9:A6:B3:4F");
 	}
 
 	@Test
