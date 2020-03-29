@@ -39,7 +39,7 @@ public class TokenRequest {
 			throw new TokenManagementException(ErrorMessage.typeDeviceInvalidFormat);
 		}
 
-		if (driverVersion.matches("^[0-9]+(.[0-9]*){24}$")) {
+		if (driverVersion.matches("^[0-9]+(.[0-9]+){0,24}$")) {
 			this.driverVersion = driverVersion;
 		} else {
 			throw new TokenManagementException(ErrorMessage.driverVersionInvalidFormat);
