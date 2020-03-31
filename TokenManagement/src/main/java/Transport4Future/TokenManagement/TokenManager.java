@@ -49,7 +49,7 @@ public class TokenManager {
 		}
 
 		//Check if the file is totally empty
-		if (fileContents == "") {
+		if (fileContents.equals("")) {
 			throw new TokenManagementException(ErrorMessage.emptyFileError);
 		}
 		
@@ -132,7 +132,7 @@ public class TokenManager {
 		}
 
 		//Check if the file is totally empty
-		if (fileContents == "") {
+		if (fileContents.equals("")) {
 			throw new TokenManagementException(ErrorMessage.emptyFileError);
 		}
 		
@@ -178,6 +178,8 @@ public class TokenManager {
 			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
 		}
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+		//To prevent invalid date formats from being corrected and accepted
 		dateFormat.setLenient(false);
 
 		long unixDate;
@@ -188,9 +190,9 @@ public class TokenManager {
 		}
 		
 		myToken = new Token(tokenRequest, notificationEmail, unixDate);
-	
 
 		return myToken.getBase64Token();
+
 	}
 	
 	

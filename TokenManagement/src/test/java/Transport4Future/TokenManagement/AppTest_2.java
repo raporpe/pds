@@ -561,23 +561,6 @@ public class AppTest_2 {
 
 
     @Test
-    /** Test case: TM-RF-02-I1 - Test a json with an extra '}' at the end.
-     * Derivation Tree Node: <Value/s>
-     * Type of case: Repetition
-     * Testing technique: Syntax Analysis
-     * Expected value: Exception thrown stating that the json is not in a valid format.
-     */
-    void testExtraLastBrace(){
-
-        String path = "src/resources/02/extraLastBrace.json";
-        TokenManagementException e =  assertThrows(TokenManagementException.class,
-                () -> tokenManager.RequestToken(path));
-
-        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
-
-    }
-
-    @Test
     /** Test case: TM-RF-02-I1 - Test a json where a tag text is duplicated.
      * Derivation Tree Node: <Value/s>
      * Type of case: Repetition
@@ -1278,7 +1261,7 @@ public class AppTest_2 {
         try{
             result = tokenManager.RequestToken(path);
         } catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             fail();
         }
 
