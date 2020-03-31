@@ -866,6 +866,110 @@ public class AppTest {
 	}
 
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a token request with missing characters.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorMissingTokenCharacters_02(){
+
+		String path = "src/resources/02/errorMissingTokenCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with a too large domain.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testErrorTooLargeEmail_02(){
+
+		String path = "src/resources/02/errorTooLargeEmail_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a token with a too many characters.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorTooLargeToken_02(){
+
+		String path = "src/resources/02/errorTooLargeToken_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with a repeated '@' symbol.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testExtraAt_02(){
+
+		String path = "src/resources/02/extra@_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraComma_02(){
+
+		String path = "src/resources/02/extraComma_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraDayEqual_02(){
+
+		String path = "src/resources/02/extraDayEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
 
 
 
