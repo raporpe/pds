@@ -66,7 +66,7 @@ public class AppTest {
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
 	public void testDeviceName_BV21(){
-		String deviceNamePath = "src/resources/01/deviceName_BV21.json";
+		String deviceNamePath = "src/resources/01/deviceName_BV21_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
 		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
@@ -79,7 +79,7 @@ public class AppTest {
 	 * Expected value: No exception thrown and value matches
 	 */
 	public void testDeviceName_BV20() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV20.json";
+		String deviceNamePath = "src/resources/01/deviceName_BV20_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
 				.getDeviceName().equals("EsElVecinoElQueElige"));
 	}
@@ -92,7 +92,7 @@ public class AppTest {
 	 * Expected value: No exception is thrown and the value mathces
 	 */
 	public void testDeviceName_BV19() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV19.json";
+		String deviceNamePath = "src/resources/01/deviceName_BV19_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
 				.getDeviceName().equals("AlAlcaldeYEsElAlcal"));
 	}
@@ -104,7 +104,7 @@ public class AppTest {
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
 	public void testDeviceName_BV0(){
-		String deviceNamePath = "src/resources/01/deviceName_BV0.json";
+		String deviceNamePath = "src/resources/01/deviceName_BV0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
 		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
@@ -117,7 +117,7 @@ public class AppTest {
 	 * Expected value: The value is equal to "a". No exception thrown
 	 */
 	public void testDeviceName_BV1() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV1.json";
+		String deviceNamePath = "src/resources/01/deviceName_BV1_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
 				.getDeviceName().equals("a"));
 
@@ -132,7 +132,7 @@ public class AppTest {
 	 * Expected value: The result equals sensor
 	 */
 	void testTypeOfDevice_EC_Sensor() throws TokenManagementException {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Sensor.json";
+		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Sensor_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
 				.equals("Sensor"));
 	}
@@ -144,7 +144,7 @@ public class AppTest {
 	 * Expected value: The result equals sensor
 	 */
 	void testTypeOfDevice_EC_Actuator() throws TokenManagementException {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuator.json";
+		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuator_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
 				.equals("Actuator"));
 	}
@@ -156,7 +156,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the type of device is invalid.
 	 */
 	void testTypeOfDevice_EC_Empty() {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Empty.json";
+		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Empty_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(typeOfDevicePath));
 		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
@@ -169,7 +169,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the type of device is invalid.
 	 */
 	void testTypeOfDevice_EC_Actuators() {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuators.json";
+		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuators_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(typeOfDevicePath));
 		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
@@ -184,7 +184,7 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct Driver version value.
 	 */
 	void testDriverVersion_EC_Valid() throws TokenManagementException {
-		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid.json";
+		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(driverVersionPath)
 				.getDriverVersion().equals("123.123.123.123.456.456.456.0"));
 	}
@@ -196,7 +196,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the Driver version is invalid.
 	 */
 	void testDriverVersion_EC_Invalid() {
-		String driverVersionPath = "src/resources/01/driverVersion_EC_Invalid.json";
+		String driverVersionPath = "src/resources/01/driverVersion_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(driverVersionPath));
 		assertEquals(e.getMessage(), ErrorMessage.driverVersionInvalidFormat);
@@ -211,7 +211,7 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct email value.
 	 */
 	void testEmail_EC_Valid() throws TokenManagementException {
-		String emailPath = "src/resources/01/email_EC_Valid.json";
+		String emailPath = "src/resources/01/email_EC_Valid_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(emailPath)
 				.getEmail().equals("autonomous@vehicle.com"));
 	}
@@ -223,7 +223,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the email is invalid.
 	 */
 	void testEmail_EC_Invalid() {
-		String emailPath = "src/resources/01/email_EC_Invalid.json";
+		String emailPath = "src/resources/01/email_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(emailPath));
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
@@ -238,7 +238,7 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
 	void testSerialNumber_EC_Valid() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid.json";
+		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
 				.getSerialNumber().equals("serq2efwqr234"));
 	}
@@ -250,7 +250,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
 	void testSerialNumber_EC_Invalid() {
-		String serialNumberPath = "src/resources/01/serialNumber_EC_Invalid.json";
+		String serialNumberPath = "src/resources/01/serialNumber_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
@@ -263,7 +263,7 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
 	void testSerialNumber_BV_50() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_50.json";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_50_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
 				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"));
 	}
@@ -275,7 +275,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
 	void testSerialNumber_BV_51() {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_51.json";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_51_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
@@ -288,7 +288,7 @@ public class AppTest {
 	 * Expected value: The serial number is valid and equal to the given one. No exception is thrown.
 	 */
 	void testSerialNumber_BV_49() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_49.json";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_49_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
 				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"));
 
@@ -301,7 +301,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
 	void testSerialNumber_BV_0() {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_0.json";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
@@ -314,7 +314,7 @@ public class AppTest {
 	 * Expected value: The serial number is valid and is equal to the given one. No exception is thrown.
 	 */
 	void testSerialNumber_BV_1() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_1.json";
+		String serialNumberPath = "src/resources/01/serialNumber_BV_1_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
 				.getSerialNumber().equals("a"));
 
@@ -330,7 +330,7 @@ public class AppTest {
 	 * Expected value: No thrown exceptions and correct mac address value.
 	 */
 	void testMacAddress_EC_Valid() throws TokenManagementException {
-		String macAddressPath = "src/resources/01/macAddress_EC_Valid.json";
+		String macAddressPath = "src/resources/01/macAddress_EC_Valid_01.json";
 		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
 				.getMacAddress().equals("3D:F2:C9:A6:B3:4F"));
 	}
@@ -342,7 +342,7 @@ public class AppTest {
 	 * Expected value: A exception thrown indication that the mac address is invalid.
 	 */
 	void testMacAddress_EC_Invalid() {
-		String macAddressPath = "src/resources/01/macAddress_EC_Invalid.json";
+		String macAddressPath = "src/resources/01/macAddress_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(macAddressPath));
 		assertEquals(e.getMessage(), ErrorMessage.macAddressInvalidFormat);
@@ -364,7 +364,7 @@ public class AppTest {
 	*/
 	void testExtraJsonTag() {
 
-		String extraTagPath = "src/resources/01/extraTag.json";
+		String extraTagPath = "src/resources/01/extraTag_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(extraTagPath));
 		assertEquals(e.getMessage(), ErrorMessage.jsonExtraTagError);
@@ -378,7 +378,7 @@ public class AppTest {
 	 * Expected value: An exception thrown with a the specified message for detecting an empty file
 	 */
 	void testEmptyFile() {
-		String emptyFilePath = "src/resources/01/emptyFile.json";
+		String emptyFilePath = "src/resources/01/emptyFile_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
@@ -393,7 +393,7 @@ public class AppTest {
 	 * It should return the same error as the previous test.
 	 */
 	void testEmptyJson() {
-		String emptyJsonPath = "src/resources/01/emptyJson.json";
+		String emptyJsonPath = "src/resources/01/emptyJson_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(emptyJsonPath));
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
@@ -407,7 +407,7 @@ public class AppTest {
 	 */
 	void testMalformedJsonSyntax() {
 
-		String malformedJsonPath = "src/resources/01/malformedJson.json";
+		String malformedJsonPath = "src/resources/01/malformedJson_01.json";
 	 	TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(malformedJsonPath));
 	 	assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
@@ -421,7 +421,7 @@ public class AppTest {
 	 * Expected value: An exception thrown with a the specified message for a invalid path
 	 */
 	void testWrongFilePath() {
-		String wrongFilePath = "src/resources/01/doesNotExist.json";
+		String wrongFilePath = "src/resources/01/doesNotExist_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
 		assertEquals(e.getMessage(), ErrorMessage.inputFileNotFoundError);
@@ -435,7 +435,7 @@ public class AppTest {
 	 */
 	void testMissingTag(){
 
-		String missingDeviceNamePath = "src/resources/01/missingTag.json";
+		String missingDeviceNamePath = "src/resources/01/missingTag_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
 		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
@@ -450,7 +450,7 @@ public class AppTest {
 	 */
 	void testMD5() throws TokenManagementException {
 
-		String checkMD5 = "src/resources/01/CP-RF1-01.json";
+		String checkMD5 = "src/resources/01/CP-RF1-01_01.json";
 		request = tokenManager.TokenRequestGeneration(checkMD5);
 
 		MessageDigest md;
