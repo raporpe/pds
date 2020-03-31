@@ -971,260 +971,93 @@ public class AppTest {
 	}
 
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra ':' separator.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraEqual_02(){
 
+		String path = "src/resources/02/extraEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
 
-
-
-
-
-	///// OLD ONES
-	
-	void testJsonCorrectReadSHA256_02() throws TokenManagementException{
-	
-		String normalPath = "src/resources/02/TM-RF-02-I1.json";
-		JsonObject test = readJSON(normalPath);
-		
-		
-		String requestToken = test.getString("Token Request");
-		String notificationEmail = test.getString("Notification e-mail");		
-		String requestDate = test.getString("Request Date");
-		
-
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
-		long unixDate;
-		try {
-			unixDate = dateFormat.parse(requestDate).getTime();
-		} catch (ParseException e) {
-			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
-		}
-
-		String header = "SHA-256" + "PDS";
-		String payload = requestToken + unixDate + (unixDate+31536000);
-		String noSignetureToken = header + payload;
-		
-		String token = noSignetureToken + hashSHA256(password + "-" + noSignetureToken);
-		
-		token = Base64.getUrlEncoder().encodeToString(token.getBytes());
-
-		String tokenManagerRequest;
-		
-		try {
-			tokenManagerRequest = tokenManager.RequestToken(normalPath);
-		} catch (TokenManagementException e) {
-			throw e;
-		}
-
-		
-		assertEquals(token, tokenManagerRequest);
-		
-		
-	}
-	
-	
-	 void testFailOnBadDataRegx_02(){
-		
-		String badTokenRequestPath = "src/resources/02/badTokenRequest.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badTokenRequestPath));
-		
-		String badNotificationEmailPath = "src/resources/02/badNotificationEmail.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badNotificationEmailPath));
-		
-		String badRequestDatePath = "src/resources/02/badRequestDate.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(badRequestDatePath));
-		
-	}
-	
-	
-	 void testFailOnMissingTag_02() {
-		
-		
-		//Check error on extra tag
-		String extraTagPath = "src/resources/02/extraTag.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(extraTagPath));
-		
-		
-		//Check error on missing tags
-		
-		String missingTokenRequestPath = "src/resources/02/missingTokenRequest.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingTokenRequestPath));
-		
-		String missingNotificationEmailPath = "src/resources/02/missingNotificationEmail.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingNotificationEmailPath));
-		
-		String missingRequestDatePath = "src/resources/02/missingRequestDate.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingRequestDatePath));
-	
-		
-	}
-
-	
-	
-	 void testFailOnEmptyJson_02() {
-		
-		String emptyPath = "src/resources/02/empty.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(emptyPath));
-		
-	}
-	
-	 void testFailOnMalformedJson_02() {
-		
-		String malformedJsonPath = "src/resources/02/malformed.json";
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(malformedJsonPath));
-		
-	}
-	
-	
-	// Part three
-	
-
-	 void testBase64Encoding_03() throws TokenManagementException {
-		
-		String inputFile = "src/resources/03/normal.json";
-		
-		JsonObject test = readJSON(inputFile);
-		
-		String requestToken = test.getString("Token Request");
-		String notificationEmail = test.getString("Notification e-mail");		
-		String requestDate = test.getString("Request Date");
-		
-
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
-		long unixDate;
-		try {
-			unixDate = dateFormat.parse(requestDate).getTime();
-		} catch (ParseException e) {
-			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
-		}
-
-		String header = "SHA-256" + "PDS";
-		String payload = requestToken + unixDate + (unixDate+31536000);
-		String noSignetureToken = header + payload;
-		
-		String token = noSignetureToken + hashSHA256(password + "-" + noSignetureToken);
-
-		String encodedToken = Base64.getUrlEncoder().encodeToString(token.getBytes());
-		
-		assertEquals(encodedToken, tokenManager.RequestToken(inputFile));
-		
-	}
-	
-	
-	 void testFailOnExpiredDate_03() {
-		
-		String inputFile = "src/resources/03/expired.json";
-
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.RequestToken(inputFile));
-			
-	}
-	
-	
-	public void testFailOnUnexistentToken_03() {
-		
-		String inputFile = "src/resources/03/unexistent.json";
-
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.RequestToken(inputFile));
-			
-	}
-	
-	public void testRegisteredToken_03() throws TokenManagementException {
-		
-		String inputFile = "src/resources/03/register.json";
-		
-		String base64 = tokenManager.RequestToken(inputFile);
-		
-
-		assertTrue(tokenManager.VerifyToken(base64));
-		
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
 	}
-	
-	public void testNotRegisteredToken_03() throws TokenManagementException {
-		
-		String unregisteredTokenPath = "src/resources/03/unregistered.json";
-		
-
-		JsonObject test = readJSON(unregisteredTokenPath);
-		
-		
-		String requestToken = test.getString("Token Request");
-		
-		//Useless?
-		//String notificationEmail = test.getString("Notification e-mail");		
-		String resquestDate = test.getString("Request Date");
-		
-
-		String header = "SHA-256";
-		String payload = requestToken + resquestDate + "17/06/2030 22:00:00";
-		String noSignatureToken = header + payload;
-		
-		
-		String unexistingToken = noSignatureToken + hashSHA256(noSignatureToken);
-		
-		assertFalse(tokenManager.VerifyToken(unexistingToken));
 
 
-	}
-	
-	public void testInvalidBase64() {
-		String invalidBase64 = "Es el vecino el que elige el alcalde y"
-				+ " es el alcalde el que quiere que sean los vecinos el alcalde\n";
-		
-		assertThrows(TokenManagementException.class,
-				() -> tokenManager.VerifyToken(invalidBase64));
-		
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra '{' at the beginning.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraFirstBrace_02(){
+
+		String path = "src/resources/02/extraFirstBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
 	}
 
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with a extra ':' in the date between the hours and minutes part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testExtraHourEqual_02(){
+
+		String path = "src/resources/02/extraHourEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
 
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with an extra '}' at the end.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraLastBrace_02(){
 
+		String path = "src/resources/02/extraLastBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
 
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
+	}
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag text is duplicated.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testDuplicatedInnerTagName_02(){
 
+		String path = "src/resources/02/duplicatedInnerTagName_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
 
+		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	}
 
 
 
@@ -1298,7 +1131,5 @@ public class AppTest {
 
 		return jsonLicense;
 	}
-	
-
 
 }
