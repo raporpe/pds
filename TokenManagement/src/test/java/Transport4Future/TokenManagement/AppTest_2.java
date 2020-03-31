@@ -681,41 +681,6 @@ public class AppTest_2 {
 
     }
 
-    //amorcito
-    @Test
-    /** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
-     * Derivation Tree Node: <Value/s>
-     * Type of case: Repetition
-     * Testing technique: Syntax Analysis
-     * Expected value: Exception thrown stating that the json is not in a valid format.
-     */
-    void testHasComma(){
-
-        String path = "src/resources/02/hasComma.json";
-        TokenManagementException e =  assertThrows(TokenManagementException.class,
-                () -> tokenManager.RequestToken(path));
-
-        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
-
-    }
-
-    @Test
-    /** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
-     * Derivation Tree Node: <Value/s>
-     * Type of case: Repetition
-     * Testing technique: Syntax Analysis
-     * Expected value: Exception thrown stating that the json is not in a valid format.
-     */
-    void testHasEqual(){
-
-        String path = "src/resources/02/hasEqual.json";
-        TokenManagementException e =  assertThrows(TokenManagementException.class,
-                () -> tokenManager.RequestToken(path));
-
-        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
-
-    }
-
     @Test
     /** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
      * Derivation Tree Node: <Value/s>
@@ -733,7 +698,6 @@ public class AppTest_2 {
 
     }
 
-    //hasta aqui amorcito
 
     @Test
     /** Test case: TM-RF-02-I1 - Test a date where there is a '.' instead of '/' as a separator.
