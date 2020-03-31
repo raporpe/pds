@@ -65,10 +65,10 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
-	public void testDeviceName_BV21(){
-		String deviceNamePath = "src/resources/01/deviceName_BV21_01.json";
+	public void testDeviceName_BV21_01(){
+		String path = "src/resources/01/deviceName_BV21_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
 	}
 
@@ -78,9 +78,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception thrown and value matches
 	 */
-	public void testDeviceName_BV20() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV20_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+	public void testDeviceName_BV20_01() throws TokenManagementException {
+		String path = "src/resources/01/deviceName_BV20_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getDeviceName().equals("EsElVecinoElQueElige"));
 	}
 
@@ -91,9 +91,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No exception is thrown and the value mathces
 	 */
-	public void testDeviceName_BV19() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV19_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+	public void testDeviceName_BV19_01() throws TokenManagementException {
+		String path = "src/resources/01/deviceName_BV19_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getDeviceName().equals("AlAlcaldeYEsElAlcal"));
 	}
 
@@ -103,10 +103,10 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: Exception thrown stating that the Device Name date is not in the format.
 	 */
-	public void testDeviceName_BV0(){
-		String deviceNamePath = "src/resources/01/deviceName_BV0_01.json";
+	public void testDeviceName_BV0_01(){
+		String path = "src/resources/01/deviceName_BV0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(deviceNamePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
 	}
 
@@ -116,9 +116,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The value is equal to "a". No exception thrown
 	 */
-	public void testDeviceName_BV1() throws TokenManagementException {
-		String deviceNamePath = "src/resources/01/deviceName_BV1_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(deviceNamePath)
+	public void testDeviceName_BV1_01() throws TokenManagementException {
+		String path = "src/resources/01/deviceName_BV1_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getDeviceName().equals("a"));
 
 	}
@@ -131,9 +131,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: The result equals sensor
 	 */
-	void testTypeOfDevice_EC_Sensor() throws TokenManagementException {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Sensor_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
+	void testTypeOfDevice_EC_Sensor_01() throws TokenManagementException {
+		String path = "src/resources/01/typeOfDevice_EC_Sensor_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path).getTypeDevice()
 				.equals("Sensor"));
 	}
 
@@ -143,9 +143,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: The result equals sensor
 	 */
-	void testTypeOfDevice_EC_Actuator() throws TokenManagementException {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuator_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(typeOfDevicePath).getTypeDevice()
+	void testTypeOfDevice_EC_Actuator_01() throws TokenManagementException {
+		String path = "src/resources/01/typeOfDevice_EC_Actuator_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path).getTypeDevice()
 				.equals("Actuator"));
 	}
 
@@ -155,10 +155,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the type of device is invalid.
 	 */
-	void testTypeOfDevice_EC_Empty() {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Empty_01.json";
+	void testTypeOfDevice_EC_Empty_01() {
+		String path = "src/resources/01/typeOfDevice_EC_Empty_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(typeOfDevicePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
 	}
 
@@ -168,10 +168,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the type of device is invalid.
 	 */
-	void testTypeOfDevice_EC_Actuators() {
-		String typeOfDevicePath = "src/resources/01/typeOfDevice_EC_Actuators_01.json";
+	void testTypeOfDevice_EC_Actuators_01() {
+		String path = "src/resources/01/typeOfDevice_EC_Actuators_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(typeOfDevicePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
 	}
 
@@ -183,9 +183,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct Driver version value.
 	 */
-	void testDriverVersion_EC_Valid() throws TokenManagementException {
-		String driverVersionPath = "src/resources/01/driverVersion_EC_Valid_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(driverVersionPath)
+	void testDriverVersion_EC_Valid_01() throws TokenManagementException {
+		String path = "src/resources/01/driverVersion_EC_Valid_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getDriverVersion().equals("123.123.123.123.456.456.456.0"));
 	}
 
@@ -195,10 +195,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the Driver version is invalid.
 	 */
-	void testDriverVersion_EC_Invalid() {
-		String driverVersionPath = "src/resources/01/driverVersion_EC_Invalid_01.json";
+	void testDriverVersion_EC_Invalid_01() {
+		String path = "src/resources/01/driverVersion_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(driverVersionPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.driverVersionInvalidFormat);
 	}
 
@@ -210,9 +210,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct email value.
 	 */
-	void testEmail_EC_Valid() throws TokenManagementException {
-		String emailPath = "src/resources/01/email_EC_Valid_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(emailPath)
+	void testEmail_EC_Valid_01() throws TokenManagementException {
+		String path = "src/resources/01/email_EC_Valid_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getEmail().equals("autonomous@vehicle.com"));
 	}
 
@@ -222,10 +222,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the email is invalid.
 	 */
-	void testEmail_EC_Invalid() {
-		String emailPath = "src/resources/01/email_EC_Invalid_01.json";
+	void testEmail_EC_Invalid_01() {
+		String path = "src/resources/01/email_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(emailPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 	}
 
@@ -237,9 +237,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
-	void testSerialNumber_EC_Valid() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_EC_Valid_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+	void testSerialNumber_EC_Valid_01() throws TokenManagementException {
+		String path = "src/resources/01/serialNumber_EC_Valid_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getSerialNumber().equals("serq2efwqr234"));
 	}
 
@@ -249,10 +249,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
-	void testSerialNumber_EC_Invalid() {
-		String serialNumberPath = "src/resources/01/serialNumber_EC_Invalid_01.json";
+	void testSerialNumber_EC_Invalid_01() {
+		String path = "src/resources/01/serialNumber_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
 
@@ -262,9 +262,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: No thrown exceptions and correct serial number value.
 	 */
-	void testSerialNumber_BV_50() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_50_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+	void testSerialNumber_BV_50_01() throws TokenManagementException {
+		String path = "src/resources/01/serialNumber_BV_50_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg3523"));
 	}
 
@@ -274,10 +274,10 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
-	void testSerialNumber_BV_51() {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_51_01.json";
+	void testSerialNumber_BV_51_01() {
+		String path = "src/resources/01/serialNumber_BV_51_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
 
@@ -287,9 +287,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The serial number is valid and equal to the given one. No exception is thrown.
 	 */
-	void testSerialNumber_BV_49() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_49_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+	void testSerialNumber_BV_49_01() throws TokenManagementException {
+		String path = "src/resources/01/serialNumber_BV_49_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getSerialNumber().equals("wf4sdrf4q4wef134sdfbdzxbmeqm8t2hh45htehef2gerg352"));
 
 	}
@@ -300,10 +300,10 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: A exception thrown indication that the serial number is invalid.
 	 */
-	void testSerialNumber_BV_0() {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_0_01.json";
+	void testSerialNumber_BV_0_01() {
+		String path = "src/resources/01/serialNumber_BV_0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(serialNumberPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
 	}
 
@@ -313,9 +313,9 @@ public class AppTest {
 	 * Testing technique: Boundary Values Analysis
 	 * Expected value: The serial number is valid and is equal to the given one. No exception is thrown.
 	 */
-	void testSerialNumber_BV_1() throws TokenManagementException {
-		String serialNumberPath = "src/resources/01/serialNumber_BV_1_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(serialNumberPath)
+	void testSerialNumber_BV_1_01() throws TokenManagementException {
+		String path = "src/resources/01/serialNumber_BV_1_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getSerialNumber().equals("a"));
 
 	}
@@ -329,9 +329,9 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: No thrown exceptions and correct mac address value.
 	 */
-	void testMacAddress_EC_Valid() throws TokenManagementException {
-		String macAddressPath = "src/resources/01/macAddress_EC_Valid_01.json";
-		assertTrue(tokenManager.TokenRequestGeneration(macAddressPath)
+	void testMacAddress_EC_Valid_01() throws TokenManagementException {
+		String path = "src/resources/01/macAddress_EC_Valid_01.json";
+		assertTrue(tokenManager.TokenRequestGeneration(path)
 				.getMacAddress().equals("3D:F2:C9:A6:B3:4F"));
 	}
 
@@ -341,10 +341,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: A exception thrown indication that the mac address is invalid.
 	 */
-	void testMacAddress_EC_Invalid() {
-		String macAddressPath = "src/resources/01/macAddress_EC_Invalid_01.json";
+	void testMacAddress_EC_Invalid_01() {
+		String path = "src/resources/01/macAddress_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(macAddressPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.macAddressInvalidFormat);
 	}
 
@@ -362,11 +362,11 @@ public class AppTest {
 	* Testing technique: Equivalence Classes Analysis
 	* Expected value: An exception thrown with a the specified message for detecting an extra tag
 	*/
-	void testExtraJsonTag() {
+	void testExtraJsonTag_01() {
 
-		String extraTagPath = "src/resources/01/extraTag_01.json";
+		String path = "src/resources/01/extraTag_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(extraTagPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.jsonExtraTagError);
 
 	}
@@ -377,10 +377,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: An exception thrown with a the specified message for detecting an empty file
 	 */
-	void testEmptyFile() {
-		String emptyFilePath = "src/resources/01/emptyFile_01.json";
+	void testEmptyFile_01() {
+		String path = "src/resources/01/emptyFile_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(emptyFilePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
 	}
 
@@ -392,10 +392,10 @@ public class AppTest {
 	 * Note: This is different than an empty file: in this case, the file has an empty json structure.
 	 * It should return the same error as the previous test.
 	 */
-	void testEmptyJson() {
-		String emptyJsonPath = "src/resources/01/emptyJson_01.json";
+	void testEmptyJson_01() {
+		String path = "src/resources/01/emptyJson_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(emptyJsonPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
 	}
 
@@ -405,11 +405,11 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: An exception thrown with a the specified message for detecting a malformed json
 	 */
-	void testMalformedJsonSyntax() {
+	void testMalformedJsonSyntax_01() {
 
-		String malformedJsonPath = "src/resources/01/malformedJson_01.json";
+		String path = "src/resources/01/malformedJson_01.json";
 	 	TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(malformedJsonPath));
+				() -> tokenManager.TokenRequestGeneration(path));
 	 	assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
 	}
@@ -420,10 +420,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: An exception thrown with a the specified message for a invalid path
 	 */
-	void testWrongFilePath() {
-		String wrongFilePath = "src/resources/01/doesNotExist_01.json";
+	void testWrongFilePath_01() {
+		String path = "src/resources/01/doesNotExist_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(wrongFilePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.inputFileNotFoundError);
 	}
 
@@ -433,11 +433,11 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: An exception thrown with a the specified message for missing tag error
 	 */
-	void testMissingTag(){
+	void testMissingTag_01(){
 
-		String missingDeviceNamePath = "src/resources/01/missingTag_01.json";
+		String path = "src/resources/01/missingTag_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(missingDeviceNamePath));
+				() -> tokenManager.TokenRequestGeneration(path));
 		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
 
 	}
@@ -448,10 +448,10 @@ public class AppTest {
 	 * Testing technique: Equivalence Classes Analysis
 	 * Expected value: An exception thrown with a the specified message for missing tag error
 	 */
-	void testMD5() throws TokenManagementException {
+	void testMD5_01() throws TokenManagementException {
 
-		String checkMD5 = "src/resources/01/CP-RF1-01_01.json";
-		request = tokenManager.TokenRequestGeneration(checkMD5);
+		String path = "src/resources/01/CP-RF1-01_01.json";
+		request = tokenManager.TokenRequestGeneration(path);
 
 		MessageDigest md;
 		try {
@@ -479,7 +479,496 @@ public class AppTest {
 
 	}
 
-		
+
+
+
+	/**
+	 *   .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.
+	 * :::::.\::::::::.\:::::::::\::::PART 2 TESTS:::\::::::::.\::::::::.\::::::::.\
+	 * '      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `
+	 */
+
+	//Standard
+	/** Test case: TM-RF-02-<id> - <Name>
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: <Regular Value | Omission | Repetition | Modification>
+	 * Testing technique: Syntax Analysis
+	 * Expected value: <Description>
+	 */
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test many days in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateManyDayCharacters_02(){
+
+		String path = "src/resources/02/dateManyDayCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test many hours in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateManyHourCharacters_02(){
+
+		String path = "src/resources/02/dateManyHourCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test many minutes in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateManyMinuteCharacters_02(){
+
+		String path = "src/resources/02/dateManyMinuteCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test many month numbers in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateManyMonthCharacters_02(){
+
+		String path = "src/resources/02/dateManyMonthCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test many second numbers in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateManySecondCharacters_02(){
+
+		String path = "src/resources/02/dateManySecondCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test Missing days in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateMissingDayCharacters_02(){
+
+		String path = "src/resources/02/dateMissingDayCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test Missing hours in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateMissingHourCharacters_02(){
+
+		String path = "src/resources/02/dateMissingHourCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test Missing minutes in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateMissingMinuteCharacters_02(){
+
+		String path = "src/resources/02/dateMissingMinuteCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test Missing month numbers in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateMissingMonthCharacters_02(){
+
+		String path = "src/resources/02/dateMissingMonthCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test Missing second numbers in date part
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that an invalid date was detected.
+	 */
+	void testDateMissingSecondCharacters_02(){
+
+		String path = "src/resources/02/dateMissingSecondCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test json that has no tags on it
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that no information in in the file.
+	 */
+	void testEmptyJSON_02(){
+
+		String path = "src/resources/02/emptyFILE_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a empty file
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that no information in in the file.
+	 */
+	void testEmptyFile_02(){
+
+		String path = "src/resources/02/emptyFILE_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with invalid days
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidDay_02(){
+
+		String path = "src/resources/02/errorDateInvalidDay_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing day bar
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidDayBar_02(){
+
+		String path = "src/resources/02/errorDateInvalidDayBar_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with an invalid hour value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidHour_02(){
+
+		String path = "src/resources/02/errorDateInvalidHour_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with an invalid minute value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidMinute_02(){
+
+		String path = "src/resources/02/errorDateInvalidMinute_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with an invalid month value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidMonth_02(){
+
+		String path = "src/resources/02/errorDateInvalidMonth_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with an invalid second value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidSecond_02(){
+
+		String path = "src/resources/02/errorDateInvalidSecond_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test email with an invalid domain value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void errorIncorrectWrittenDomain_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenDomain_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test email with an invalid first part before @ value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testErrorIncorrectWrittenEmail_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenEmail_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a badly written token.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorIncorrectWrittenToken_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenToken_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a token request with missing characters.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorMissingTokenCharacters_02(){
+
+		String path = "src/resources/02/errorMissingTokenCharacters_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with a too large domain.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testErrorTooLargeEmail_02(){
+
+		String path = "src/resources/02/errorTooLargeEmail_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a token with a too many characters.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorTooLargeToken_02(){
+
+		String path = "src/resources/02/errorTooLargeToken_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with a repeated '@' symbol.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testExtraAt_02(){
+
+		String path = "src/resources/02/extra@_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraComma_02(){
+
+		String path = "src/resources/02/extraComma_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraDayEqual_02(){
+
+		String path = "src/resources/02/extraDayEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
 
 
 
@@ -488,21 +977,7 @@ public class AppTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	///// SECTION 1 PART 2 TESTS
+	///// OLD ONES
 	
 	void testJsonCorrectReadSHA256_02() throws TokenManagementException{
 	

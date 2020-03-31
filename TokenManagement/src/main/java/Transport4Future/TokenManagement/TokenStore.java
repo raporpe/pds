@@ -104,6 +104,7 @@ public class TokenStore {
 			this.tokenList = new ArrayList<>();
 
 			//Load the retrieved contents in
+			//TODO: CHANGE THIS TO A LOOP
 			this.tokenList.addAll(Arrays.asList(loadedTokens));
 		} catch (Exception e) {
 			this.tokenList = new ArrayList<>();

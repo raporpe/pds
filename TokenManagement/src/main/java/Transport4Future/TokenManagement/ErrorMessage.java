@@ -37,6 +37,8 @@ public class ErrorMessage {
 
     // Part 2
     public static String invalidDateFormat = "The date is not in the correct format";
+    public static String invalidUnixTime = "The unix time is not in the correct format";
+    public static String invalidTokenRequest = "The token request is not in a valid format";
 
 
 
