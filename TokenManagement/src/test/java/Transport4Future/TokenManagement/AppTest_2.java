@@ -828,9 +828,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is not in the valid format.
      */
-    void incorrectExtension(){
+    void incorrectTLD(){
 
-        String path = "src/resources/02/incorrectExtension.json";
+        String path = "src/resources/02/incorrectTLD.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1077,9 +1077,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void testNoExtension(){
+    void testNoTLD(){
 
-        String path = "src/resources/02/noExtension.json";
+        String path = "src/resources/02/noTLD.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
