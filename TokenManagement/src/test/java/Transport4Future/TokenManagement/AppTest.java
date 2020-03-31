@@ -954,19 +954,19 @@ public class AppTest {
 
 
 	@Test
-	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	/** Test case: TM-RF-02-I1 - Test a date with a extra day separator.
 	 * Derivation Tree Node: <Value/s>
 	 * Type of case: Repetition
 	 * Testing technique: Syntax Analysis
-	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
 	 */
-	void testExtraDayEqual_02(){
+	void testExtraDayBar_02(){
 
-		String path = "src/resources/02/extraDayEqual_02.json";
+		String path = "src/resources/02/extraDayBar_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
 
-		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
 	}
 
