@@ -378,7 +378,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/emptyFile_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());.emptyFileError);
+		assertEquals(ErrorMessage.emptyFileError, e.getMessage());
 	}
 
 	@Test
