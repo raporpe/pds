@@ -121,7 +121,7 @@ public class TokenManager {
 		} catch (FileNotFoundException e) {
 			throw new TokenManagementException(ErrorMessage.inputFileNotFoundError);
 		}
-		
+
 		String line;
 		try {
 			while ((line = reader.readLine()) != null) {
@@ -129,6 +129,11 @@ public class TokenManager {
 			}
 		} catch (IOException e) {
 			throw new TokenManagementException(ErrorMessage.readFileError);
+		}
+
+		//Check if the file is totally empty
+		if (fileContents == "") {
+			throw new TokenManagementException(ErrorMessage.emptyFileError);
 		}
 		
 		try {
@@ -145,7 +150,12 @@ public class TokenManager {
 			
 			throw new TokenManagementException(ErrorMessage.jsonParsingError);
 		}
-		
+
+		//Check for empty json
+		if(jsonLicense.size() == 0){
+			throw new TokenManagementException(ErrorMessage.emptyFileError);
+		}
+
 		if(jsonLicense.size() > 3) {
 			throw new TokenManagementException(ErrorMessage.jsonExtraTagError);
 		}
@@ -162,10 +172,13 @@ public class TokenManager {
 		} catch(Exception e) {
 			throw new TokenManagementException(ErrorMessage.jsonTagMismatchError);
 		}
-		if (!requestDate.matches("\\d{2}/\\d{2}/\\d{4}")) {
+
+		//Check external form
+		if (!requestDate.matches("^[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}$")) {
 			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
 		}
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:MM:SS");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		dateFormat.setLenient(false);
 
 		long unixDate;
 		try {

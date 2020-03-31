@@ -723,9 +723,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testHasExtraIncorrectComma(){
+    void testExtraCommaAtEnd(){
 
-        String path = "src/resources/02/hasExtraIncorrectComma.json";
+        String path = "src/resources/02/extraCommaAtEnd.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1295,7 +1295,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
