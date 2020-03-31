@@ -44,7 +44,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -62,7 +62,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -79,7 +79,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -96,7 +96,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -114,7 +114,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -132,7 +132,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -150,7 +150,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -167,7 +167,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -184,7 +184,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -202,7 +202,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -220,7 +220,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+        assertEquals(ErrorMessage.emptyFileError, e.getMessage());
 
     }
 
@@ -237,7 +237,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+        assertEquals(ErrorMessage.emptyFileError, e.getMessage());
 
     }
 
@@ -255,7 +255,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -272,7 +272,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -289,7 +289,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -307,7 +307,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -324,7 +324,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -342,7 +342,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -360,7 +360,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -378,7 +378,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -396,7 +396,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+        assertEquals(ErrorMessage.invalidTokenRequest, e.getMessage());
 
     }
 
@@ -414,7 +414,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+        assertEquals(ErrorMessage.invalidTokenRequest, e.getMessage());
 
     }
 
@@ -431,7 +431,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -449,7 +449,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+        assertEquals(ErrorMessage.invalidTokenRequest, e.getMessage());
 
     }
 
@@ -466,7 +466,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -483,7 +483,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -501,7 +501,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -519,7 +519,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -537,7 +537,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -555,7 +555,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -573,7 +573,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -590,7 +590,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+        assertEquals( ErrorMessage.jsonTagMismatchError, e.getMessage());
 
     }
 
@@ -608,7 +608,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -626,7 +626,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -643,7 +643,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+        assertEquals(ErrorMessage.invalidTokenRequest, e.getMessage());
 
     }
 
@@ -660,7 +660,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -677,7 +677,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -695,7 +695,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -712,7 +712,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -729,7 +729,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -748,7 +748,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -766,7 +766,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -783,7 +783,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+        assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());
 
     }
 
@@ -800,7 +800,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -817,7 +817,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+        assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());
 
     }
 
@@ -834,7 +834,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -852,7 +852,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -870,7 +870,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -887,7 +887,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -905,7 +905,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+        assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());
 
     }
 
@@ -923,7 +923,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -940,7 +940,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -958,7 +958,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -975,7 +975,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -993,7 +993,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -1011,7 +1011,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -1029,7 +1029,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -1047,7 +1047,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1065,7 +1065,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1083,7 +1083,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+        assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 
     }
 
@@ -1101,7 +1101,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1119,7 +1119,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -1137,7 +1137,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1155,7 +1155,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -1173,7 +1173,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -1190,7 +1190,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+        assertEquals(ErrorMessage.invalidDateFormat, e.getMessage());
 
     }
 
@@ -1208,7 +1208,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+        assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());
 
     }
 
@@ -1225,7 +1225,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1242,7 +1242,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+        assertEquals(ErrorMessage.invalidTokenRequest, e.getMessage());
 
     }
 
@@ -1259,7 +1259,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1277,7 +1277,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 
@@ -1295,7 +1295,7 @@ public class AppTest_2 {
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
-        assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+        assertEquals(ErrorMessage.jsonParsingError, e.getMessage());
 
     }
 

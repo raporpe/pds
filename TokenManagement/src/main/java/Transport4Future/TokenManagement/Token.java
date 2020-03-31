@@ -36,7 +36,7 @@ public class Token {
 		}
 
 		// Using unix time
-		if (requestDate > 0 && requestDate <= 2147483647) {
+		if (requestDate > 0) {
 			this.notificationEmail = notificationEmail;
 		} else {
 			throw new TokenManagementException(ErrorMessage.invalidUnixTime);

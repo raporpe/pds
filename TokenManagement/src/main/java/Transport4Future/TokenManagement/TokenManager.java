@@ -162,9 +162,11 @@ public class TokenManager {
 		} catch(Exception e) {
 			throw new TokenManagementException(ErrorMessage.jsonTagMismatchError);
 		}
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy HH:MM:SS");  
-		
+		if (!requestDate.matches("\\d{2}/\\d{2}/\\d{4}")) {
+			throw new TokenManagementException(ErrorMessage.invalidDateFormat);
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:MM:SS");
+
 		long unixDate;
 		try {
 			unixDate = dateFormat.parse(requestDate).getTime();
