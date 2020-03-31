@@ -38,9 +38,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateManyDayCharacters_02(){
+    void testDateManyDayCharacters(){
 
-        String path = "src/resources/02/dateManyDayCharacters_02.json";
+        String path = "src/resources/02/dateManyDayCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -56,9 +56,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateManyHourCharacters_02(){
+    void testDateManyHourCharacters(){
 
-        String path = "src/resources/02/dateManyHourCharacters_02.json";
+        String path = "src/resources/02/dateManyHourCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -73,9 +73,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateManyMinuteCharacters_02(){
+    void testDateManyMinuteCharacters(){
 
-        String path = "src/resources/02/dateManyMinuteCharacters_02.json";
+        String path = "src/resources/02/dateManyMinuteCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -90,9 +90,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateManyMonthCharacters_02(){
+    void testDateManyMonthCharacters(){
 
-        String path = "src/resources/02/dateManyMonthCharacters_02.json";
+        String path = "src/resources/02/dateManyMonthCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -108,9 +108,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateManySecondCharacters_02(){
+    void testDateManySecondCharacters(){
 
-        String path = "src/resources/02/dateManySecondCharacters_02.json";
+        String path = "src/resources/02/dateManySecondCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -126,9 +126,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateMissingDayCharacters_02(){
+    void testDateMissingDayCharacters(){
 
-        String path = "src/resources/02/dateMissingDayCharacters_02.json";
+        String path = "src/resources/02/dateMissingDayCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -144,9 +144,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateMissingHourCharacters_02(){
+    void testDateMissingHourCharacters(){
 
-        String path = "src/resources/02/dateMissingHourCharacters_02.json";
+        String path = "src/resources/02/dateMissingHourCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -161,9 +161,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateMissingMinuteCharacters_02(){
+    void testDateMissingMinuteCharacters(){
 
-        String path = "src/resources/02/dateMissingMinuteCharacters_02.json";
+        String path = "src/resources/02/dateMissingMinuteCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -178,9 +178,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateMissingMonthCharacters_02(){
+    void testDateMissingMonthCharacters(){
 
-        String path = "src/resources/02/dateMissingMonthCharacters_02.json";
+        String path = "src/resources/02/dateMissingMonthCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -196,9 +196,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that an invalid date was detected.
      */
-    void testDateMissingSecondCharacters_02(){
+    void testDateMissingSecondCharacters(){
 
-        String path = "src/resources/02/dateMissingSecondCharacters_02.json";
+        String path = "src/resources/02/dateMissingSecondCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -214,9 +214,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that no information in in the file.
      */
-    void testEmptyJSON_02(){
+    void testEmptyJSON(){
 
-        String path = "src/resources/02/emptyFILE_02.json";
+        String path = "src/resources/02/emptyFILE.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -231,9 +231,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that no information in in the file.
      */
-    void testEmptyFile_02(){
+    void testEmptyFile(){
 
-        String path = "src/resources/02/emptyFILE_02.json";
+        String path = "src/resources/02/emptyFILE.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -249,9 +249,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidDay_02(){
+    void testErrorDateInvalidDay(){
 
-        String path = "src/resources/02/errorDateInvalidDay_02.json";
+        String path = "src/resources/02/errorDateInvalidDay.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -266,9 +266,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidDayBar_02(){
+    void testErrorDateInvalidDayBar(){
 
-        String path = "src/resources/02/errorDateInvalidDayBar_02.json";
+        String path = "src/resources/02/errorDateInvalidDayBar.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -283,9 +283,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidHour_02(){
+    void testErrorDateInvalidHour(){
 
-        String path = "src/resources/02/errorDateInvalidHour_02.json";
+        String path = "src/resources/02/errorDateInvalidHour.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -301,9 +301,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidMinute_02(){
+    void testErrorDateInvalidMinute(){
 
-        String path = "src/resources/02/errorDateInvalidMinute_02.json";
+        String path = "src/resources/02/errorDateInvalidMinute.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -318,9 +318,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidMonth_02(){
+    void testErrorDateInvalidMonth(){
 
-        String path = "src/resources/02/errorDateInvalidMonth_02.json";
+        String path = "src/resources/02/errorDateInvalidMonth.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -336,9 +336,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testErrorDateInvalidSecond_02(){
+    void testErrorDateInvalidSecond(){
 
-        String path = "src/resources/02/errorDateInvalidSecond_02.json";
+        String path = "src/resources/02/errorDateInvalidSecond.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -354,9 +354,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the email is not in a valid format.
      */
-    void testErrorIncorrectWrittenDomain_02(){
+    void testErrorIncorrectWrittenDomain(){
 
-        String path = "src/resources/02/errorIncorrectWrittenDomain_02.json";
+        String path = "src/resources/02/errorIncorrectWrittenDomain.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -372,9 +372,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the email is not in a valid format.
      */
-    void testErrorIncorrectWrittenEmail_02(){
+    void testErrorIncorrectWrittenEmail(){
 
-        String path = "src/resources/02/errorIncorrectWrittenEmail_02.json";
+        String path = "src/resources/02/errorIncorrectWrittenEmail.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -390,9 +390,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the token is not in a valid format.
      */
-    void testErrorIncorrectWrittenToken_02(){
+    void testErrorIncorrectWrittenToken(){
 
-        String path = "src/resources/02/errorIncorrectWrittenToken_02.json";
+        String path = "src/resources/02/errorIncorrectWrittenToken.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -408,9 +408,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the token is not in a valid format.
      */
-    void testErrorMissingTokenCharacters_02(){
+    void testErrorMissingTokenCharacters(){
 
-        String path = "src/resources/02/errorMissingTokenCharacters_02.json";
+        String path = "src/resources/02/errorMissingTokenCharacters.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -425,9 +425,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the email is not in a valid format.
      */
-    void testErrorTooLargeEmail_02(){
+    void testErrorTooLargeEmail(){
 
-        String path = "src/resources/02/errorTooLargeEmail_02.json";
+        String path = "src/resources/02/errorTooLargeEmail.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -443,9 +443,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the token is not in a valid format.
      */
-    void testErrorTooLargeToken_02(){
+    void testErrorTooLargeToken(){
 
-        String path = "src/resources/02/errorTooLargeToken_02.json";
+        String path = "src/resources/02/errorTooLargeToken.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -460,9 +460,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the email is not in a valid format.
      */
-    void testExtraAt_02(){
+    void testExtraAt(){
 
-        String path = "src/resources/02/extra@_02.json";
+        String path = "src/resources/02/extra@.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -477,9 +477,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraComma_02(){
+    void testExtraComma(){
 
-        String path = "src/resources/02/extraComma_02.json";
+        String path = "src/resources/02/extraComma.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -495,9 +495,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testExtraDayBar_02(){
+    void testExtraDayBar(){
 
-        String path = "src/resources/02/extraDayBar_02.json";
+        String path = "src/resources/02/extraDayBar.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -513,9 +513,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraEqual_02(){
+    void testExtraEqual(){
 
-        String path = "src/resources/02/extraEqual_02.json";
+        String path = "src/resources/02/extraEqual.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -531,9 +531,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraFirstBrace_02(){
+    void testExtraFirstBrace(){
 
-        String path = "src/resources/02/extraFirstBrace_02.json";
+        String path = "src/resources/02/extraFirstBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -549,9 +549,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is not in a valid format.
      */
-    void testExtraHourEqual_02(){
+    void testExtraHourEqual(){
 
-        String path = "src/resources/02/extraHourEqual_02.json";
+        String path = "src/resources/02/extraHourEqual.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -567,9 +567,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraLastBrace_02(){
+    void testExtraLastBrace(){
 
-        String path = "src/resources/02/extraLastBrace_02.json";
+        String path = "src/resources/02/extraLastBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -584,9 +584,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testDuplicatedInnerTagName_02(){
+    void testDuplicatedInnerTagName(){
 
-        String path = "src/resources/02/duplicatedInnerTagName_02.json";
+        String path = "src/resources/02/duplicatedInnerTagName.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -602,9 +602,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraTagLeftQuotes_02(){
+    void testExtraTagLeftQuotes(){
 
-        String path = "src/resources/02/extraTagLeftQuotes_02.json";
+        String path = "src/resources/02/extraTagLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -620,9 +620,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraTagRightQuotes_02(){
+    void testExtraTagRightQuotes(){
 
-        String path = "src/resources/02/extraTagRightQuotes_02.json";
+        String path = "src/resources/02/extraTagRightQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -637,9 +637,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraValue_02(){
+    void testExtraValue(){
 
-        String path = "src/resources/02/extraValue_02.json";
+        String path = "src/resources/02/extraValue.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -654,9 +654,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraValueLeftQuotes_02(){
+    void testExtraValueLeftQuotes(){
 
-        String path = "src/resources/02/extraValueLeftQuotes_02.json";
+        String path = "src/resources/02/extraValueLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -671,9 +671,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testExtraValueRightQuotes_02(){
+    void testExtraValueRightQuotes(){
 
-        String path = "src/resources/02/extraValueRightQuotes_02.json";
+        String path = "src/resources/02/extraValueRightQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -689,9 +689,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testHasComma_02(){
+    void testHasComma(){
 
-        String path = "src/resources/02/hasComma_02.json";
+        String path = "src/resources/02/hasComma.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -706,9 +706,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testHasEqual_02(){
+    void testHasEqual(){
 
-        String path = "src/resources/02/hasEqual_02.json";
+        String path = "src/resources/02/hasEqual.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -723,9 +723,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is not in a valid format.
      */
-    void testHasExtraIncorrectComma_02(){
+    void testHasExtraIncorrectComma(){
 
-        String path = "src/resources/02/hasExtraIncorrectComma_02.json";
+        String path = "src/resources/02/hasExtraIncorrectComma.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -742,9 +742,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date in not in a valid format.
      */
-    void testIncorrectDateDayBar_02(){
+    void testIncorrectDateDayBar(){
 
-        String path = "src/resources/02/incorrectDateDayBar_02.json";
+        String path = "src/resources/02/incorrectDateDayBar.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -760,9 +760,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date in not in a valid format.
      */
-    void testIncorrectDateHourEqual_02(){
+    void testIncorrectDateHourEqual(){
 
-        String path = "src/resources/02/incorrectDateHourEqual_02.json";
+        String path = "src/resources/02/incorrectDateHourEqual.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -777,9 +777,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json tags do not match.
      */
-    void testIncorrectDateTag_02(){
+    void testIncorrectDateTag(){
 
-        String path = "src/resources/02/incorrectDateTag_02.json";
+        String path = "src/resources/02/incorrectDateTag.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -794,9 +794,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the email is not in the valid format.
      */
-    void testIncorrectDot_02(){
+    void testIncorrectDot(){
 
-        String path = "src/resources/02/incorrectDot_02.json";
+        String path = "src/resources/02/incorrectDot.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -811,9 +811,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating a json tag mismatch.
      */
-    void testIncorrectEmailTag_02(){
+    void testIncorrectEmailTag(){
 
-        String path = "src/resources/02/incorrectEmailTag_02.json";
+        String path = "src/resources/02/incorrectEmailTag.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -828,9 +828,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is not in the valid format.
      */
-    void incorrectExtension_02(){
+    void incorrectExtension(){
 
-        String path = "src/resources/02/incorrectExtension_02.json";
+        String path = "src/resources/02/incorrectExtension.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -846,9 +846,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is not in the valid format.
      */
-    void testIncorrectFirstBrace_02(){
+    void testIncorrectFirstBrace(){
 
-        String path = "src/resources/02/incorrectFirstBrace_02.json";
+        String path = "src/resources/02/incorrectFirstBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -864,9 +864,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is not in the valid format.
      */
-    void testIncorrectLastBrace_02(){
+    void testIncorrectLastBrace(){
 
-        String path = "src/resources/02/incorrectLastBrace_02.json";
+        String path = "src/resources/02/incorrectLastBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -881,9 +881,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is not in the valid format.
      */
-    void testIncorrectTagLeftQuotes_02(){
+    void testIncorrectTagLeftQuotes(){
 
-        String path = "src/resources/02/incorrectTagLeftQuotes_02.json";
+        String path = "src/resources/02/incorrectTagLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -899,9 +899,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating there is a json tag mismatch.
      */
-    void testIncorrectTokenTag_02(){
+    void testIncorrectTokenTag(){
 
-        String path = "src/resources/02/incorrectTokenTag_02.json";
+        String path = "src/resources/02/incorrectTokenTag.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -917,9 +917,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testIncorrectValueLeftQuotes_02(){
+    void testIncorrectValueLeftQuotes(){
 
-        String path = "src/resources/02/incorrectValueLeftQuotes_02.json";
+        String path = "src/resources/02/incorrectValueLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -934,9 +934,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void noAt_02(){
+    void noAt(){
 
-        String path = "src/resources/02/no@_02.json";
+        String path = "src/resources/02/no@.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -952,9 +952,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testNoComma_02(){
+    void testNoComma(){
 
-        String path = "src/resources/02/noComma_02.json";
+        String path = "src/resources/02/noComma.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -969,9 +969,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the date is invalid.
      */
-    void testNoDay_02(){
+    void testNoDay(){
 
-        String path = "src/resources/02/noDay_02.json";
+        String path = "src/resources/02/noDay.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -987,9 +987,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void testNoDomain_02(){
+    void testNoDomain(){
 
-        String path = "src/resources/02/noDomain_02.json";
+        String path = "src/resources/02/noDomain.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1005,9 +1005,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void testNoEmailBody_02(){
+    void testNoEmailBody(){
 
-        String path = "src/resources/02/noEmailBody_02.json";
+        String path = "src/resources/02/noEmailBody.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1023,9 +1023,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void testNoEmailDot_02(){
+    void testNoEmailDot(){
 
-        String path = "src/resources/02/noEmailDot_02.json";
+        String path = "src/resources/02/noEmailDot.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1041,9 +1041,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testNoEndingTagRightQuotes_02(){
+    void testNoEndingTagRightQuotes(){
 
-        String path = "src/resources/02/noEndingTagRightQuotes_02.json";
+        String path = "src/resources/02/noEndingTagRightQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1059,9 +1059,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testNoEqual_02(){
+    void testNoEqual(){
 
-        String path = "src/resources/02/noEqual_02.json";
+        String path = "src/resources/02/noEqual.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1077,9 +1077,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the email is invalid.
      */
-    void testNoExtension_02(){
+    void testNoExtension(){
 
-        String path = "src/resources/02/noExtension_02.json";
+        String path = "src/resources/02/noExtension.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1095,9 +1095,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testNoFirstBrace_02(){
+    void testNoFirstBrace(){
 
-        String path = "src/resources/02/noFirstBrace_02.json";
+        String path = "src/resources/02/noFirstBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1113,9 +1113,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the date is invalid.
      */
-    void testNoHour_02(){
+    void testNoHour(){
 
-        String path = "src/resources/02/noHour_02.json";
+        String path = "src/resources/02/noHour.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1131,9 +1131,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the json is invalid.
      */
-    void testNoLastBrace_02(){
+    void testNoLastBrace(){
 
-        String path = "src/resources/02/noLastBrace_02.json";
+        String path = "src/resources/02/noLastBrace.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1149,9 +1149,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the date is invalid.
      */
-    void testNoMinute_02(){
+    void testNoMinute(){
 
-        String path = "src/resources/02/noMinute_02.json";
+        String path = "src/resources/02/noMinute.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1167,9 +1167,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the date is invalid.
      */
-    void testNoMonth_02(){
+    void testNoMonth(){
 
-        String path = "src/resources/02/noMonth_02.json";
+        String path = "src/resources/02/noMonth.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1184,9 +1184,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating the date is invalid.
      */
-    void testNoSecond_02(){
+    void testNoSecond(){
 
-        String path = "src/resources/02/noSecond_02.json";
+        String path = "src/resources/02/noSecond.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1202,9 +1202,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating a json tag mismatch
      */
-    void testNoTag_02(){
+    void testNoTag(){
 
-        String path = "src/resources/02/noTag_02.json";
+        String path = "src/resources/02/noTag.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1219,9 +1219,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is invalid
      */
-    void testNoTagLeftQuotes_02(){
+    void testNoTagLeftQuotes(){
 
-        String path = "src/resources/02/noTagLeftQuotes_02.json";
+        String path = "src/resources/02/noTagLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1236,9 +1236,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the token request is invalid
      */
-    void testNoValue_02(){
+    void testNoValue(){
 
-        String path = "src/resources/02/noValue_02.json";
+        String path = "src/resources/02/noValue.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1253,9 +1253,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is invalid
      */
-    void testNoValueLeftQuotes_02(){
+    void testNoValueLeftQuotes(){
 
-        String path = "src/resources/02/noValueLeftQuotes_02.json";
+        String path = "src/resources/02/noValueLeftQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1271,9 +1271,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the json is invalid
      */
-    void testNoValueRightQuotes_02(){
+    void testNoValueRightQuotes(){
 
-        String path = "src/resources/02/noValueRightQuotes_02.json";
+        String path = "src/resources/02/noValueRightQuotes.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1289,9 +1289,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: Exception thrown stating that the date is invalid
      */
-    void testNoYear_02(){
+    void testNoYear(){
 
-        String path = "src/resources/02/noYear_02.json";
+        String path = "src/resources/02/noYear.json";
         TokenManagementException e =  assertThrows(TokenManagementException.class,
                 () -> tokenManager.RequestToken(path));
 
@@ -1307,9 +1307,9 @@ public class AppTest_2 {
      * Testing technique: Syntax Analysis
      * Expected value: The operation work without exceptions.
      */
-    void validCase_02(){
+    void validCase(){
 
-        String path = "src/resources/02/validCase_02.json";
+        String path = "src/resources/02/validCase.json";
         String result;
         try{
             result = tokenManager.RequestToken(path);
