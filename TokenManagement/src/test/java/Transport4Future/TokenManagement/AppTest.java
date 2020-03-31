@@ -794,6 +794,77 @@ public class AppTest {
 	}
 
 
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with an invalid second value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is not in a valid format.
+	 */
+	void testErrorDateInvalidSecond_02(){
+
+		String path = "src/resources/02/errorDateInvalidSecond_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test email with an invalid domain value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void errorIncorrectWrittenDomain_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenDomain_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test email with an invalid first part before @ value
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in a valid format.
+	 */
+	void testErrorIncorrectWrittenEmail_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenEmail_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a badly written token.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token is not in a valid format.
+	 */
+	void testErrorIncorrectWrittenToken_02(){
+
+		String path = "src/resources/02/errorIncorrectWrittenToken_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.TokenRequestGeneration(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
 
 
 
