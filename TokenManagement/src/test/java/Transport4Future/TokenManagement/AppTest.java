@@ -816,7 +816,7 @@ public class AppTest {
 	 * Testing technique: Syntax Analysis
 	 * Expected value: Exception thrown stating that the email is not in a valid format.
 	 */
-	void errorIncorrectWrittenDomain_02(){
+	void testErrorIncorrectWrittenDomain_02(){
 
 		String path = "src/resources/02/errorIncorrectWrittenDomain_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
@@ -1776,6 +1776,7 @@ public class AppTest {
 		try{
 			result = tokenManager.RequestToken(path);
 		} catch (Exception e){
+			e.printStackTrace();
 			fail();
 		}
 

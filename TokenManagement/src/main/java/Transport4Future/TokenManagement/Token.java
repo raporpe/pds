@@ -22,7 +22,7 @@ public class Token {
 
 	public Token(String tokenRequest, String notificationEmail, long requestDate) throws TokenManagementException {
 
-		if (tokenRequest.matches("^([A-F0-9]{64})|([a-f0-9]{64})$")) {
+		if (tokenRequest.matches("^([A-F0-9]{32})|([a-f0-9]{32})$")) {
 			this.tokenRequest = tokenRequest;
 		} else {
 			throw new TokenManagementException(ErrorMessage.invalidTokenRequest);
