@@ -103,9 +103,12 @@ public class TokenStore {
 			Token[] loadedTokens = gson.fromJson(jsonReader, Token[].class);
 			this.tokenList = new ArrayList<>();
 
-			//Load the retrieved contents in
-			//TODO: CHANGE THIS TO A LOOP
-			this.tokenList.addAll(Arrays.asList(loadedTokens));
+			//Load the retrieved contents in the linked list
+			this.tokenList = new ArrayList<>();
+			for(Token token: loadedTokens) {
+				this.tokenList.add(token);
+			}
+
 		} catch (Exception e) {
 			this.tokenList = new ArrayList<>();
 			throw new TokenManagementException(ErrorMessage.readStoreFileError);
