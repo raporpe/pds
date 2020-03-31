@@ -18,9 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 import java.security.NoSuchAlgorithmException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Base64;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -438,7 +435,7 @@ public class AppTest {
 		String path = "src/resources/01/missingTag_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
 
 	}
 
@@ -936,7 +933,7 @@ public class AppTest {
 	}
 
 	@Test
-	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in the last tag.
+	/** Test case: TM-RF-02-I1 - Test a json with a extra comma in a random tag.
 	 * Derivation Tree Node: <Value/s>
 	 * Type of case: Repetition
 	 * Testing technique: Syntax Analysis
@@ -1055,7 +1052,728 @@ public class AppTest {
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.RequestToken(path));
 
-		assertEquals(e.getMessage(), ErrorMessage.jsonMissingTagError);
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where left quotations are duplicated.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraTagLeftQuotes_02(){
+
+		String path = "src/resources/02/extraTagLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where right quotations are duplicated.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraTagRightQuotes_02(){
+
+		String path = "src/resources/02/extraTagRightQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value is duplicated.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraValue_02(){
+
+		String path = "src/resources/02/extraValue_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the left.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraValueLeftQuotes_02(){
+
+		String path = "src/resources/02/extraValueLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testExtraValueRightQuotes_02(){
+
+		String path = "src/resources/02/extraValueRightQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	//amorcito
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testHasComma_02(){
+
+		String path = "src/resources/02/hasComma_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testHasEqual_02(){
+
+		String path = "src/resources/02/hasEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where a tag right value has double quotations on the right.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is not in a valid format.
+	 */
+	void testHasExtraIncorrectComma_02(){
+
+		String path = "src/resources/02/hasExtraIncorrectComma_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	//hasta aqui amorcito
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date where there is a '.' instead of '/' as a separator.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date in not in a valid format.
+	 */
+	void testIncorrectDateDayBar_02(){
+
+		String path = "src/resources/02/incorrectDateDayBar_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date where there is a '.' instead of ':' as a separator for the hour.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date in not in a valid format.
+	 */
+	void testIncorrectDateHourEqual_02(){
+
+		String path = "src/resources/02/incorrectDateHourEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the date tag is incorrectly written.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json tags do not match.
+	 */
+	void testIncorrectDateTag_02(){
+
+		String path = "src/resources/02/incorrectDateTag_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email where the domain separation point is duplicated.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Repetition
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the email is not in the valid format.
+	 */
+	void testIncorrectDot_02(){
+
+		String path = "src/resources/02/incorrectDot_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the email tag name wrongly written.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating a json tag mismatch.
+	 */
+	void testIncorrectEmailTag_02(){
+
+		String path = "src/resources/02/incorrectEmailTag_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email where the domain part has an invalid char.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is not in the valid format.
+	 */
+	void incorrectExtension_02(){
+
+		String path = "src/resources/02/incorrectExtension_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the first brace is '\' instead of '{'.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is not in the valid format.
+	 */
+	void testIncorrectFirstBrace_02(){
+
+		String path = "src/resources/02/incorrectFirstBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the first brace is '/' instead of '}'.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is not in the valid format.
+	 */
+	void testIncorrectLastBrace_02(){
+
+		String path = "src/resources/02/incorrectLastBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the first tag left part left quotes are '/' instead of '"'.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is not in the valid format.
+	 */
+	void testIncorrectTagLeftQuotes_02(){
+
+		String path = "src/resources/02/incorrectTagLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the first tag name is not valid.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating there is a json tag mismatch.
+	 */
+	void testIncorrectTokenTag_02(){
+
+		String path = "src/resources/02/incorrectTokenTag_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json where the value left quotes are replaced by another symbol.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Modification
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testIncorrectValueLeftQuotes_02(){
+
+		String path = "src/resources/02/incorrectValueLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with missing '@'.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is invalid.
+	 */
+	void noAt_02(){
+
+		String path = "src/resources/02/no@_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing comma.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testNoComma_02(){
+
+		String path = "src/resources/02/noComma_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing day.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the date is invalid.
+	 */
+	void testNoDay_02(){
+
+		String path = "src/resources/02/noDay_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with missing domain part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is invalid.
+	 */
+	void testNoDomain_02(){
+
+		String path = "src/resources/02/noDomain_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with missing body part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is invalid.
+	 */
+	void testNoEmailBody_02(){
+
+		String path = "src/resources/02/noEmailBody_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with missing '.' separating domain from tld.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is invalid.
+	 */
+	void testNoEmailDot_02(){
+
+		String path = "src/resources/02/noEmailDot_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing ending quotes in the right part of the tag.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testNoEndingTagRightQuotes_02(){
+
+		String path = "src/resources/02/noEndingTagRightQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing ':' symbol separator.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testNoEqual_02(){
+
+		String path = "src/resources/02/noEqual_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a email with missing top level domain part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the email is invalid.
+	 */
+	void testNoExtension_02(){
+
+		String path = "src/resources/02/noExtension_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing starting brace.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testNoFirstBrace_02(){
+
+		String path = "src/resources/02/noFirstBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing hour.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the date is invalid.
+	 */
+	void testNoHour_02(){
+
+		String path = "src/resources/02/noHour_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing last brace.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the json is invalid.
+	 */
+	void testNoLastBrace_02(){
+
+		String path = "src/resources/02/noLastBrace_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing minutes part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the date is invalid.
+	 */
+	void testNoMinute_02(){
+
+		String path = "src/resources/02/noMinute_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing month part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the date is invalid.
+	 */
+	void testNoMonth_02(){
+
+		String path = "src/resources/02/noMonth_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing second part.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating the date is invalid.
+	 */
+	void testNoSecond_02(){
+
+		String path = "src/resources/02/noSecond_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing tag text content.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating a json tag mismatch
+	 */
+	void testNoTag_02(){
+
+		String path = "src/resources/02/noTag_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing left tag quotes.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is invalid
+	 */
+	void testNoTagLeftQuotes_02(){
+
+		String path = "src/resources/02/noTagLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json whose Token Request value that is empty.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the token request is invalid
+	 */
+	void testNoValue_02(){
+
+		String path = "src/resources/02/noValue_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
+
+	}
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing value left quotes in Token Request.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is invalid
+	 */
+	void testNoValueLeftQuotes_02(){
+
+		String path = "src/resources/02/noValueLeftQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a json with missing value right quotes in Token Request.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the json is invalid
+	 */
+	void testNoValueRightQuotes_02(){
+
+		String path = "src/resources/02/noValueRightQuotes_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a date with missing year.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Omission
+	 * Testing technique: Syntax Analysis
+	 * Expected value: Exception thrown stating that the date is invalid
+	 */
+	void testNoYear_02(){
+
+		String path = "src/resources/02/noYear_02.json";
+		TokenManagementException e =  assertThrows(TokenManagementException.class,
+				() -> tokenManager.RequestToken(path));
+
+		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+
+	}
+
+
+	@Test
+	/** Test case: TM-RF-02-I1 - Test a normal case.
+	 * Derivation Tree Node: <Value/s>
+	 * Type of case: Regular Value
+	 * Testing technique: Syntax Analysis
+	 * Expected value: The gotten values match with the provided values.
+	 */
+	void validCase_02(){
+
+		String path = "src/resources/02/validCase_02.json";
+
+		
 
 	}
 

@@ -13,7 +13,7 @@ public class ErrorMessage {
     // JSON-related read errors
     public static String jsonParsingError = "Error parsing the json file.";
     public static String jsonExtraTagError = "An extra json tag was detected";
-    public static String jsonMissingTagError = "Could not find the json tag ";
+    public static String jsonTagMismatchError = "Could not find the json tag ";
     public static String emptyFileError = "The file is empty";
 
     // File operation errors
