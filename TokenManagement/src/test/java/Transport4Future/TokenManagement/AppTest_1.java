@@ -66,7 +66,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/deviceName_BV21_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
+		assertEquals( ErrorMessage.deviceNameInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -104,7 +104,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/deviceName_BV0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.deviceNameInvalidFormat);
+		assertEquals(ErrorMessage.deviceNameInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -156,7 +156,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/typeOfDevice_EC_Empty_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
+		assertEquals(ErrorMessage.typeDeviceInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -169,7 +169,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/typeOfDevice_EC_Actuators_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.typeDeviceInvalidFormat);
+		assertEquals(ErrorMessage.typeDeviceInvalidFormat, e.getMessage());
 	}
 
 	//Driver version
@@ -196,7 +196,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/driverVersion_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.driverVersionInvalidFormat);
+		assertEquals(ErrorMessage.driverVersionInvalidFormat, e.getMessage());
 	}
 
 	//Support email
@@ -223,7 +223,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/email_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
+		assertEquals(ErrorMessage.emailInvalidFormat, e.getMessage());
 	}
 
 	//Serial number
@@ -250,7 +250,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/serialNumber_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+		assertEquals(ErrorMessage.serialNumberInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -275,7 +275,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/serialNumber_BV_51_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+		assertEquals(ErrorMessage.serialNumberInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -301,7 +301,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/serialNumber_BV_0_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.serialNumberInvalidFormat);
+		assertEquals(ErrorMessage.serialNumberInvalidFormat, e.getMessage());
 	}
 
 	@Test
@@ -342,7 +342,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/macAddress_EC_Invalid_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.macAddressInvalidFormat);
+		assertEquals(ErrorMessage.macAddressInvalidFormat, e.getMessage());
 	}
 
 
@@ -364,7 +364,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/extraTag_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.jsonExtraTagError);
+		assertEquals(ErrorMessage.jsonExtraTagError, e.getMessage());;
 
 	}
 
@@ -378,7 +378,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/emptyFile_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+		assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());.emptyFileError);
 	}
 
 	@Test
@@ -393,7 +393,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/emptyJson_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
+		assertEquals(ErrorMessage.emptyFileError, e.getMessage());
 	}
 
 	@Test
@@ -407,7 +407,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/malformedJson_01.json";
 	 	TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-	 	assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
+	 	assertEquals(ErrorMessage.jsonParsingError, e.getMessage());;
 
 	}
 
@@ -421,7 +421,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/doesNotExist_01.json";
 		TokenManagementException e = assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.inputFileNotFoundError);
+		assertEquals(ErrorMessage.inputFileNotFoundError, e.getMessage());;
 	}
 
 	@Test
@@ -435,7 +435,7 @@ public class AppTest_1 {
 		String path = "src/resources/01/missingTag_01.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
 				() -> tokenManager.TokenRequestGeneration(path));
-		assertEquals(e.getMessage(), ErrorMessage.jsonTagMismatchError);
+		assertEquals(ErrorMessage.jsonTagMismatchError, e.getMessage());
 
 	}
 
