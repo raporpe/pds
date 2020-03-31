@@ -1767,13 +1767,17 @@ public class AppTest {
 	 * Derivation Tree Node: <Value/s>
 	 * Type of case: Regular Value
 	 * Testing technique: Syntax Analysis
-	 * Expected value: The gotten values match with the provided values.
+	 * Expected value: The operation work without exceptions.
 	 */
 	void validCase_02(){
 
 		String path = "src/resources/02/validCase_02.json";
-
-		
+		String result;
+		try{
+			result = tokenManager.RequestToken(path);
+		} catch (Exception e){
+			fail();
+		}
 
 	}
 
