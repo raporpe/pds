@@ -507,7 +507,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateManyDayCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -525,7 +525,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateManyHourCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -542,7 +542,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateManyMinuteCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -559,7 +559,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateManyMonthCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -577,7 +577,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateManySecondCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -595,7 +595,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateMissingDayCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -613,7 +613,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateMissingHourCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -630,7 +630,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateMissingMinuteCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -647,7 +647,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateMissingMonthCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -665,7 +665,7 @@ public class AppTest {
 
 		String path = "src/resources/02/dateMissingSecondCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -683,7 +683,7 @@ public class AppTest {
 
 		String path = "src/resources/02/emptyFILE_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
 
@@ -700,7 +700,7 @@ public class AppTest {
 
 		String path = "src/resources/02/emptyFILE_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emptyFileError);
 
@@ -718,7 +718,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidDay_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -735,7 +735,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidDayBar_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -752,7 +752,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidHour_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -770,7 +770,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidMinute_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -787,7 +787,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidMonth_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -805,7 +805,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorDateInvalidSecond_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -823,7 +823,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorIncorrectWrittenDomain_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 
@@ -841,7 +841,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorIncorrectWrittenEmail_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 
@@ -859,7 +859,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorIncorrectWrittenToken_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
 
@@ -877,7 +877,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorMissingTokenCharacters_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
 
@@ -894,7 +894,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorTooLargeEmail_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 
@@ -912,7 +912,7 @@ public class AppTest {
 
 		String path = "src/resources/02/errorTooLargeToken_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidTokenRequest);
 
@@ -929,7 +929,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extra@_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.emailInvalidFormat);
 
@@ -946,7 +946,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraComma_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
@@ -964,7 +964,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraDayBar_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -982,7 +982,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraEqual_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
@@ -1000,7 +1000,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraFirstBrace_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
@@ -1018,7 +1018,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraHourEqual_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.invalidDateFormat);
 
@@ -1036,7 +1036,7 @@ public class AppTest {
 
 		String path = "src/resources/02/extraLastBrace_02.json";
 		TokenManagementException e =  assertThrows(TokenManagementException.class,
-				() -> tokenManager.TokenRequestGeneration(path));
+				() -> tokenManager.RequestToken(path));
 
 		assertEquals(e.getMessage(), ErrorMessage.jsonParsingError);
 
