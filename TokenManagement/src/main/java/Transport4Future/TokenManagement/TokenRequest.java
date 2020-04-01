@@ -46,7 +46,7 @@ public class TokenRequest {
 			throw new TokenManagementException(ErrorMessage.driverVersionInvalidFormat);
 		}
 
-		Pattern mailPattern = Pattern.compile("^[A-Z0-9._%+-]{1,64}@[A-Z0-9.-]{1,255}.[A-Z]{2,63}$");
+		Pattern mailPattern = Pattern.compile("^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+){0,254}\\.[a-zA-Z]{2,63}$");
 		if (mailPattern.matcher(email).matches() && email.length() < 255) {
 			this.email = email;
 		} else {
