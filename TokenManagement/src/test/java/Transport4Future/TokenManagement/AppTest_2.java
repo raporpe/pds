@@ -11,7 +11,7 @@ public class AppTest_2 {
     private static TokenManager tokenManager;
 
     @BeforeAll
-    static void TM_RF_01() {
+    static void TM_RF_02() {
         tokenManager = new TokenManager();
     }
 
