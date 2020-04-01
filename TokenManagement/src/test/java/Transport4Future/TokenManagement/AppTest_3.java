@@ -30,8 +30,20 @@ public class AppTest_3 {
 	 * find the combination in which a token is found and the idValid() function inside the if is not executed, as formerly
 	 * demonstrated.
 	 *
-	 * Regarding loop testing, we found some 
-	 */
+	 *
+	 * Regarding loop testing, we found some particularities.
+	 * There are two loops.
+	 * The first one is infinite because it will iterate as many times as tokens there are in the database.
+	 * Therefore, there is not a maximum value and we have only tested the zero case (the loop is skipped) and
+	 * the case in which it is executed once.
+	 *
+	 * The second loop traverses the list that was filled by the first loop.
+	 * If the first loop iterated N times, so will the second loop do: the second one depends on the first.
+	 * The second loop has a equivalent behaviour to the first one and testing the first one will cause the same tests
+	 * to be performed on the second one.
+	 *
+	 * In conclusion, we only need to perform a test in which we go trough the first loop twice (and thus the second one)
+	 * /
 
 	@Test
 	static void malformedJSON(){
