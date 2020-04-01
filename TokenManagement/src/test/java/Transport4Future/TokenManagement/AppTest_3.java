@@ -43,7 +43,7 @@ public class AppTest_3 {
 	 * to be performed on the second one.
 	 *
 	 * In conclusion, we only need to perform a test in which we go trough the first loop twice (and thus the second one)
-	 * /
+	 */
 
 	@Test
 	static void malformedJSON(){
